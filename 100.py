@@ -16,8 +16,14 @@ class Solution(object):
   def inorderHelper(self, p, q, pnums, qnums):
     if p and q is None:
       return
-    self.inorderHelper(node.left, result)
-    result.append(node.val)
+    self.inorderHelper(p.left, q.left, pnums, qnums)
+    pnums.append(p.val)
+    qnums.append(q.val)
     self.inorderHelper(node.right, result)
+
+
     
-    
+#iterative
+def isSameTree(self, p, q):
+  hm
+  while(true)
