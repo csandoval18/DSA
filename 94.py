@@ -21,7 +21,7 @@ class Solution:
         return result
     
     def inorderHelper(self, node, result):
-        if node is None:
+        if not node:
             return
         self.inorderHelper(node.left, result)
         result.append(node.val)
