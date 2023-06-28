@@ -1,4 +1,8 @@
 def sortedArrayToBST(self, nums):
+<<<<<<< HEAD
+  #base case
+  return
+=======
   l = 0
   r = len(nums) -1
   
@@ -18,3 +22,4 @@ def sortedArrayToBST(self, nums):
     
   
   
+>>>>>>> 6b8721014e1de0b346cccc2a033771a73abfa010
