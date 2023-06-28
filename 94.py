@@ -13,7 +13,7 @@
 #   return ans
 
 
-#recursive approach
+# Recursive approach
 class Solution:
     def inorderTraversalRecursive(self, root):
         result = []
@@ -23,12 +23,12 @@ class Solution:
     def inorderHelper(self, node, result):
         if not node:
             return
+            
         self.inorderHelper(node.left, result)
         result.append(node.val)
         self.inorderHelper(node.right, result)
 
-
-
+# 
 class Solution:
   def inorderTraversal(self, root):
     result = []

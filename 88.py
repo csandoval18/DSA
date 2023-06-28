@@ -18,9 +18,9 @@ def merge1(nums1, m , nums2, n):
 
 #This one is just adding the other array's elements into the empty 0s then sorting it
 def merge(nums1, m , nums2, n):
-  """
-  Do not return anything, modify nums1 in-place instead.
-  """
+  # """
+  # Do not return anything, modify nums1 in-place instead.
+  # """
   cnt = 0;
   while(m < len(nums1)):
     nums1[m] = nums2[cnt];
