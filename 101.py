@@ -1,7 +1,10 @@
 class Solution(object):
     def isSymmetric(self, root):
+      # If empty return true
       if not root:
         return True
+        
+      # Create subtrees
       return self.isMirror(root.left, root.right)
     
     def isMirror(self, leftNode, rightNode):
