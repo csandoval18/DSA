@@ -30,8 +30,9 @@ def maxProfit(self, prices):
       # check if profit is new max
       maxP = max(maxP, profit)
     else:
-      # move left pointer to right position and move right 1 position to the right
+      # move left pointer to right position
       l = r
       
+    # move 
     r += 1
   return maxP
