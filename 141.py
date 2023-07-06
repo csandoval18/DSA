@@ -18,4 +18,7 @@ def hasCycle(head):
     # fast pointer moves 2 nodes forward
     fast = fast.next.next
     
+    if slow == fast:
+      return True
+  return False
     
