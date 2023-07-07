@@ -2,9 +2,9 @@ class Solution(object):
   def convertToTitle(self, columnNumber):
     result = ""
     
-    while n > 0:
-      n -= 1
-      result = chr(n % 26 + ord('A')) + result
-      n //= 26
+    while columnNumber > 0:
+      columnNumber -= 1
+      result = chr(columnNumber % 26 + ord('A')) + result
+      columnNumber //= 26
     return result
       

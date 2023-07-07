@@ -7,9 +7,11 @@ def majorityElement( nums):
     else:
       hm[i] += 1
   
-  maxNum = list(hm.values())
-  maxKey = list(hm.keys())
-  return maxKey[maxNum.index(max(maxNum))]
+  hmValues = list(hm.values())
+  hmKeys = list(hm.keys())
+  maxNum = max(hmValues)
+  
+  return hmKeys[hmValues.index(maxNum)]
   # return max(hm, key=lambda x:hm[x])
   
 print(majorityElement([3,3,4]))
