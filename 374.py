@@ -27,10 +27,10 @@ class Solution(object):
         return m
       
       if x == 1:
-        return self.binarySearch(m, r)
+        return self.binarySearch(m + 1, r)
       
       if x == -1:
-        return self.binarySearch(l, m)
+        return self.binarySearch(l - 1 , m)
     else: return -1    
     
       
