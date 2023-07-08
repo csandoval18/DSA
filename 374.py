@@ -34,3 +34,14 @@ class Solution(object):
     else: return -1    
     
       
+def guessNumber(self, n):
+  l, r = 0, n
+  while l <= r:
+    m = (l + r)/2
+
+    if guess(m) == -1:
+        r = m - 1
+    elif guess(m) == 1:
+        left = m + 1
+    else:
+        return m 
