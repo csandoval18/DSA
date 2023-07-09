@@ -25,10 +25,8 @@ class Solution(object):
       
       if x == 0:
         return m
-      
       if x == 1:
         return self.binarySearch(m, r)
-      
       if x == -1:
         return self.binarySearch(l, m)
     else: return -1    

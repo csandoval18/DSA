@@ -16,12 +16,6 @@
 # s = "leetcode"
 # print(firstUniqChar(s))
 
-
-
-
-
-
-
 def firstUniqChar(s):
   """
   :type s: str
