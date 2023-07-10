@@ -1,12 +1,6 @@
 class Solution(object):
     def isPowerOfTwo(self, n):
-      if n == 1:
-        return True
-      
-      if n == 2:
-        return True
-      
-      i = 2
+      i = 0
       while pow(2, i) < n:
         i += 1
         
