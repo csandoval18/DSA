@@ -17,3 +17,8 @@ class Solution(object):
         hm[i] -= 1
 
     return res
+
+
+# If num exists in num_count and its count is greater than 0, 
+# it indicates that the element is present in both arrays and we haven't used up all its occurrences in nums1. 
+# We include that element in the intersection and decrement its count in num_count to track the usage.
