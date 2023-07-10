@@ -1,20 +1,3 @@
-<<<<<<< HEAD
-def preorderTraversal(root):
-  result = [root.val]
-  preorderHelper(root, result)
-  return result
-  
-  
-  
-def preorderHelper(root, result):
-  if not root:
-    return 
-  preorderHelper(root.left,result)
-  result.append(root.val)
-  preorderHelper(root.right, result)
-  
-  return 
-=======
 class Solution(object):
   def preorderTraversal(self, root):
     result = []
@@ -31,4 +14,3 @@ class Solution(object):
     
     
     
->>>>>>> 829d037bb324d9d21b32e9fc2d50001ca87569dc

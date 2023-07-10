@@ -6,6 +6,7 @@ class Solution(object):
     
     # Remove target value from the remaining list
     current = head
+    
     while current and current.next:
       if current.next.val == val:
         current.next = current.next.next
@@ -13,14 +14,3 @@ class Solution(object):
         current = current.next
     
     return head
-      
-      
-    
-
-          
-          
-          
-        
-      
-        
-        
