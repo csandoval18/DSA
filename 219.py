@@ -3,9 +3,11 @@ class Solution(object):
     hm = {}
     
     for i, n  in enumerate(nums):
+      # To get duplicate you can just check if the number is already in the hm
+      if n in hm and abs(hm[n] - i) <= k:
+        return True
       hm[n] = i
-    
-    return hm
+    return False
 
 nums = [1, 2, 3, 1]
 k = 3
