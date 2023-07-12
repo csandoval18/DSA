@@ -2,6 +2,7 @@ def isAnagram(s, t):
   hm = {}
   
   # Needed for case such as s = "a", t = "ab"
+  # Hash map cannot recognize the error
   if len(s) != len(t):
     return False
   
