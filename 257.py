@@ -1,17 +1,17 @@
 class Solution(object):
   def binaryTreePaths(self, root):
-    paths = []
+    res = []
     self.dfs(root, '')
-    return paths
+    return res
   
-  def dfs(self, node, path):
+  def dfs(self, node, res):
     if not node:
       return
       
     path += str(node.val)
     
     if not node.left and not node.right:
-      paths.append(path)
+      res.append(path)
     else:
       path += '->'
       self.dfs(node.left, path)
