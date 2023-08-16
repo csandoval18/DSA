@@ -9,17 +9,20 @@ class Solution(object):
     res = tmp
     remainder = 0
     
-    while l1 != None or l2 != None:
-      if l1 == None:
+    while l1 != None or l2 != None or remainder != 0:
+      if not l1 and l2:
           s = l2.val
           l2 = l2.next
-      elif l2 == None:
+      elif not l2 and l1:
           s = l1.val
           l1 = l1.next
-      else:
+      elif l1 and l2:
           s = l1.val + l2.val
           l1 = l1.next
           l2 = l2.next
+      elif not l1 and not l2:
+        s = remainder
+        remainder = 0
 
       if remainder > 0:
           s += remainder
