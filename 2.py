@@ -6,30 +6,34 @@ class ListNode(object):
 class Solution(object):
   def addTwoNumbers(self, l1, l2):
     tmp = ListNode(0)
-    res = tmp.next
+    res = tmp
     remainder = 0
     
     while l1 != None or l2 != None:
+      if l1 == None:
+          s = l2.val
+          l2 = l2.next
+      elif l2 == None:
+          s = l1.val
+          l1 = l1.next
+      else:
+          s = l1.val + l2.val
+          l1 = l1.next
+          l2 = l2.next
+
       if remainder > 0:
-        s = l1.val + l2.val + remainder
-        remainder = 0
-      else:
-        s = l1.val + l2.val
-        
+          s += remainder
+          remainder = 0
+          
       if s > 9:
-        remainder = (s) // 10
-        node = ListNode(s % 10)
+          remainder = (s) // 10
+          node = ListNode(s % 10)
       else:
-        node = ListNode(s)
-        
+          node = ListNode(s)
+          
       tmp.next = node
-      l1 = l1.next
-      l2 = l2.next
-        
       tmp = tmp.next
-      print(tmp.val)
-        
-    return res
+    return res.next
   
 # l1 = [2,4,3]
 # l2 = [5,6,4]
