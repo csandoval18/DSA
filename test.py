@@ -28,3 +28,21 @@ def maxProfit(prices):
 
 prices = [7,1,5,3,6,4]
 print(maxProfit(prices))
+
+def productExceptSelf(nums):
+  n = len(nums)
+  prefix = [1] * n
+
+  print("Initial prefix array:", prefix)
+
+  prefix_product = 1
+  for i in range(n):
+      prefix_product *= nums[i]
+      prefix[i] = prefix_product
+      print(f"Step {i + 1} - Prefix Array:", prefix)
+
+  print("Final Prefix Array:", prefix)
+  
+
+nums = [1,2,3,4]
+productExceptSelf(nums)
