@@ -13,8 +13,12 @@ def productExceptSelf1(nums):
     
   return answer
 
-# O(n) and O(n) space
 
+
+
+
+
+# O(n) and O(n) space
 def productExceptSelfExtraSpace(nums):
   n = len(nums)
   
@@ -40,6 +44,10 @@ def productExceptSelfExtraSpace(nums):
   
   return output
   
+  
+  
+  
+  
 # O(n) and O(1) space
 def productExceptSelf(nums):
   res = [1] * len(nums)
@@ -58,3 +66,8 @@ def productExceptSelf(nums):
     
 nums = [1,2,3,4]
 print(productExceptSelf(nums))
+
+
+
+# Prefix of [1,2,3,4] = [1,1,2,6]
+# Suffix of [1,2,3,4] = [1,1,2,6]
