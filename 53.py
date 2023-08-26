@@ -10,13 +10,27 @@ def max_subarray(nums):
 
 # Sliding window
 def maxSubArraySlidingWindows(nums):
-  maxSum = float('-inf')
-  currSum = 0
+  left = 0
+  max_sum = float('-inf')
+  curr_sum = nums[0]
   
-  for i in range(len(nums)):
-    for j in range(i, len(nums)):
-      currSum += nums[j] 
+  for right in range(1, len(nums)):
+    curr_sum = max(nums[right], curr_sum + nums[right])
   
+  
+  
+# Neetcode solution O(n)
+def maxSubArrayNeetCode(nums):
+  max_sum = float('-inf')
+  curr_sum = 0
+  
+  for n in nums:
+    # Ignore negative numbers
+    if n < 0:
+      curr_sum = 0
+    curr_sum += n
+    max_sum = max(max_sum, curr_sum)
+  return max_sum
   
   
 
@@ -33,25 +47,11 @@ def maxSubArray(nums):
   return max_sum
   
   
-  
-  
-# Neetcode solution
-def maxSubArrayNeetCode(nums):
-  max_sum = float('-inf')
-  curr_sum = 0
-  
-  for n in nums:
-    # Ignore negative numbers
-    if n < 0:
-      curr_sum = 0
-    curr_sum += n
-    max_sum = max(max_sum, curr_sum)
-  return max_sum
-  
 # nums = [-2,1,-3,4,-1,2,1,-5,4]
 # nums = [5,4,-1,7,8]
 nums = [1,2,3,4]
-print(max_subarray(nums))
+print(max_subarray(nums)) 
+
 
 
 # Iteration 0 
