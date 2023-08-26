@@ -98,3 +98,60 @@ print(max_subarray(nums))
 # n = 4
 # current_sum = max(4, 1 + 4 = 5) = 5
 # max_sum = max(6, 5) = 6
+
+
+# //////////////////////////////////////////////////////////////////////////////////////////////
+
+# nums = [5,4,-1,7,8]
+
+# max_sum = float('-inf')
+# current_sum = 0
+
+# for n in nums:
+#   curr_sum = max(n, curr_sum + n)
+#   max_sum = max(max_sum, curr_sum)
+
+# Iteration 0 
+# n = 5
+# current_sum = max(5, 0 + 5) = 5
+# max_sum = max(float('-inf'), 5) = 5
+
+# Iteration 1
+# n = 4  
+# current_sum = max(4, 5 + 4 = 10) = 10
+# max_sum = max(5, 10) = 10
+
+# Iteration 2
+# n = -1
+# current_sum = max(-1, 10 + (-1) = 9) = 9
+# max_sum = max(10, 9) = 10
+
+# Iteration 3
+# n = 4
+# current_sum = max(4, -2 + 4 = 2) = 4
+# max_sum = max(1, 4) = 4
+
+# Iteration 4
+# n = -1
+# current_sum = max(-1, 4 + (-1) = 3) = 3
+# max_sum = max(4, 3) = 4
+
+# Iteration 5
+# n = 2 
+# current_sum = max(2, 3 + 2 = 5) = 5
+# max_sum = max(4, 5) = 5
+
+# Iteration 6
+# n = 1 
+# current_sum = max(1, 1 + 5 = 6) = 6
+# max_sum = max(5, 6) = 6
+
+# Iteration 7
+# n = -5
+# current_sum = max(-5, 6 + -5) = 1
+# max_sum = max(6, 1) = 6
+
+# Iteration 8
+# n = 4
+# current_sum = max(4, 1 + 4 = 5) = 5
+# max_sum = max(6, 5) = 6

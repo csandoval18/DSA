@@ -19,20 +19,15 @@ class Solution(object):
             
 
   # 2 Pointer solution 
-  def  longestPalindrome2(self, s):
-    res = ""
-    resLen = 0
+  # def  longestPalindrome2(self, s):
+  #   res = ""
+  #   resLen = 0
     
-    for i in range(len(s)):
-      # odd length
-      l, r = i, i
-      while l >= 0 and r < len(s) and s[l] == s[r]:
+  #   for i in range(len(s)):
+  #     # odd length
+  #     l, r = i, i
+  #     while l >= 0 and r < len(s) and s[l] == s[r]:
         
-        
-        
-      
-  
-
 s = "babad"
 sol = Solution()
 sol.longestPalindrome(s)
