@@ -57,47 +57,47 @@ print(max_subarray(nums))
 # Iteration 0 
 # n = -2
 # current_sum = max(-2, 0 + (-2) = -2) = -2
-# max_sum = max(float('-inf'), -2) = -2
+# max_sum = max(float('-inf'), -2) = -2 -----
 
 # Iteration 1
 # n = 1  
 # current_sum = max(1, -2 + 1= -1 ) = 1
-# max_sum = max(-2, 1) = 1
+# max_sum = max(-2, 1) = 1 -----
 
 # Iteration 2
 # n = -3
 # current_sum = max(-3, 1 + (-3) = -2) = -2
-# max_sum = max(1, -2) = 1
+# max_sum = max(1, -2) = 1 -----
 
 # Iteration 3
 # n = 4
 # current_sum = max(4, -2 + 4 = 2) = 4
-# max_sum = max(1, 4) = 4
+# max_sum = max(1, 4) = 4 -----
 
 # Iteration 4
 # n = -1
 # current_sum = max(-1, 4 + (-1) = 3) = 3
-# max_sum = max(4, 3) = 4
+# max_sum = max(4, 3) = 4 -----
 
 # Iteration 5
 # n = 2 
 # current_sum = max(2, 3 + 2 = 5) = 5
-# max_sum = max(4, 5) = 5
+# max_sum = max(4, 5) = 5 -----
 
 # Iteration 6
 # n = 1 
 # current_sum = max(1, 1 + 5 = 6) = 6
-# max_sum = max(5, 6) = 6
+# max_sum = max(5, 6) = 6 -----
 
 # Iteration 7
 # n = -5
 # current_sum = max(-5, 6 + -5) = 1
-# max_sum = max(6, 1) = 6
+# max_sum = max(6, 1) = 6 -----
 
 # Iteration 8
 # n = 4
 # current_sum = max(4, 1 + 4 = 5) = 5
-# max_sum = max(6, 5) = 6
+# max_sum = max(6, 5) = 6 -----
 
 
 # //////////////////////////////////////////////////////////////////////////////////////////////
@@ -118,40 +118,20 @@ print(max_subarray(nums))
 
 # Iteration 1
 # n = 4  
-# current_sum = max(4, 5 + 4 = 10) = 10
-# max_sum = max(5, 10) = 10
+# current_sum = max(4, 5 + 4 = 9) = 9
+# max_sum = max(5, 9) = 9
 
 # Iteration 2
 # n = -1
-# current_sum = max(-1, 10 + (-1) = 9) = 9
-# max_sum = max(10, 9) = 10
+# current_sum = max(-1, 9 + (-1) = 8) = 8
+# max_sum = max(9, 8) = 9
 
 # Iteration 3
-# n = 4
-# current_sum = max(4, -2 + 4 = 2) = 4
-# max_sum = max(1, 4) = 4
+# n = 7
+# current_sum = max(7, 8 + 7 = 15) = 15
+# max_sum = max(9, 15) = 15
 
 # Iteration 4
-# n = -1
-# current_sum = max(-1, 4 + (-1) = 3) = 3
-# max_sum = max(4, 3) = 4
-
-# Iteration 5
-# n = 2 
-# current_sum = max(2, 3 + 2 = 5) = 5
-# max_sum = max(4, 5) = 5
-
-# Iteration 6
-# n = 1 
-# current_sum = max(1, 1 + 5 = 6) = 6
-# max_sum = max(5, 6) = 6
-
-# Iteration 7
-# n = -5
-# current_sum = max(-5, 6 + -5) = 1
-# max_sum = max(6, 1) = 6
-
-# Iteration 8
-# n = 4
-# current_sum = max(4, 1 + 4 = 5) = 5
-# max_sum = max(6, 5) = 6
+# n = 8
+# current_sum = max(8, 15 + 8 = 23) = 23
+# max_sum = max(16, 23) = 23
