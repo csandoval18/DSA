@@ -1,4 +1,27 @@
-def maxSubArray(self, nums):
+# O(n^3)
+def max_subarray(nums):
+    n = len(nums)
+    for i in range(n):
+        for j in range(i, n):
+            subarray = nums[i:j+1]
+            print(subarray)
+
+
+
+# Sliding window
+def maxSubArraySlidingWindows(nums):
+  maxSum = float('-inf')
+  currSum = 0
+  
+  for i in range(len(nums)):
+    for j in range(i, len(nums)):
+      currSum += nums[j] 
+  
+  
+  
+
+# Kadane's algorithm O(n) complexity
+def maxSubArray(nums):
   # Start max_sum as float('-inf') to take negative numbers into account
   max_sum = float('-inf')
   current_sum = 0
@@ -9,8 +32,26 @@ def maxSubArray(self, nums):
   
   return max_sum
   
-nums = [-2,1,-3,4,-1,2,1,-5,4]
+  
+  
+  
+# Neetcode solution
+def maxSubArrayNeetCode(nums):
+  max_sum = float('-inf')
+  curr_sum = 0
+  
+  for n in nums:
+    # Ignore negative numbers
+    if n < 0:
+      curr_sum = 0
+    curr_sum += n
+    max_sum = max(max_sum, curr_sum)
+  return max_sum
+  
+# nums = [-2,1,-3,4,-1,2,1,-5,4]
 # nums = [5,4,-1,7,8]
+nums = [1,2,3,4]
+print(max_subarray(nums))
 
 
 # Iteration 0 

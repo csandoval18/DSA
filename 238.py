@@ -1,5 +1,5 @@
 #  Brute force approach (not accepted by lc)
-def productExceptSelf1(nums):
+def productExceptSelfBruteForce(nums):
   answer = []
   
   for i in range(len(nums)):
@@ -67,7 +67,6 @@ def productExceptSelf(nums):
 nums = [1,2,3,4]
 print(productExceptSelf(nums))
 
-
-
-# Prefix of [1,2,3,4] = [1,1,2,6]
-# Suffix of [1,2,3,4] = [1,1,2,6]
+# Added a 1 at start since index 0 would check left of prefix which is out of range of array
+# Prefix of [1,2,3,4] = [1] + [1,2,6,24]
+# Suffix of [1,2,3,4] = [24,24,12,4] + [1]
