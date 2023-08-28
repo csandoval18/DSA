@@ -9,7 +9,7 @@ def max_subarray(nums):
 
 
 # Sliding window
-def maxSubArraySlidingWindows(nums):
+def maxSubArraySlidingWindow(nums):
   left = 0
   max_sum = float('-inf')
   curr_sum = nums[0]
