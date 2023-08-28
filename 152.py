@@ -13,3 +13,5 @@ def maxProduct(nums):
   
 nums = [2,3,-2,4]
 print(maxProduct(nums))
+
+def max_product_sliding_window(nums)
