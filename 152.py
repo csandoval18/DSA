@@ -61,3 +61,11 @@ def maxProdNeetcode(nums):
     res = max(res, currMax)
     
   return res
+  
+  
+  # Observation approach
+  
+  # 1. All positive elements, then multiply all numbers and return product
+  # 2. Even count of negative elements, multiply all and return product
+  # 3. Odd negatives, get prefix max and suffix max similar to the the problem product of array except self 
+  # 4. If the array contains 0s, then product = 0, therefore they should be ignored
