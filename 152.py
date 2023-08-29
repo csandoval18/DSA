@@ -25,10 +25,7 @@ def maxProductBruteForce(nums):
 
 
   
-nums = [2,3,-2,4]
-print(maxProduct(nums))
-
-# Sliding window
+# Chatgpt O(n)
 def max_product_subarray(nums):
   # Base case
   if len(nums) == 0:
@@ -55,17 +52,36 @@ def maxProdNeetcode(nums):
   currMin, currMax = 1, 1
   
   for n in nums:
+    if n == 0:
+      currMin, currMax = 1, 1
+      continue
+    
     tmp = currMax * n
-    currMax = max(tmp, n * currMin, n) 
+    currMax = max(n * currMax, n * currMin, n) 
     currMin = min(tmp, n * currMin, n) 
     res = max(res, currMax)
     
   return res
   
   
-  # Observation approach
+# Observation approach
+
+# 1. All positive elements, then multiply all numbers and return product
+# 2. Even count of negative elements, multiply all and return product
+# 3. Odd negatives, get prefix max and suffix max similar to the the problem product of array except self 
+# 4. If the array contains 0s, then product = 0, therefore they should be ignored
   
-  # 1. All positive elements, then multiply all numbers and return product
-  # 2. Even count of negative elements, multiply all and return product
-  # 3. Odd negatives, get prefix max and suffix max similar to the the problem product of array except self 
-  # 4. If the array contains 0s, then product = 0, therefore they should be ignored
+def maxProdSubarray(nums):
+  prefix, suffix = 1, 1
+  res = float('-inf')
+  
+  for i in range(len(nums)):
+    if prefix == 0: pre = 1
+    if suffix == 0: suff = 1
+    
+    prefix *= nums[i]
+    suffix *= nums[len(nums)-1-i]
+    res = max(res, prefix, suffix)
+  return res
+  
+nums = [2,3,-2,4]
