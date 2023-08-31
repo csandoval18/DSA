@@ -12,11 +12,14 @@ def mergeAlternately(word1, word2):
       res += word1[i]
       res += word2[i]
     # i in range of word1 but past word2
-    elif i < w1Len and i > w2Len-1:
+    
+    # (i >= w2Len) is the same as (i > w2Len-1) since you need to cut off at the last index not last length #
+    elif i < w1Len and i >= w2Len:
+    # elif i < w1Len and i > w2Len-1:
       res += word1[i:w1Len]
       return res
     # i in range of word2  but past word1
-    elif i < w2Len and i > w1Len-1:
+    elif i < w2Len and i >= w1Len:
       res += word2[i:w2Len]
       return res
   return res
