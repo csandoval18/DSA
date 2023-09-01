@@ -49,6 +49,9 @@ def check(nums):
     return False
 
 # nums = [3,4,5,1,2]
+
+# 3 
+
 # nums = [2,1,3,4]
 # nums = [1,2,3,4,5]
 # nums = [8,5,4,5,1,4,5,2,2]
