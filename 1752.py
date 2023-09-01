@@ -13,11 +13,9 @@ def checkFirstAttempt(nums):
 
 
 # Modulo "wrap around" solution
+# next = (i+1) % n
 
-
-
-
-def check(nums):
+def checkModulo(nums):
   n = len(nums)
   increasing_count = 0
   
@@ -28,7 +26,28 @@ def check(nums):
         return False
   return True if increasing_count == 0 or nums[0] >= nums[n-1] else False
 
+# Not using modulo
+def check(nums):
+  n = len(nums)
+  increasing_count = 0
   
+  for i in range(n):
+    # Wrap around if index exceeds n-1
+    if i+1 < n:
+      next_index = i+1
+    else: 
+      next_index = 0
+    
+    if nums[i] > nums[next_index]:
+      increasing_count += 1
+      if increasing_count > 1:
+        return False
+  
+  if increasing_count == 0 or nums[0] >= nums[n-1]:
+    return True
+  else:
+    return False
+
 # nums = [3,4,5,1,2]
 # nums = [2,1,3,4]
 # nums = [1,2,3,4,5]
