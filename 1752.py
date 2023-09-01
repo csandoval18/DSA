@@ -11,11 +11,18 @@ def checkFirstAttempt(nums):
 # First attempt breaks with array below 
 # nums = [8,5,4,5,1,4,5,2,2]
 
+
+# Modulo "wrap around" solution
+
+
+
+
 def check(nums):
+  n = len(nums)
   increasing_count = 0
   
-  for i in range(len(nums)):
-    if nums[i] > nums[(i+1) % len(nums)]:
+  for i in range(n):
+    if nums[i] > nums[(i+1) % n]:
       increasing_count += 1
       if increasing_count > 1:
         return False
