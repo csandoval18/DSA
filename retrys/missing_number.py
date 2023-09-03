@@ -17,7 +17,6 @@ def missing_number(nums):
       return i
     i += 1
   return i
-  
 
 nums = [3,0,1]
 print(missingNumber(nums))
