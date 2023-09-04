@@ -1,25 +1,22 @@
 # O(n^3)
 def max_subarray(nums):
-    n = len(nums)
-    for i in range(n):
-        for j in range(i, n):
-            subarray = nums[i:j+1]
-            print(subarray)
+  n = len(nums)
+  for i in range(n):
+    for j in range(i, n):
+      curr_sum = 0
+      
+      # Subarray that k traverses => subarray = nums[i:j+1]
+      for k in range(i, j+1):
+        curr_sum += nums[k]
+      
+      max_sum = max(max_sum, curr_sum)
+      
+  return max_sum
+        
+      
 
-
-
-# Sliding window
-def maxSubArraySlidingWindow(nums):
-  left = 0
-  max_sum = float('-inf')
-  curr_sum = nums[0]
   
-  for right in range(1, len(nums)):
-    curr_sum = max(nums[right], curr_sum + nums[right])
-  
-  
-  
-# Neetcode solution O(n)
+# Neetcode Kadane Solution
 def maxSubArrayNeetCode(nums):
   max_sum = float('-inf')
   curr_sum = 0

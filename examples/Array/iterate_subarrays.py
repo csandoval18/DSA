@@ -21,15 +21,20 @@ def iterate_subarrays(arr):
       print(subarray)
       
 
-def iterateSubArrays(arr):
-  for i in range(len(arr)):
-    for j in range(i, len(arr)):
+def iterateSubarrays(arr):
+  n = len(arr)
+  
+  for i in range(n):
+    
+    for j in range(i, n):
       subarray = []
+      
       for k in range(i, j+1):
         subarray.append(arr[k])
+        
       print(subarray)
       
 
 arr = [1,2,3,4]
 # iterate_subarrays(arr)
-iterateSubArrays(arr)
+iterateSubarrays1(arr)
