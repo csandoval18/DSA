@@ -10,6 +10,7 @@ def missingNumber(nums):
       tmp = nums[i]
 
 def missing_number(nums):
+  nums.sort()
   i = 0
   
   for n in nums:

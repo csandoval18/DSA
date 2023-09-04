@@ -1,6 +1,7 @@
 class Solution(object):
   def twoSum(self, nums, target):
     hm = {}
+    res = []
     
     for i, n in enumerate(nums):
       x = target - n
@@ -8,6 +9,7 @@ class Solution(object):
       if x not in hm:
         hm[n] = i
       else:
-        return [hm[x], i]
+        res.append(hm[n]+1)
+        res.append(i+1)
         
     return None

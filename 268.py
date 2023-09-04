@@ -8,7 +8,6 @@ class Solution(object):
         return i
       i += 1
     return i
-      
     
 nums = [3, 0, 1]
 sol = Solution()
