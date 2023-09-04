@@ -1,0 +1,52 @@
+A contiguous subarray is a subarray (a portion of an array) in which the elements 
+are adjacent to each other. In other words, all elements in a contiguous subarray 
+are located consecutively within the original array. Here's an example:
+
+Consider the following array:
+
+```python
+
+original_array = [2, 4, -3, 5, -6, 7, 8]
+
+```
+
+Now, let's take some contiguous subarrays from this array:
+
+1. The subarray `[2, 4, -3]` is a contiguous subarray because all its elements are 
+adjacent within the original array.
+
+2. The subarray `[5, -6, 7]` is another contiguous subarray. It starts at index 3 
+(`original_array[3]` is 5) and includes the next two elements, which are adjacent.
+
+3. The subarray `[7, 8]` is also a contiguous subarray. It starts at index 5 
+(`original_array[5]` is 7) and includes the next element.
+
+In each of these examples, the elements in the subarray are consecutive within the 
+original array, making them contiguous subarrays.
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+A non-contiguous subarray, also known as a subsequence, is a subset of elements from an 
+array in which the elements are not necessarily adjacent to each other in the original 
+array. Here's an example of a non-contiguous subarray (subsequence) taken from the array 
+provided earlier:
+
+Original array:
+
+```python
+
+original_array = [2, 4, -3, 5, -6, 7, 8]
+
+```
+
+Non-contiguous subarray (subsequence):
+
+```python
+
+non_contiguous_subarray = [2, -3, -6, 8]
+
+```
+
+In this example, the elements `[2, -3, -6, 8]` are selected from the original array, 
+but they are not necessarily adjacent to each other in the original array. This is 
+why it's referred to as a non-contiguous subarray or subsequence.
