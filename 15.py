@@ -17,11 +17,19 @@
 #               1  2  3
 
 
-
-
-
 def threeSum(nums):
+  triplets = []
   
-  return
+  for i in range(len(nums)):
+    for j in range(i+1, len(nums)):
+      for k in range(j+1, len(nums)):
+        if nums[i] + nums[j] + nums[k] == 0:
+          triplet = [nums[1], nums[j], nums[k]]
+          triplet.sort()
+          # Adds only unique solutions
+          if triplet not in triplets:
+            triplets.append(triplet)
+
+  return triplets
 
 nums = [-1,0,1,2,-1,-4]
