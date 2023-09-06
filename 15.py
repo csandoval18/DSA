@@ -34,9 +34,24 @@ def threeSum(nums):
 
 nums = [-1,0,1,2,-1,-4]
 
-
 # Optimized solution
 
 # nums[i] + nums[j] + nums[k] = 0
+# nums[k] = - (nums[i] + nums[j])
 
+# Ex:
+#           j        k
 # arr[] = [-1,0,1,2,-1,-4]
+# nums[k] = -(-1 + -1) => -(-2)
+# nums[k] = 2
+
+
+# (i != j != k)
+# Cant pick element twice
+
+# Ex:
+# i,j = 2,-4
+# nums[k] = -(2-4) = -(-2) = 2 => Need a 2 in the nums array
+# Can not pick the 2 since it is the index of i and the elements can not be used twice
+
+# To avoid duplication, the hash map must only contain the numbers within range of i and j
