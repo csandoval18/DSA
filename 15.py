@@ -33,3 +33,10 @@ def threeSum(nums):
   return triplets
 
 nums = [-1,0,1,2,-1,-4]
+
+
+# Optimized solution
+
+# nums[i] + nums[j] + nums[k] = 0
+
+# arr[] = [-1,0,1,2,-1,-4]
