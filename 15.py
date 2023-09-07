@@ -17,6 +17,7 @@
 #               1  2  3
 
 
+# O(n^3)
 def threeSum(nums):
   triplets = []
   
@@ -40,22 +41,23 @@ nums = [-1,0,1,2,-1,-4]
 # nums[k] = - (nums[i] + nums[j])
 
 # Ex:
-#          j        k
+#          i        j
 # nums = [-1,0,1,2,-1,-4]
 # nums[k] = -(-1 + -1) => -(-2)
 # nums[k] = 2
 
 
 # (i != j != k)
-# Cant pick element twice
+# Cant pick same element twice
 
 # Ex:
 # i,j = 2,-4
 # nums[k] = -(2-4) = -(-2) = 2 => Need a 2 in the nums array
 # Can not pick the 2 since it is the index of i and the elements can not be used twice
 
-# To avoid duplication, the hash map must only contain the numbers within range of i and j
+# To avoid duplication, the hash map must only contain the numbers within range of i -> j (exclusive)
 
+# O(n^2 * log(# of triplets))
 def three_sum_better_appraoch(nums):
   res = set()
   
@@ -97,7 +99,7 @@ def three_sum_better_appraoch(nums):
 #          i                j         k 
 
 
-# Moving k back causes a duplicate to occur, so we need to move j out of 0s range
+# In this case moving k back causes a duplicate to occur, so we need to move j out of 0s range
 
 # Increase j index
 # nums = [-2,-2,-2,-1,-1,-1,0,0,0,2,2,2,2]
@@ -105,12 +107,40 @@ def three_sum_better_appraoch(nums):
 
 # When j surpasses k then we stop that loop & continue
 
+# 
 def threeSumOptimized(nums):
+  n = len(nums)
   res = []
   res.sort()
   
-  for i in range(len(nums)):
+  for i in range(n):
+    # Remove duplicates by checking if i non 0 index (starting index) 
+    # value is equal to its last iteration value
+    if i != 0 and nums[i] == nums[i-1]:
+      continue
     
-  
-  
-  
+    # Moving 2 pointers:
+    j = i+1
+    k = n-1
+    
+    while j < k:
+      total_sum = nums[i] + nums[j] + nums[k]
+      
+      if total_sum < 0:
+        j += 1
+      elif total_sum > 0:
+        k -= 1
+      else:
+        tmp = [nums[i], nums[j], nums[k]]
+        res.append(tmp)
+        j += 1
+        k -= 1
+        
+        # Skip duplicates
+        while j<k and nums[j] == nums[j-1]:
+          j += 1
+        while j<k and nums[k] == nums[k+1]:
+          k -= 1
+          
+    return res 
+        
