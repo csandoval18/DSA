@@ -92,12 +92,25 @@ def three_sum_better_appraoch(nums):
 # -2 -1 + 2 = -1
 # -2 + 0 + 2 = 0 = result
 
-# Increase j index
+# Increase j index or reduce k index depending on the formula value for k
 # nums = [-2,-2,-2,-1,-1,-1,0,0,0,2,2,2,2]
 #          i                j         k 
+
 
 # Moving k back causes a duplicate to occur, so we need to move j out of 0s range
 
 # Increase j index
 # nums = [-2,-2,-2,-1,-1,-1,0,0,0,2,2,2,2]
-#          i                      j     k 
+#          i                      j   k 
+
+# When j surpasses k then we stop that loop & continue
+
+def threeSumOptimized(nums):
+  res = []
+  res.sort()
+  
+  for i in range(len(nums)):
+    
+  
+  
+  
