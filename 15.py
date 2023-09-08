@@ -107,11 +107,12 @@ def three_sum_better_appraoch(nums):
 
 # When j surpasses k then we stop that loop & continue
 
-# 
+# O(NlogN) + O(n^2) = O(n^2)
+# Space complexity: # of quadruplets. O(1) no extra space is used other than result
 def threeSumOptimized(nums):
   n = len(nums)
   res = []
-  res.sort()
+  nums.sort()
   
   for i in range(n):
     # Remove duplicates by checking if i non 0 index (starting index) 
@@ -130,17 +131,17 @@ def threeSumOptimized(nums):
         j += 1
       elif total_sum > 0:
         k -= 1
-      else:
+      else: # total_sum == 0
         tmp = [nums[i], nums[j], nums[k]]
         res.append(tmp)
         j += 1
         k -= 1
         
         # Skip duplicates
-        while j<k and nums[j] == nums[j-1]:
+        while j < k and nums[j] == nums[j-1]:
           j += 1
-        while j<k and nums[k] == nums[k+1]:
+        while j < k and nums[k] == nums[k+1]:
           k -= 1
           
-    return res 
+  return res 
         
