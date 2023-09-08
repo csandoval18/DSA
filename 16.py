@@ -1,6 +1,7 @@
 def threeSumClosest(nums, target):
   n = len(nums)
   res = 0
+  min_dist = float('inf')
   nums.sort()
   
   for i in range(n):
@@ -12,14 +13,18 @@ def threeSumClosest(nums, target):
     
     while j < k:
       curr_sum = nums[i] + nums[j] + nums[k]
+      dist_to_target = abs(target - curr_sum)
       
-      if curr_sum < 0:
+      if dist_to_target < min_dist:
+        min_dist = dist_to_target
+        res = curr_sum
+      
+      
+      if curr_sum < target:
         j += 1
-      elif curr_sum > 0:
+      elif curr_sum > target:
         k -= 1
       else:
-        tmp = [nums[i], nums[j], nums[k]]
-        res.append(tmp)
         j += 1
         k -= 1
       
@@ -30,8 +35,11 @@ def threeSumClosest(nums, target):
         
   return res
 
-nums = [-1,0,1,2,-1,4]
-# nums = [0,1,1]
+# nums = [-1,2,1,-4]
+# target = 1
+# [-4,-1,1,2]
 # nums = [0,0,0]
+nums = [1,1,1,0]
+target = -100
 
-print(threeSumClosest(nums))
+print(threeSumClosest(nums, target))
