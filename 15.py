@@ -16,23 +16,39 @@
 #             1 2  2  3
 #               1  2  3
 
-
 # O(n^3)
 def threeSum(nums):
-  triplets = []
+  n = len(nums)
+  triplets = set()
   
-  for i in range(len(nums)):
-    for j in range(i+1, len(nums)):
-      for k in range(j+1, len(nums)):
+  for i in range(n):
+    for j in range(i+1, n):
+      for k in range(j+1, n):
         if nums[i] + nums[j] + nums[k] == 0:
-          triplet = [nums[1], nums[j], nums[k]]
+          triplet = [nums[i], nums[j], nums[k]]
           triplet.sort()
           # Adds only unique solutions
-          if triplet not in triplets:
+          triplets.add(tuple(triplet))
+
+  res = [list(item) for item in triplets]
+  return res
+  
+# Chatgpt brute force
+def threeSumBruteForce(nums):
+  n = len(nums)
+  triplets = []
+  nums.sort()
+  
+  # Dont need the n-2 and n-1 in i and j but they cut off avoids
+  # those iterations that are not useful for the solution
+  for i in range(n-2):
+    for j in range(i+1, n-1):
+      for k in range(j+1, n):
+        if nums[i] + nums[j] + nums[k] == 0:
+          triplet = [nums[i], nums[j], nums[k]]
+          if triplet  not in triplets:
             triplets.append(triplet)
-
   return triplets
-
 
 # Optimized solution
 
@@ -148,5 +164,5 @@ nums = [-1,0,1,2,-1,-4]
 # nums = [0,1,1]
 # nums = [0,0,0]
 
-print(threeSum(nums))
+print(threeSumBruteForce(nums))
         
