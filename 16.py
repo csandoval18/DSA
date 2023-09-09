@@ -4,7 +4,7 @@ def threeSumClosest(nums, target):
   min_dist = float('inf')
   nums.sort()
   
-  for i in range(n):
+  for i in range(n-2):
     if i != 0 and nums[i-1] == nums[i]:
       continue
     
