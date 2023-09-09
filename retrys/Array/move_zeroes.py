@@ -22,16 +22,10 @@ def moveZeroesOptimal(nums):
   l = 0
   
   for r, n in enumerate(nums):
-    print("l:", l)
-    print("r:", r)
     if n != 0:
       nums.insert(l, nums[r])
-      print("nums:", nums)
-      print("nums[l]:", nums[l])
-      print("nums[r]:", nums[r])
       nums.pop(r+1)
       l += 1
-    print("\n")
   return nums
     
       
