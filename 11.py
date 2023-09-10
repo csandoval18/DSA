@@ -16,7 +16,6 @@ def maxArea(height):
       l += 1
     else:
       r -= 1
-  
   return max_area
 
 height = [4,1,6,3,5,2]
