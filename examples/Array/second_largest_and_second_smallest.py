@@ -36,7 +36,7 @@ def getSecondOrderElements(n, arr):
         small = arr[i]
 
       # We can just check if arr[i] != small too to update just second_small
-      # elif small != arr[i] and arr[i] < second_small:
+      # elif arr[i] < second_small and arr[i] != small:
       elif small < arr[i] and arr[i] < second_small:
         second_small = arr[i]
     
