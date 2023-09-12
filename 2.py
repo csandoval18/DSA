@@ -11,28 +11,30 @@ class Solution(object):
     
     while l1 != None or l2 != None or remainder != 0:
       if not l1 and l2:
-          s = l2.val
-          l2 = l2.next
+        s = l2.val
+        l2 = l2.next
+          
       elif not l2 and l1:
-          s = l1.val
-          l1 = l1.next
+        s = l1.val
+        l1 = l1.next
+        
       elif l1 and l2:
-          s = l1.val + l2.val
-          l1 = l1.next
-          l2 = l2.next
+        s = l1.val + l2.val
+        l1 = l1.next
+        l2 = l2.next
       elif not l1 and not l2:
         s = remainder
         remainder = 0
 
       if remainder > 0:
-          s += remainder
-          remainder = 0
+        s += remainder
+        remainder = 0
           
       if s > 9:
-          remainder = (s) // 10
-          node = ListNode(s % 10)
+        remainder = (s) // 10
+        node = ListNode(s % 10)
       else:
-          node = ListNode(s)
+        node = ListNode(s)
           
       tmp.next = node
       tmp = tmp.next
