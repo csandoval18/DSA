@@ -84,7 +84,7 @@ def three_sum_better_appraoch(nums):
       
       # Find the element in the set
       if k in hashset:
-        tmp = [nums[i], nums[j], k]
+        tmp = [nums[i], nums[j], nums[k]]
         tmp.sort()
         res.add(tmp)
       hashset.add(nums[j])
