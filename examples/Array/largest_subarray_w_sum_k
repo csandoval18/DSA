@@ -3,9 +3,12 @@ def longestSubarrayWithSumK(a: [int], k: int) -> int:
   max_len = float('-inf')
   
   for i in range(n):
+    print("i:" ,i)
     curr_sum = 0
     for j in range(i,n):
-      curr_sum += a[k]
+      print("j:" ,j)
+      curr_sum += a[j]
+      print("curr sum:", curr_sum)
       if curr_sum == k:
         max_len = max(max_len, (j+1)-(i+1))
   
