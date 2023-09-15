@@ -38,3 +38,18 @@ def iterateSubarrays(arr):
 arr = [1,2,3,4]
 # iterate_subarrays(arr)
 iterateSubarrays1(arr)
+
+# Think of it as i and j is the range between the start and ending indexes of the arr
+# for example 
+# [1,2,3,4] i=0, j=1 subarray = [1,2]
+#  i j
+# j will keep increasing
+
+# [1,2,3,4] i=0, j=2 subarray = [1,3]
+#  i   j
+
+# For that reason (k) is needed to traverse through that range with (j being inclusive) 
+# so k in needed therefore to access the specific elements in the subarray
+
+
+

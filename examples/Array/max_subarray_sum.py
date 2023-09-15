@@ -36,3 +36,4 @@ def max_subarray_sum_sliding_window(nums):
   return max_sum
     
   
+# nums [1,2,3,4,5]
