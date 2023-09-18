@@ -1,3 +1,8 @@
+# Observations:
+# remember there can not be a length greater than k.
+# Ex: k = 3, arr = [1,1,1] 
+
+
 def longestSubarrayWithSumK(a: [int], k: int) -> int:
   n = len(a)
   max_len = float('-inf')
@@ -28,7 +33,9 @@ def longestSubarrayWithSumk(a: [int], k: int) -> int:
     if rem in preSumMap:  
       leng = i - preSumMap[rem]
       maxLen = max(maxLen, leng)
-    # Insert to hm
+      
+    # Need to add this condition to make it work with 0s and avoid updating index in hm
+    # with 0 value at indexes
     if curr_sum not in preSumMap:
       preSumMap[curr_sum] = i
   return maxLen
