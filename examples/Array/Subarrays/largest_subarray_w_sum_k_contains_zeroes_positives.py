@@ -3,6 +3,7 @@
 # Ex: k = 3, arr = [1,1,1] 
 
 
+# Brute force not optimal O(n^2) there is also a O(n^3) with k->j+1
 def longestSubarrayWithSumK(a: [int], k: int) -> int:
   n = len(a)
   max_len = float('-inf')
@@ -19,8 +20,11 @@ def longestSubarrayWithSumK(a: [int], k: int) -> int:
   
   return max_len
 
+
+
+# O(n) Using hm
 def longestSubarrayWithSumk(a: [int], k: int) -> int:
-  preSumMap = {}
+  hm = {}
   maxLen = 0
   curr_sum = 0
   
@@ -30,17 +34,18 @@ def longestSubarrayWithSumk(a: [int], k: int) -> int:
       maxLen = max(maxLen, i+1)
     
     rem = curr_sum - k
-    if rem in preSumMap:  
-      leng = i - preSumMap[rem]
+    if rem in hm:  
+      leng = i - hm[rem]
       maxLen = max(maxLen, leng)
       
     # Need to add this condition to make it work with 0s and avoid updating index in hm
     # with 0 value at indexes
-    if curr_sum not in preSumMap:
-      preSumMap[curr_sum] = i
+    if curr_sum not in hm:
+      hm[curr_sum] = i
   return maxLen
     
 
+# O(2N) w/ 2 pointers approach
 def getLongestSubarray(nums: [int], k: int) -> int:
   # Write your code here
   left = 0
