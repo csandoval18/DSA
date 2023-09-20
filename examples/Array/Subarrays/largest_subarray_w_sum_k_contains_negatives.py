@@ -18,30 +18,28 @@ def largestSubarraySum(nums, k):
     return max_length
     
     
+
+
+def longestSubarrayWithSumk(a: [int], k: int) -> int:
+  hm = {}
+  maxLen = 0
+  curr_sum = 0
+  
+  for i in range(len(a)):
+    curr_sum += a[i]
     
-# Strivers 2 pointer approach # Works w/ negatives
-def getLongestSubarray(nums: [int], k: int) -> int:
-    # Write your code here
-    left = 0
-    right = 0
-    currSum = 0
-    maxLen = 0
-
-    while right < len(nums):
-        # For case when currSum > k and we must decrement to reach k or a 
-        # number below k. Make sure left <= right
-        while left <= right and currSum > k:
-            currSum -= nums[left]
-            left += 1
-
-        # If sum of k found, then that means there is a subarray with sum 6
-        # between range(left, right+1)
-        if currSum == k:
-            maxLen = max(maxLen, right-left+1)
-        
-        right += 1
-
-        if right < len(nums):
-            currSum += nums[right]
-
-    return maxLen
+    if curr_sum == k:
+      maxLen = max(maxLen, i+1)
+    
+    rem = curr_sum - k
+    
+    if rem in hm:  
+      leng = i - hm[rem]
+      maxLen = max(maxLen, leng)
+      
+    # Need to add this condition to make it work with 0s and avoid updating index in hm
+    # with 0 value at indexes
+    if curr_sum not in hm:
+      hm[curr_sum] = i
+      
+  return maxLen
