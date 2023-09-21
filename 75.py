@@ -5,6 +5,7 @@
 
 
 # Better approach:
+# O(2n)
 # Get 0s, 1s, and 2s counts from first n loop,
 # then edit original array with counts
 
@@ -44,3 +45,23 @@ def sortColors(nums):
 
 nums = [2,0,2,1,1,0]
 print(sortColors(nums))
+
+
+# Optimal Solution:
+# O(n) 
+# 0   low-1 low   mid-1 mid             high high+1    n-1
+# |       | |         | |                  | |           |
+# 0 0 0 0 0 1 1 1 1 1 1 0s/1s/2s (unordered) 2 2 2 2 2 2 2
+
+
+def sort_colors(nums: [int]) -> [int]: 
+  low = 0
+  mid = 0
+  high = len(nums)-1
+  
+  while mid <= high:
+    if mid == 0:
+      # swap mid to low
+      low, mid = mid, low
+      
+      
