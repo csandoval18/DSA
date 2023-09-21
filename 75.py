@@ -60,8 +60,18 @@ def sort_colors(nums: [int]) -> [int]:
   high = len(nums)-1
   
   while mid <= high:
-    if mid == 0:
-      # swap mid to low
-      low, mid = mid, low
+    if nums[mid] == 0:
+      # swap(mid, low)
+      nums[low], nums[mid] = nums[mid], nums[low]
+      low += 1
+      mid += 1
+    
+    elif nums[mid] == 1:
+      mid += 1
+    
+    elif nums[mid] == 2:
+      # swap(mid, high)
+      nums[mid], nums[high] = nums[high], nums[mid]
+      high -= 1
       
-      
+  return nums

@@ -1,15 +1,14 @@
+import re
+
 def isPalindrome(s):
-  s = s.lower()
-  s = s.replace(" ", "")
-  print(s)
+  # Step 1: Convert to lowercase and remove non-alphanumeric characters
+  s = ''.join(filter(str.isalnum, s)).lower()
+  right = len(s)-1
   
-  l, r = 0, len(s)
-  
-  for i in range(0, len(s) // 2):
-    if l != r:
+  for left in range(len(s) // 2):
+    if s[left] != s[right]:
       return False
-      l += 1
-      r -= 1
+    right -= 1
   return True
 
 print(isPalindrome("A man, a plan, a canal: Panama"))
