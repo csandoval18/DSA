@@ -20,13 +20,13 @@ def largestSubarraySum(nums, k):
     
 
 
-def longestSubarrayWithSumk(a: [int], k: int) -> int:
+def longestSubarrayWithSumk(nums: [int], k: int) -> int:
   hm = {}
   maxLen = 0
   curr_sum = 0
   
-  for i in range(len(a)):
-    curr_sum += a[i]
+  for i in range(len(nums)):
+    curr_sum += nums[i]
     
     if curr_sum == k:
       maxLen = max(maxLen, i+1)
