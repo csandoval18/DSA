@@ -15,3 +15,15 @@ def majorityElement( nums):
   # return max(hm, key=lambda x:hm[x])
   
 print(majorityElement([3,3,4]))
+
+def majorityElement(nums):
+    nums.sort()
+
+    m = len(nums)//2
+    l = m-1
+    r = m+1
+    if nums[l] == nums[m]:
+        return nums[l]
+    
+    elif nums[m] == nums[r]:
+        return nums[r]
