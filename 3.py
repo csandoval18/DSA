@@ -1,14 +1,45 @@
-class Solution(object):
-  def lengthOfLongestSubstring(self, s):
-    res = ""
+def lengthOfLongestSubstringAttempt(s):
+  l = 0
+  hm = {}
+  currLen, maxLen = 0, 0
+  
+  for r in range(len(s)):
+    if s[r] not in hm:
+      hm[s[r]] = 1
+      currLen += 1
+      maxLen = max(maxLen, currLen)
+      
+    else:
+      # Look for s[r] in left section and pop it
+      # if l == r then 
+      while s[r] in hm:
+        if s[l] == s[r]:
+          hm.pop(s[r])
+        l += 1
+        currLen -= 1
+  return maxLen
     
-    for l in s:
-      print(l)
-    return 0
-
+    
+def lengthOfLongestSubstringAttempt(s):
+  hs = set()
+  l = 0
+  res = 0
+  
+  for r in range(len(s)):
+    while s[r] in hs:
+      hs.remove(s[l])
+      l += 1
+    
+    hs.add(s[r])
+    res = max(res, r-l+1)
+  return res
+    
+      
+  
 # Input: s = "abcabcbb"
 # Output: 3
 
-s = "abcabcbb"
-sol = Solution()
-sol.lengthOfLongestSubstring(s)
+# s = "abcabcbb"
+s = "pwwkew"
+# s = "aab"
+print(lengthOfLongestSubstring(s))
