@@ -1,12 +1,11 @@
 
+# API recreation
 def isBadVersion(version):
   bad = 4
   
   if version < 4: return False
   else: return True
   
-  
-
 def firstBadVersion(n):
   l = 1
   r = n
@@ -24,4 +23,6 @@ def firstBadVersion(n):
     
   return -1
   
+n = 5
+print(firstBadVersion(n))
       

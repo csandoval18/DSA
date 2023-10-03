@@ -20,7 +20,7 @@ def lengthOfLongestSubstringAttempt(s):
   return maxLen
     
     
-def lengthOfLongestSubstringAttempt(s):
+def lengthOfLongestSubstring(s):
   hs = set()
   l = 0
   res = 0
