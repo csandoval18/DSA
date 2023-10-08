@@ -46,6 +46,9 @@ def removeNthFromEnd(head, n):
   left = dummy
   right = head
   
+  # shift right to n spaces from left
+  # L R R R
+  # 0 1 2 3 4 5
   while n > 0 and right:
     right = right.next
     n -= 1
