@@ -1,4 +1,8 @@
 # Set Matrix Zeroes
+# Brute Force
+
+
+# Set Matrix Zeroes
 # If a cell has the value 0, then convert that cell's entire row and column values into 0s
 # We will convert 1s to -1s to avoid removing other cases with 0s later in a column or row
 

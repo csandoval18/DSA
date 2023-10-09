@@ -1,3 +1,4 @@
+# Remove Nth Node From End of List
 class ListNode(object):
   def __init__(self, val=0, next=None):
     self.val = val
@@ -60,9 +61,6 @@ def removeNthFromEnd(head, n):
   # Remove left's next node
   left.next = left.next.next
   return dummy.next
-  
-  
-  
   
   
 # ------------------------------------------------- 
