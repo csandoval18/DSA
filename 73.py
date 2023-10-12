@@ -1,12 +1,18 @@
-# Set Matrix Zeroes
+# 73. Set Matrix Zeroes
+
+# If a cell has the value 0, then convert that cell's entire row and column values into 0s
+# We will convert 1s to -1s to avoid removing other cases with 0s later in a column or row
 
 # Brute Force
+
 def setZeroesBF(matrix):
   n = len(matrix)
   m = len(matrix[0])
+  # Create 2 arrays to keep track of rows and cols that contains at least one 0
   col = [0] * m
   row = [0] * n
   
+  # Traverse through matrix 
   for i in range(n):
     for j in range(m):
       if matrix[i][j] == 0:
@@ -20,22 +26,8 @@ def setZeroesBF(matrix):
   
   return matrix
   
+# Optimal Approach
 
-
-# Set Matrix Zeroes
-# If a cell has the value 0, then convert that cell's entire row and column values into 0s
-# We will convert 1s to -1s to avoid removing other cases with 0s later in a column or row
-
-def markRow(matrix, n, m, i):
-  # Set all non-zero elements as -1 int he row i: 
-  for j in range(m):
-    if matrix[i][j] != 0:
-      matrix[i][j] = -1
-
-def markCol(matrxi, n, m, j):
-  # Set all
-  return
-  
 def setZeroes(matrix):
   n = len(matrix)
   m = len(matrix[0])
