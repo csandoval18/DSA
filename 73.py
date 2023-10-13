@@ -26,8 +26,8 @@ def setZeroesBF(matrix):
   
   return matrix
   
+  
 # Optimal Approach
-
 def setZeroes(matrix):
   n = len(matrix)
   m = len(matrix[0])
