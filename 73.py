@@ -47,7 +47,7 @@ def setZeroes(matrix):
         else:
           col0 = 0
 
-  # Step 2: Mark with 0 from (1,1) to (n-1, m-1):
+  # Step 2: Mark with 0 from (1,1) to (0, m-1):
   for i in range(1, n):
     for j in range(1, m):
       if matrix[i][j] != 0:
