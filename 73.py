@@ -38,10 +38,10 @@ def setZeroes(matrix):
   for i in range(n):
     for j in range(m):
       if matrix[i][j] == 0:
-        # mark i-th row:
+        # mark i-th row start index: (first col)
         matrix[i][0] = 0
 
-        # mark j-th column:
+        # mark j-th column start index: (first row)
         if j != 0:
           matrix[0][j] = 0
         else:
