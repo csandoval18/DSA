@@ -11,8 +11,7 @@
 #   return ans
       
       
-      
-def generate(numRows):
+def generateSol(numRows):
   triangle = []
   
   for i in range(numRows):
@@ -27,7 +26,23 @@ def generate(numRows):
     
   return triangle
 
+def generate(numRows):
+  res = []
+  
+  for i in range(1, numRows+1):
+    print(numRows+1)
+    ans = 1
+    ansRow = [1] # Inserting the 1st element
+    
+    # Calculate the rest of the elements:
+    for j in range(1, i):
+      ans *= (i - j)
+      ans //= j
+      ansRow.append(ans)
+    # Append generated row
+    res.append(ansRow)
+  # Return pascal triangle
+  return res
       
-      
-numRows = 3        
+numRows = 5        
 print(generate(numRows))
