@@ -1,4 +1,4 @@
-def majorityElement( nums):
+def majorityElement(nums):
   hm = {}
   
   for i in nums:
