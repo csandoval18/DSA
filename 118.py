@@ -16,7 +16,6 @@ def generate(numRows):
   triangle = []
   
   for i in range(numRows):
-    
     # if i = 3, then row = [1,1,1,1]
     row = [1] * (i + 1)  # Initialize each row with 1s
     
