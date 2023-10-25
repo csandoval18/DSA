@@ -19,22 +19,6 @@ def majorityElementBF(nums):
       break
   return res
   
-#TUF using collections counter
-from collections import Counter
-
-def majorityElementTUF(nums):
-  # Size of the given array
-  n = len(nums)
-  
-  # Count the occurrences of each element using Counter
-  counter = Counter(nums)
-  # Searching for the majority element
-  for num, count in counter.items():
-    if count > n // 3:
-      return num
-  
-  return -1
-  
   
 # O(n+m)
 def majorityElementBetterOwnImplementaition(nums):
@@ -55,6 +39,26 @@ def majorityElementBetterOwnImplementaition(nums):
       break
     
   return res
+  
+  
+#TUF using collections counter
+from collections import Counter
+
+def majorityElementTUF(nums):
+  # Size of the given array
+  n = len(nums)
+  
+  # Count the occurrences of each element using Counter
+  # O(n)
+  counter = Counter(nums)
+  
+  # Searching for the majority element
+  # O(n)
+  for num, count in counter.items():
+    if count > n // 3:
+      return num
+  
+  return -1
   
 # Return all elements that appear more than ⌊ n/3 ⌋ (floor) | (ceil) = ⌈ x ⌉
 # nums = [3,2,3]
