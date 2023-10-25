@@ -19,6 +19,18 @@ def majorityElementBF(nums):
       break
   return res
   
+  
+def majorityElementBetter(nums):
+  hm = {}
+  
+  for num in nums:
+    hm[num] = hm.get(num, 0) + 1
+    
+  return hm
+    
+  
+  
 # Return all elements that appear more than ⌊ n/3 ⌋ (floor) | (ceil) = ⌈ x ⌉
 nums = [3,2,3]
 # print(majorityElement(majorityElement(nums)))
+print(majorityElementBetter(nums))
