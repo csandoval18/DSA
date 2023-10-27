@@ -100,8 +100,23 @@ def majorityElementOP(nums):
     else:
       cnt1 -= 1
       cnt2 -= 1
-  return 0
   
+  res = []
+  
+  cnt1, cnt2 = 0, 0
+  for i in range(n):
+    if nums[i] == el1:
+      cnt1 += 1
+    if nums[i] == el2:
+      cnt2 += 1
+  
+  mini = int(n/3) + 1
+  if cnt1 >= mini:
+    res.append(el1)
+  if cnt2 >= mini:
+    res.append(el2)
+  
+  return res
   
   
 # Return all elements that appear more than ⌊ n/3 ⌋ (floor) | (ceil) = ⌈ x ⌉
