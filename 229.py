@@ -60,12 +60,52 @@ def majorityElementTUF(nums):
   
   return -1
   
+
+# Optimal Solution TC: O(n) + O(n) SC: O(1)
+
+# Extended Boyer Moore's Voting Algorithm
+
+# 1. Initialize 4 vars:
+# cnt1, cnt2: for tracking the counts of elements  
+# el1, el2: for sotring the majority of elements 
+
+# 2. Traverse through the given array.
+  # 1. If (cnt1 is 0) and (curr element is not el2) then store the current element of the array
+  # as el1 along with increasing the cnt1 value by 1.
+  # 2. If cnt2 is 0 and the current element is not el1 then store teh current element of the array
+  # as el2 along with increasing the cnt2 value by 1.
+  # 3. If thecurrent element and el1 are the same increase the cnt1 by 1.
+  # 4. If the current element and el2 are the same increase cnt2 by 1.
+  # 5. Other than all the above cases: decrease cnt1 and cnt2 by 1.
+# 3. The ints present in el1 & el2 should be the result we are expecting. So, using another loop,
+# we will manually check their accounts if they are greater than the floor(N/3)  
+
+def majorityElementOP(nums):
+  n = len(nums)
+  cnt1, cnt2 = 0, 0
+  el1, el2 = float('-inf'), float('-inf')
+  
+  # Extended Boyer Moore's Voting Algorithm:
+  for i in range(n):
+    if cnt1 == 0 and el2 != nums[i]:
+      cnt1 = 1
+      el1 = nums[i]
+    elif cnt2 == 0 and el1 != nums[i]:
+      cnt2 = 1
+      el2 = nums[i]
+    elif nums[i] == el1:
+      cnt1 += 1
+    elif nums[i] == el2:
+      cnt2 += 1
+    else:
+      cnt1 -= 1
+      cnt2 -= 1
+  return 0
+  
+  
+  
 # Return all elements that appear more than ⌊ n/3 ⌋ (floor) | (ceil) = ⌈ x ⌉
 # nums = [3,2,3]
 nums = [1,2]
 # print(majorityElement(majorityElement(nums)))
 print(majorityElementBetterOwnImplementaition(nums))
-
-def majorityElementOP(nums):
-  
-  return 0
