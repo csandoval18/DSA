@@ -27,14 +27,24 @@ def getLongestZeroSumSubarraLength(arr: [int]) -> int:
         longest = max(longest, j-i+1)
   return longest
   
-arr = [1,0,-1,1] 
-print(getLongestZeroSumSubarraLength(arr))
 
 # Optimal
 def getLongestZeroSumSubarrayLength(arr):
+  n = len(arr)
   longest = 0
+  curr_sum = 0
   hm = {}
   
   for i in range(n):
-    
- 
+    curr_sum += arr[i]
+    if sum == 0:
+      longest = i+1
+    else:
+      if curr_sum in hm:
+        longest = max(longest, i-hm[curr_sum])
+      else:
+        hm[curr_sum] = i
+  return longest
+  
+arr = [1,0,-1,1] 
+print(getLongestZeroSumSubarraLength(arr))
