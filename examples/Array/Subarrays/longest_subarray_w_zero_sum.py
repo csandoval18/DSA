@@ -37,11 +37,11 @@ def getLongestZeroSumSubarrayLength(arr):
   
   for i in range(n):
     curr_sum += arr[i]
-    if sum == 0:
+    if curr_sum == 0:
       longest = i+1
     else:
       if curr_sum in hm:
-        longest = max(longest, i-hm[curr_sum])
+        longest = max(longest, i - hm[curr_sum])
       else:
         hm[curr_sum] = i
   return longest
