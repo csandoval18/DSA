@@ -3,7 +3,7 @@
 # Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
 # Output: [[1,6],[8,10],[15,18]]
 
-# Brute Force
+# Brute Force O(n log n) + O(2n)
 def mergeOverlappingIntervals(intervals):
   n = len(intervals)
   ans = []
@@ -21,6 +21,7 @@ def mergeOverlappingIntervals(intervals):
       continue
       
     for j in range(n):
+      # Each row start
       if intervals[j][0] <= end:
         end = max(end, intervals[j][1])
       else:
@@ -31,5 +32,17 @@ def mergeOverlappingIntervals(intervals):
   return ans
 
 
+# Optimal O(n)
+def mergeOverlappingIntervals(intervals):
+  n = len(intervals)
+  intervals.sort()
+  res = []
+  
+  for i in range(n):
+    if res or intervals[i][0] > res[-1][1]:
+      
+  
+  return res
+  
       
   
