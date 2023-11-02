@@ -3,6 +3,8 @@
 # return [P,Q]
 # P = el that appears once
 # Q = missing num in range(1, n)
+
+#Brute Force O(n^2) 
 def findMissingRepeatingNumbers(a: [int]) -> [int]:
   n = len(a)
   tracker = 1
@@ -26,5 +28,6 @@ def findMissingRepeatingNumbers(a: [int]) -> [int]:
 a = [1,2,3,2]
 print(findMissingRepeatingNumbers(a))
     
-    
+# Optimal Math O(n)
+
   
