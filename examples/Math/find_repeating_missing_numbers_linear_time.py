@@ -27,4 +27,22 @@ def findMissingRepeatingNumbers(a):
   
   return [x, y]
   
+def findMissingRepeatingNubmers(a: [int]) -> [int]:
+  n = len(a)
+  xr = 0
+  
+  # Step 1: Find XOR of all elements:
+  for i in range(n):
+    xr = xr ^ a[i]
+    xr = xr ^ (i + 1)
+    
+  # Step 2: Find the differentiating bit number:
+  number = (xr & ~(xr-1))
+  
+  # Step 3: Group the numbers
+  
+  
+    
+    
+  
   
