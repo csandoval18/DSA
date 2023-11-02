@@ -4,7 +4,7 @@
 # Output: [[1,6],[8,10],[15,18]]
 
 # Brute Force O(n log n) + O(2n)
-def merge(intervals):
+def mergeBF(intervals):
   n = len(intervals)
   ans = []
   
@@ -44,6 +44,7 @@ def merge(intervals):
       # Add curr interval to response
       res.append(intervals[i])
     else:
+      # *To update range*
       # Else the last interval's [end] val in response is = to 
       # max(last interval's [end] val, curr interval's [end] val)
       res[-1][1] = max(res[-1][1],  intervals[i][1])

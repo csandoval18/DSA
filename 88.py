@@ -1,4 +1,4 @@
-#lists
+# Merge 2 sorted arrays without extra space
 def merge1(nums1, m , nums2, n):
   j = 0
   tmp = 0
@@ -41,7 +41,7 @@ def merge(nums1, m, nums2, n):
       nums1[index] = nums2[n-1];
       n -= 1;
     
-    index -=1;
+    index -= 1;
 
 nums1 = [1,2,3,0,0,0]
 nums2 = [2,5,6]
