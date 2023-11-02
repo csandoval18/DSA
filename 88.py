@@ -1,4 +1,6 @@
 # Merge 2 sorted arrays without extra space
+
+# BF
 def merge1(nums1, m , nums2, n):
   j = 0
   tmp = 0
