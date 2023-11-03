@@ -27,6 +27,9 @@ def findMissingRepeatingNumbers(a):
   
   return [x, y]
   
+
+# 'and' keyword tests whether both expressions are logically True
+# '&' symbol is bitwise AND operation
 def findMissingRepeatingNubmers(a: [int]) -> [int]:
   n = len(a)
   xr = 0
@@ -40,7 +43,29 @@ def findMissingRepeatingNubmers(a: [int]) -> [int]:
   number = (xr & ~(xr-1))
   
   # Step 3: Group the numbers
+  zero = 0
+  one = 0
   
+  for i in range(n):
+    # Part of 1 group
+    if (a[i] & number) != 0:
+      one = one ^ a[i]
+    # Part of 0 group
+    else:
+      zero = zero ^ a[i]
+    
+  for i in range(1, n+1):
+    # Part of 1 group
+    if (i & number) != 0:
+      return
+
+a, b = 9, 10
+print(a & b) # a = 1001, b = 1010 print = 1000 
+print(a and b)
+
+
+      
+    
   
     
     
