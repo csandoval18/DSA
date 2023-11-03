@@ -17,6 +17,7 @@ def numberOfInversionsBF(a: List[int], n) -> int:
   
   
 # Optimal O(n log n)
+# Use merge sort, we just need to increment count when a[left > a[right]]
 def merge(arr : List[int], low : int, mid : int, high : int) -> int:
     temp = []   # Temporary array
     left = low  # Starting index of left half of arr
