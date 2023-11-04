@@ -13,9 +13,6 @@
 # [1,1,2,3,4]
 
 # Recursive Merge
-
-
-
 def merge_sort(arr):
   if len(arr) <= 1:
     return arr
@@ -32,19 +29,21 @@ def merge_sort(arr):
   #  Merge the sorted halves
   return merge(l, r)
 
-def merge(left, right):
+
+# Utiliity function to merge 2 arrays in sorted order
+def merge(arr1, arr2):
   res = []
-  left_idx, right_idx = 0, 0
+  l, r = 0, 0
   
-  while left_idx < len(left) and right_idx < len(right):
+  while l < len(arr1) and right_idx < len(arr2):
     # Append the smaller value to the result array and increase index
-    if left[left_idx] < right[right_idx]:
-      res.append(left[left_idx])
+    if arr1[l] < arr2[r]:
+      res.append(arr1[l])
       l_idx += 1
     else:
-      res.append(right[right_idx])
+      res.append(arr2[])
       right_idx += 1
   
-  res.extend(left[left_idx:])
-  res.extend(right[right:])
+  res.extend(arr1[l:])
+  res.extend(arr2[r:])
   
