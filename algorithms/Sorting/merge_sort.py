@@ -62,28 +62,30 @@ def mergeSort(arr: [int], l: int, r: int):
     
 def merge(arr, left, mid, right):
   tmp = []
-  l = 0
-  r = mid+1
+  p1 = 0
+  p2 = mid+1
   # start at index 0 and m+1 since that would be the start of the split right array
-# arr = [3,1,2,4,1,5,2,6,4]
-#        l       m r
+  # arr = [3,1,2,4,1,5,2,6,4]
+  #        l       m r
   
-  while l <= mid and r <= right:
-    if arr[l] < arr[r]:
-      tmp.append(arr[l])
-      l += 1
+  while p1 <= mid and p2 <= right:
+    if arr[p1] < arr[p2]:
+      tmp.append(arr[p1])
+      p1 += 1
     else:
-      tmp.append(arr[r])
-      r += 1
+      tmp.append(arr[p2])
+      p2 += 1
   
-  while l < len(arr):
-    tmp.append(arr[l])
-    l += 1
+  while p1 < len(arr):
+    tmp.append(arr[p1])
+    p1 += 1
 
-  while r <  len(arr):
-    tmp.append(arr[r])
-    r += 1
-  return tmp
+  while p2 <  len(arr):
+    tmp.append(arr[p2])
+    p2 += 1
+  
+  for i in range(left, right):
+    arr[i] = [i - left]
   
 arr = [3,1,2,4,1,5,2,6,4]
 print(mergeSort(arr, 0, len(arr)-1))
