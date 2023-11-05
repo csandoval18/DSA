@@ -13,14 +13,14 @@
 # [1,1,2,3,4]
 
 # Recursive Merge
-def merge_sort(arr):
+def merge_sort(arr, l , r):
   if len(arr) <= 1:
     return arr
   
   # Divide the array into two halves
   m = len(arr) // 2
-  l = arr[:m]
-  r = arr[m:]
+  arr[:m]
+  arr[m:]
   
   # Recursively sort both halves
   l = merge_sort(l)
@@ -41,7 +41,7 @@ def merge(arr1, arr2):
       res.append(arr1[l])
       l_idx += 1
     else:
-      res.append(arr2[])
+      res.append(arr2[r])
       right_idx += 1
   
   res.extend(arr1[l:])
