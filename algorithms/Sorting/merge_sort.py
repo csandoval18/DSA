@@ -52,36 +52,36 @@
 def mergeSort(arr: [int], l: int, r: int):
     # Write Your Code Here
     if l >= r: return
-    m = (l+r) // 2
-    arr1 = arr[:m]
-    print("arr1:", arr1)
-    arr2 = arr[m:]
     
-    l = mergeSort(l)
-    r = mergeSort()
-    print("arr2:", arr2)
-    return merge(arr1, arr2)
+    m = (l+r) // 2
+    
+    mergeSort(arr, l, m)
+    mergeSort(arr, m+1, r)
+    merge(arr, l, m, r)
 
     
-def merge(arr1: [int], arr2: [int]):
+def merge(arr, left, mid, right):
   tmp = []
   l = 0
-  r = 0
-
-  while l < len(arr1) and r < len(arr2):
-    if arr1[l] < arr2[r]:
-      tmp.append(arr1[l])
+  r = mid+1
+  # start at index 0 and m+1 since that would be the start of the split right array
+# arr = [3,1,2,4,1,5,2,6,4]
+#        l       m r
+  
+  while l <= mid and r <= right:
+    if arr[l] < arr[r]:
+      tmp.append(arr[l])
       l += 1
     else:
-      tmp.append(arr2[r])
+      tmp.append(arr[r])
       r += 1
   
-  while l < len(arr1):
-    tmp.append(arr1[l])
+  while l < len(arr):
+    tmp.append(arr[l])
     l += 1
 
-  while r <  len(arr2):
-    tmp.append(arr2[r])
+  while r <  len(arr):
+    tmp.append(arr[r])
     r += 1
   return tmp
   
