@@ -26,4 +26,3 @@ reversePairs(nums)
 def reversePairs(nums):
   tmp = []
   
-  
