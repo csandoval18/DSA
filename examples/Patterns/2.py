@@ -1,8 +1,12 @@
+# Pattern 2
+
+#  *
+#  **
+#  ***
+
 def triangle(n):
-  a = 1
-  
   for i in range(n+1):
-    print("*" * i)
-    
+    for j in range(i):
+       print("*", end=" ")
     
 triangle(3)

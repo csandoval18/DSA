@@ -1,4 +1,4 @@
-# Print 
+# Pattern 1 
 
 # ***
 # ***
