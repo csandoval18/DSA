@@ -1,3 +1,10 @@
+# 1 
+# 0 1 
+# 1 0 1 
+
+# 0 = even 0%2=0
+# 1 = uneven 1%2=1
+
 def nBinaryTriangle(n: int) -> None:
   x = 1
   for i in range(n):

@@ -1,3 +1,9 @@
+# *
+# **
+# ***
+# **
+# *
+
 def nStarTriangle(n: int) -> None:
   for i in range(n):
     for j in range(i+1):
