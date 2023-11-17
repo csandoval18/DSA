@@ -1,3 +1,7 @@
+# 1
+# 2 3
+# 4 5 6
+
 def nNumberTriangle(n: int) -> None:
   x = 1
   for i in range(n):
