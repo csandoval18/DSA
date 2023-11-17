@@ -7,7 +7,7 @@ def nLetterTriangle(n: int) -> None:
   
   for i in range(n):
     for j in range(n, i, -1):
-      print(chr(ord(char)+j), end="")
+      print(chr(ord(char)+(n-j)), end="")
     print() 
 
 nLetterTriangle(3)
