@@ -19,3 +19,21 @@ def alphaHill(n: int) -> None:
     for j in range(n-i-1):
       print(" ", end="")
     
+    char = 'A'
+    
+    bp = (2*i+1) // 2
+    
+    for j in range(1, 2*i+2):
+      print(char, end="")
+
+      if j <= bp:
+        char = chr(ord(char) + 1)
+      else:
+        char = chr(ord(char) - 1)
+    
+    for j in range(n-i-1):
+      print(" ", end="")
+    
+    print()
+    
+alphaHill(3)
