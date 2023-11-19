@@ -3,6 +3,10 @@
 # C B 
 # C B A
 
+# n=2
+# B
+# B A
+
 # n=1
 # C
 
@@ -22,4 +26,4 @@ def alphaTriangle(n: int) -> None:
       print(chr(ord(char)+n-1-j), end=" ")
     print()
 
-alphaTriangle(3)
+alphaTriangle(2)
