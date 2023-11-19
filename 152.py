@@ -22,8 +22,6 @@ def maxProductBruteForce(nums):
       max_prod = max(max_prod, curr_prod)
       
   return max_prod
-
-
   
 # Chatgpt O(n)
 def max_product_subarray(nums):
