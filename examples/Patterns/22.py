@@ -18,11 +18,10 @@ def getNumberPattern(n: int) -> None:
     for j in range(2*n-1):
       top = i
       bottom = j
-      right = (2*n-2) - j
-      left = (2*n-2) - i
+      right = (2*n-2)-j
+      left = (2*n-2)-i
       
-      print(n- min(min(top, bottom), min(left, right)), end=" ")
-  print() 
+      print(n-min(min(top, bottom), min(left, right)), end=" ")
+    print() 
 
-
-    
+getNumberPattern(3)
