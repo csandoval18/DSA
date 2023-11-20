@@ -16,23 +16,21 @@
 def lowerBound(arr: [int], n: int, x: int) -> int:
   l = 0
   r = n-1
+  res = n
   
   while l<=r:
     m = (l+r) // 2
+    print(m)
     
-    if arr[m] == x:
-      while arr[m] == x:
-        m -= 1
-      return m+1
-    
+    if arr[m] >= x:
+      res = m
+      r = m-1
     elif arr[m] <= x:
       l = m+1 
-    elif arr[m] >= x:
-      r = m-1
-  return m
+  return res
        
 arr = [1,2,2,3,3,5]
 n = 6
-x = 7
+x = 2
 
 print(lowerBound(arr, n, 7))
