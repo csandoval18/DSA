@@ -75,5 +75,4 @@ def find_floor_ceiling(arr, target):
       r = m-1
   return floor, ceil 
       
-      
-    
+ 
