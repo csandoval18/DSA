@@ -50,7 +50,7 @@ def find_ceil(a, n, x):
   while l<=r:
     m = (l+r) // 2
     
-    if a[m] >=  x:
+    if a[m] >= x:
       res = a[m]
       r = m-1
     else:
