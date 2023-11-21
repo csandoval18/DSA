@@ -60,3 +60,43 @@ target = 8
 start = find_start(nums, target)
 end = find_end(nums, target)
 print(start, end)
+
+
+# First position of target
+
+# target = 8
+# nums = [5,7,7,8,8,10]
+
+#         L   M     R
+# nums = [5,7,7,8,8,10]
+
+# nums[m] < x: l = m+1
+# 7<target
+
+# nums = [5,7,7,8,8,10]
+#               L M  R
+
+# nums = [5,7,7,8,8,10]
+#               L M  R Dont return loop when nums[m] == target use a var to store
+              
+# nums = [5,7,7,8,8,10]
+#               L M  R
+#  8 == target
+# nums[m] == target: 
+#   start = m
+#   r = m-1
+
+#               M
+#               R
+# nums = [5,7,7,8,8,10]
+#               L   
+# m = target 
+# update start = m  
+# r = m-1
+
+#             R M 
+# nums = [5,7,7,8,8,10]
+#               L
+# return start
+# end
+
