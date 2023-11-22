@@ -5,7 +5,7 @@ def search(arr: [int], key: int) -> bool:
   while l <= r:
     m = (l+r) // 2
     
-    if arr[m] == arr:
+    if arr[m] == key:
       return True
     elif arr[l] == arr[m] == arr[r]:
       l = l+1
