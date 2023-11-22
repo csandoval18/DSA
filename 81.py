@@ -12,7 +12,7 @@ def search(nums, target):
       l = l+1
       r = r-1
     
-    if nums[l] <= nums[m]:
+    elif nums[l] <= nums[m]:
       if nums[l] <= target and target <= nums[m]:
         r = m-1
       else:
