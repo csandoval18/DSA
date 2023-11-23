@@ -33,7 +33,10 @@ def findKRotations(arr: [int]) -> int:
         minVal = arr[m]
       # Eliminate right hal
       r = m-1
-    return index
+  return index
+  
+arr = [2,3,4,1]
+print(findKRotations(arr))
       
       
       
