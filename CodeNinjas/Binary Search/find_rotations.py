@@ -3,8 +3,8 @@
 def findKRotations(arr: [int]) -> int:
   n = len(arr)
   l, r = 0, n-1
-  res = float('inf')
-  i = -1
+  minVal = float('inf')
+  index = -1
   
   while l<=r:
     m = (l+r)//2
@@ -14,26 +14,26 @@ def findKRotations(arr: [int]) -> int:
     # then arr[low] will always be
     # the min in that search space
     if arr[l] <= arr[r]:
-      if arr[l] < res:
-        i = l
-        res = arr[l]
+      if arr[l] < minVal:
+        index = l
+        minVal = arr[l]
       break
     # If left part is sorted
     if arr[l] <= arr[m]:
       # Keep the min
-      if arr[l] < res:
-        i = l
-        res = arr[l]
+      if arr[l] < minVal:
+        index = l
+        minVal = arr[l]
       # Eliminate left half
       l = m+1
     else: # If right part is sorted
       # Keep the minimun
-      if arr[m] < res:
-        i = m
-        res = arr[m]
+      if arr[m] < minVal:
+        index = m
+        minVal = arr[m]
       # Eliminate right hal
       r = m-1
-    return i
+    return index
       
       
       
