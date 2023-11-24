@@ -11,10 +11,10 @@ def findMin(arr: [int]):
   while l<=r:
     m = (l+r)//2
     
-    if arr[l] < arr[m]:
+    if arr[l] <= arr[m]:
       res = min(res, arr[l])
       l = m + 1
-    elif arr[m] < arr[r]:
+    elif arr[m] <= arr[r]:
       res = min(res, arr[m])
       r = m-1
   return res
