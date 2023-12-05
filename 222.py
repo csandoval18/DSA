@@ -12,9 +12,20 @@ def countNodes(root: Optional[TreeNode]) -> int:
       return 
     
     cnt += 1
-    dfs(root.left, cnt)
-    dfs(root.right, cnt)
+    cnt = dfs(root.left, cnt)
+    cnt = dfs(root.right, cnt)
+
+    return cnt
     
-  cnt = 0
-  dfs(root, cnt)
-  return cnt
+  res = 0
+  dfs(root, res)
+  return res
+
+root = TreeNode(1)
+root.left = TreeNode(2)
+root.right = TreeNode(3)
+root.left.left = TreeNode(4)
+root.left.right = TreeNode(5)
+root.right.left = TreeNode(6)
+
+print(countNodes(root))
