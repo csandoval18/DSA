@@ -1,6 +1,6 @@
 # Koko eating bananas
 
-# Return the min int k such that Koko can eat all bananas within h hours
+# Return the MIN int k such that Koko can eat all bananas within h hours
 
 # piles = [3,6,7,11]
 # h = 8
@@ -26,7 +26,7 @@ def calcRequiredTime(piles, h):
   total_hours = 0
   
   for i in range(n):
-    total_hours = math.ceil(piles[i] / h)
+    total_hours += math.ceil(piles[i] / h)
   return total_hours
 
 def minEatingSpeed(piles: List[int], h: int) -> int:
