@@ -15,7 +15,6 @@ import math
 # as shown in lines 2 for starting r pointer
 def findMax(piles: List[int]) -> int:
   maxVal = float('-inf')
-  n = len(piles)
   
   for num in piles: 
     maxVal = max(maxVal, num)
