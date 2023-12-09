@@ -6,7 +6,7 @@ class TreeNode:
     self.left = left
     self.right = right
 
-def countNodes(root: Optional[TreeNode]) -> int:
+def countNodesAttempt(root: Optional[TreeNode]) -> int:
   def dfs(root: Optional[TreeNode], cnt: int) -> int:
     if not root:
       return 
@@ -20,6 +20,12 @@ def countNodes(root: Optional[TreeNode]) -> int:
   res = 0
   dfs(root, res)
   return res
+
+def countNodes(root:Optional[TreeNode]) -> int:
+  if not root:
+    return 0
+  
+  return 1 + countNodes(root.left) + countNodes(root.right)
 
 root = TreeNode(1)
 root.left = TreeNode(2)

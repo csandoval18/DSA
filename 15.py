@@ -131,7 +131,7 @@ def threeSumOptimized(nums):
   
   for i in range(n):
     # Remove duplicates by checking if i non 0 index (starting index) 
-    # value is equal to its last iteration value
+    # Start i at next non repeating number
     if i != 0 and nums[i] == nums[i-1]:
       continue
     
