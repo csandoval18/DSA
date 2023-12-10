@@ -1,3 +1,4 @@
+# Find the samllest divisor given a threshold
 from math import ceil
 
 # Works unnder assumption there is a solution
