@@ -31,7 +31,6 @@ def calcRequiredTime(piles, h):
 def minEatingSpeed(piles: List[int], h: int) -> int:
   n = len(piles)
   l, r = 1, max(piles)
-  res = float('inf')
   
   while l<=r:
     m = (l+r)//2
