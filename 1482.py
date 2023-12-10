@@ -9,6 +9,9 @@
 # It is impossible to make m bouquets return -1
 
 # Brute Force
+from ast import List
+
+
 def possible1(arr, day, m, k):
   n = len(arr)
   cnt = 0
@@ -86,17 +89,22 @@ m = 2
 print(minDays(bloomDay, k, m))
 
 # ///////////////////////////////////////////////////////////////////////////////
+# bloomDay = [1,10,3,10,2]
+# m = 3 -> you make m bouquets
+# k = 1 -> you need to use k adjacent flowers from the garden
 
 class Solution:
   def minDays(self, bloomDay: List[int], m: int, k: int) -> int:
-    def possible(bloomDay, day, m, k):
+    def possible(bloomDay, mid, m, k):
       n = len(bloomDay) # size of the array
       cnt = 0
       noOfB = 0
       # count the number of bouquets
       for i in range(n):
-        if bloomDay[i] <= day:
+        # If bloomday is lower than mid then the plant will bloom within the given m day
+        if bloomDay[i] <= mid:
           cnt += 1
+        # Else we need to reset cnt to 0
         else:
           noOfB += cnt // k
           cnt = 0
