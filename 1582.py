@@ -38,6 +38,10 @@ print(numSpecial(mat))
 # [0,0,1]
 # [1,0,0]
 
+
+
+# ---------- Ignore doesn't work ----------------
+
 # Optimize Attempt
 
 # So I noticed that I am rechecking a lot of the the rows and cols for each cell for example I 
@@ -49,12 +53,19 @@ def numSpecial(mat: [[int]]) -> int:
   m = len(mat[0])
   rows = []
   cols = []
+  cnt = 0
     
   for i in range(n):
-    if mat[i][j] == 1:
-      
+    for j in range(m):
+      if mat[i][j] == 1:
+        rows[i] = 1
+        cols[j] = 1
   
-  for j in range(m):
-  
-  
-  
+  for i in range(n):
+    for j in range(m):
+      if rows[i] == 1:
+        
+        
+
+# We would need to traverse the 2d aray first and then
+# fill the rows and cols arrs. After that we would then traverse the matrix again in O(n*m + n*m) = O(2(n*m))
