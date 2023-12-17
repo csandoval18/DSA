@@ -4,12 +4,13 @@
 
 def canPlaceCow(stalls, m, k):
   n = len(stalls)
-  cntCows = 1 # Nums of cows placed
-  last = stalls[0] # Position of last placed cow
+  cntCows = 1 # Nums of cows placed start at 1
+  prev = stalls[0] # Position of last placed cow
   for i in range(1, n):
-    if stalls[i] - last >= m:
+    # We substract prev from ith stalls to check for the distance
+    if stalls[i] - prev >= m:
       cntCows += 1 # Place next cow
-      last = stalls[i] # Update the last location
+      prev = stalls[i] # Update the last location
     if cntCows >= k:
       return True
   return False
