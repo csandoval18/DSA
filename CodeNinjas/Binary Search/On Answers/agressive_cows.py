@@ -1,3 +1,5 @@
+# Agressive Cows -> (min dist between cows) is max
+
 # You are given an arr consisiting o n ints which denote the position of a stall
 
 def canPlaceCow(stalls, m, k):
