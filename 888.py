@@ -23,19 +23,45 @@
 # Output: 
 # [1,2]
 
+# BF
 def fairCandySwap(aliceSizes: [int], bobSizes: [int]) -> [int]:
-  aliceSum, bobSum = 0, 0
-  for i in range(len(aliceSizes)):
-    aliceSum += aliceSizes[i]
+  diff = sum(aliceSizes) - sum(bobSizes)
+  # Check if diff is uneven
+  if diff%2 != 0:
+    return [-1, -1]
   
-  for j in range(len(bobSizes)):
-    bobSum += bobSizes[j]
+  a, b = 0, 0
+  while a < len(aliceSizes):
+    while b < len(bobSizes):
+      if aliceSizes[a]-bobSizes[b] == diff // 2:
+        return [bobSizes[b], aliceSizes[a]]
+      b += 1
+    a += 1
+    b = 0
+
+def fairCandySwapBS(aliceSizes, bobSizes):
+  diff = sum(aliceSizes)-sum(bobSizes)
+  if diff%2 != 0:
+    return [-1, -1]
+  t = diff//2
+  l, r = 0, len(bobSizes)-1
   
-  diff = abs(aliceSum-bobSum)
-  if aliceSum == bobSum:
-    return [aliceSum, bobSum]
-  elif aliceSum < bobSum:
-    return [aliceSum+diff, bobSum-diff]
+  while l<=r:
+    m = (l+r)//2
+    if bobSizes[m] >= t:
+      r = m-1
+    else:
+      l = m+1
+  
+  # Check for valid swap: handle all edge cases
+  if aliceSizes[l] == t or (aliceSizes[0] == aliceSizes[l] and aliceSizes[0] == t):
+    return [bobSizes[r], aliceSizes[l]]
+  elif len(aliceSizes) == 2 and aliceSizes[0] == bobSizes[0]:  # Handle scenario of identical and unique candies
+    return [bobSizes[1], aliceSizes[1]]
   else:
-    return [aliceSum-diff, bobSum+diff]
+    return [-1, -1]
+  
     
+aliceSizes = [1,1]
+bobSizes= [2,2]
+print(fairCandySwapBS(aliceSizes, bobSizes))
