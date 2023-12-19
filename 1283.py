@@ -14,13 +14,11 @@ def smallestDivisor(nums: [int], threshold: int) -> int:
     return -1
 
   l, r = 1, max(nums)
-  res = -1
   
   while l<=r:
     m = (l+r)//2
     
     if sumOfDivs(nums, m) <= threshold:
-      res = m
       r = m-1
     else:
       l = m+1
@@ -39,3 +37,6 @@ def smallestDivisor(nums: [int], threshold: int) -> int:
 # if n > threshold:
 # return -1
 # solution not possible since the sum will always be greater than the threshold
+nums = [1,2,3,4,5]
+threshold = 8
+print(smallestDivisor(nums, threshold))
