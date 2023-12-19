@@ -34,7 +34,7 @@ def findSimilarity(arr1, arr2, n, m):
 
 def binarySearch(arr, t):
   n = len(arr)
-  l, r = 0, len(n)
+  l, r = 0, len(arr)-1
   
   while l<=r:
     m = (l+r)//2
@@ -47,7 +47,7 @@ def binarySearch(arr, t):
       r = m-1
   return False
 
-def findSimilaritBS(arr1, arr2):
+def findSimilaritBSArr(arr1, arr2, n, m):
   arr1.sort()
   arr2.sort()
   
@@ -62,8 +62,31 @@ def findSimilaritBS(arr1, arr2):
   
   for num in arr2:
     if not binarySearch(arr1, num):
-      unique_els.apend(num)
+      unique_els.append(num)
       
-  return common_els, unique_els
+  return len(common_els), len(unique_els)
+
+def findSimilaritBS(arr1, arr2, n, m): 
+    arr1.sort()
+    arr2.sort()
+
+    common_count = 0
+    unique_count = 0
+
+    for num in arr1:
+      if binarySearch(arr2, num):
+        common_count += 1
+      else:
+        unique_count += 1
+
+    for num in arr2:
+      if not binarySearch(arr1, num):
+        unique_count += 1
+
+    return common_count, unique_count
   
+  
+arr1 = [2,1]
+arr2 = [2,3]
+print(findSimilaritBS(arr1, arr2, len(arr1), len(arr2)))
   
