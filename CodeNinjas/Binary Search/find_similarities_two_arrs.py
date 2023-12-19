@@ -33,7 +33,8 @@ def findSimilarity(arr1, arr2, n, m):
 # O(N log N)
 
 def binarySearch(arr, t):
-  l, r = 0,1
+  n = len(arr)
+  l, r = 0, len(n)
   
   while l<=r:
     m = (l+r)//2
