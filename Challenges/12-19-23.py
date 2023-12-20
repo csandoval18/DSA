@@ -58,3 +58,30 @@ def maxProductDifference(nums: [int]) -> int:
   return (w*x) - (y*z)
 
 print(maxProductDifference(nums))
+
+def maxProductDifference(self, nums: List[int]) -> int:
+  w = max(nums)
+  nums.remove(w)
+  x = max(nums)
+
+  y = min(nums)
+  nums.remove(y)
+  z = min(nums)
+  
+
+# Fastest submission using some weird tricks to make compiler run faster
+# sys.stdout = open('user.out', 'w')
+
+# for nums in map(loads, sys.stdin):
+#     largest = max(nums)
+#     nums.remove(largest)
+#     slargest = max(nums)
+
+#     smallest = min(nums)
+#     nums.remove(smallest)
+#     ssmallest = min(nums)
+
+#     nums.clear()
+#     result = (largest * slargest) - (smallest * ssmallest)
+#     print(dumps(result).replace(' ', ''))
+# exit()
