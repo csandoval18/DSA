@@ -1,3 +1,5 @@
+# 2706 easy
+
 def buyChoco(prices: [int], money: int) -> int:
   res = money
   minVal = min(prices)
