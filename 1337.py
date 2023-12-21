@@ -14,28 +14,29 @@ def getMinIdx(arr: [int]):
       minIdx = i
   arr.remove(minVal)
   return minIdx
+  
+def bs(nums: [int]) -> int:
+  n = len(nums)
+  l, r = 0, n-1
 
-def kWeakestRows(mat: [[int]], k: int) -> [int]:
+  while l <= r:
+    mid = (l + r) // 2
+
+    if nums[mid] < 1:
+      r = mid-1
+    else:
+      l = mid+1
+
+  return l
+
+def kWeakestRowsBSAttempt(mat: [[int]], k: int) -> [int]:
   n = len(mat)
   m = len(mat[0])
   startingZeroIdx = []
   res = []
 
-  def binarySearch(nums: [int]) -> int:
-    l, r = 0, m-1
-
-    while l <= r:
-      mid = (l + r) // 2
-
-      if nums[mid] < 1:
-        r = mid-1
-      else:
-        l = mid+1
-
-    return l
-
   for i in range(n):
-    startingZeroIdx.append(binarySearch(mat[i]))
+    startingZeroIdx.append(bs(mat[i]))
   print(startingZeroIdx)
   
   # Can  consize code with lambda
@@ -58,18 +59,7 @@ def kWeakestRows(mat: [[int]], k: int) -> [int]:
 # keep the min values in a try instead of having the index values stored in an arr
 # This would decrease the time to find the min since there would be no need to traverse the array
   
-mat = [
-  [1,1,0,0,0],
-  [1,1,1,1,0],
-  [1,0,0,0,0],
-  [1,1,0,0,0],
-  [1,1,1,1,1]
-]
-k = 3
-
-print(kWeakestRows(mat, k))
-
-def count_ones(row):
+def binarySearch(row):
   # Binary search to count the number of 1s in a row
   l, r = 0, len(row)
   while l < r:
@@ -82,7 +72,7 @@ def count_ones(row):
 
 def kWeakestRows(mat, k):
   # Create a list of tuples with row index and the count of 1s in that row
-  rows_with_counts = [(i, count_ones(row)) for i, row in enumerate(mat)]
+  rows_with_counts = [(i, binarySearch(row)) for i, row in enumerate(mat)]
   
   # Sort the list of tuples based on the count of 1s
   sorted_rows = sorted(rows_with_counts, key=lambda x: x[1])
