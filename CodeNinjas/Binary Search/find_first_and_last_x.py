@@ -8,15 +8,19 @@
 def searchRangeFirst(arr: [int], x: int) -> [int]:
   n = len(arr)
   l, r = 0, n-1
+  res = -1
   
   while l<=r:
     m = (l+r)//2
     
-    if arr[m] < x:
+    if arr[m] == x:
+      res = m
+      r = m-1
+    elif arr[m] < x:
       l = m+1
     else:
       r = m-1
-  return l
+  return res
 
 # Output: 2
 # Notice how it find 4 then goes to the next index kind of like going 
@@ -26,15 +30,19 @@ def searchRangeFirst(arr: [int], x: int) -> [int]:
 def searchRangeLast(arr: [int], x: int) -> [int]:
   n = len(arr)
   l, r = 0, n-1
+  res = -1
   
   while l<=r:
     m = (l+r)//2
     
-    if arr[m] <= x:
+    if arr[m] == x:
+      res = m
+      l = m+1
+    elif arr[m] <= x:
       l = m+1
     else:
       r = m-1
-  return l-1
+  return res
   
 # Output: 4
 # Notice how it find 4 then goes to the next index kind of like going 
@@ -42,5 +50,5 @@ def searchRangeLast(arr: [int], x: int) -> [int]:
 # by substracting 1
 
 nums = [1,2,4,4,5]
-x = 4
-print(searchRangeLast(nums, x))
+x = 6
+print(searchRangeFirst(nums, x), searchRangeLast(nums, x))
