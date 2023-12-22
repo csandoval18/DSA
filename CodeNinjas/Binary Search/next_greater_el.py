@@ -1,46 +1,56 @@
-# So binary search is not applicable to the coding ninjas problem
-# They probably made a mistake since the arr is not sorted 
-# and they want you to return the next greater to the right side
-# it it was just the next greater in general it would work, but 
-# since they want the next greater ON THE RIGHT SIDE of the og unsorted
-# arr, making bs very complicated to use
-
-def nextGreaterElement(arr: [int], n: int) -> [int]:
-  arr.sort()
-  ans = []
-  print(arr)
+# Brute Force O(n^2)
+def nextGreaterElementBF(nums: [int], n: int) -> [int]:
+  res = []
   
-  for num in arr:
-    x = binarySearch(arr, num)
-    print("x:", x)
-    print("x+1:", x+1)
-    print("arr[x]:", arr[x])
-    
-    if x < n-1 and x != -1:
-      ans.append(arr[x+1])
-    else:
-      ans.append(-1)
-  
-  return ans
-  
-def binarySearch(arr: [int], t):
-  print("bs arr:", arr)
-  n = len(arr)
-  l, r = 0, n-1
-  res = -1
-  
-  while l<=r:
-    m = (l+r)//2
-    
-    if arr[m] == t:
-      res = m
-      l = m+1
-    if arr[m] <= m:
-      l = m+1
-    else:
-      r = m-1
+  for i in range(n-1):
+    res_len = len(res)
+    for j in range(i+1, n):
+      if nums[i] < nums[j]: 
+        res.append(nums[j])
+        break
+    # Check to see if no bigger number found by comparing res arr size
+    if res_len == len(res):
+      res.append(-1)
+  # Last index will always be -1 since there is no elements to the right
+  res.append(-1) 
   return res
 
+def nextGreaterElement(nums: [int], n: int) -> [int]:
+  greater = []
+  stack = []
 
-a = [7,12,1,20]
-print(nextGreaterElement(a, len(a)))
+  for i in reversed(nums):
+    if len(greater)==0:
+      stack.append(-1)
+      greater.append(i)
+    else:
+      while len(greater)!=0 and greater[-1]<=i:
+        greater.pop()
+
+      if len(greater)!=0 and greater[0]>i:
+        stack.insert(0,greater[-1])
+        greater.append(i)
+
+      else:
+        stack.insert(0,-1)
+        greater.append(i)
+  return stack
+  
+nums = [1,5,3,4,2]
+print(nextGreaterElement(nums, len(nums)))
+# 5 -1 4 -1 -1
+
+
+# Optimal O(N)
+def nextGreaterElement(arr: [int], n: int) -> [int]:
+  res = [0]*n
+  stack = []
+  for i in range(n-1,-1,-1):
+    while len(stack) and arr[i] >= stack[-1]:
+      stack.pop()
+    if len(stack) == 0:
+      res[i] =- 1
+    else:
+      res[i] = stack[-1]
+    stack.append(arr[i])
+  return res
