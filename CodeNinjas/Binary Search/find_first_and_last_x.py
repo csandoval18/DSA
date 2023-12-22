@@ -45,9 +45,6 @@ def searchRangeLast(arr: [int], x: int) -> [int]:
   return res
   
 # Output: 4
-# Notice how it find 4 then goes to the next index kind of like going 
-# to the next polarity. This function can be used to get the last occurence
-# by substracting 1
 
 nums = [1,2,4,4,5]
 x = 6
