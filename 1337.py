@@ -42,7 +42,7 @@ def kWeakestRowsBSAttempt(mat: [[int]], k: int) -> [int]:
   # Can  consize code with lambda
   # min_index, min_value = min(enumerate(my_list), key=lambda x: x[1])
   
-  # This doesnt work because I need to find the min indexex k times
+  # This doesnt work because I need to find the min indexes k times
   # I tried removing the min and then searching again but this doesnt work since the indexes are affected
   # when I remove the min. I need to store the minIndexes from the binary search not the starting index of 0s
   # or I could use a hm to store the starting idx of 0 and the array's index in the matrix
@@ -71,8 +71,12 @@ def binarySearch(row):
   return l
 
 def kWeakestRows(mat, k):
+  rows_with_counts = []
   # Create a list of tuples with row index and the count of 1s in that row
-  rows_with_counts = [(i, binarySearch(row)) for i, row in enumerate(mat)]
+  for i in range(len(mat)):
+    rows_with_counts = [i, binarySearch(mat[i])]
+    
+  # rows_with_counts = [(i, binarySearch(row)) for i, row in enumerate(mat)]
   
   # Sort the list of tuples based on the count of 1s
   sorted_rows = sorted(rows_with_counts, key=lambda x: x[1])
