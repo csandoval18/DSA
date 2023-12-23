@@ -8,7 +8,7 @@ def singleNonDuplicate(arr: [int]) -> int:
   n = len(arr)
   l, r = 0, n-1
   
-  while l<=r:
+  while l<r:
     m = (l+r)//2
     
     # If m is uneven move m back 1 to even index
@@ -73,4 +73,23 @@ def singleNonDuplicate1(arr):
       r = m
   return arr[l]
         
+        
+
+def getSingleElement(arr : List[int]) -> int:
+  l, r = 0, len(arr)-1
+
+  while l<r:
+    m = l + (r - l) // 2
+
+    # Check if the single element is on the left or right
+    if m % 2 == 1:
+      m -= 1
+
+    # Adjust the search space based on whether the single element is on the left or right
+    if arr[m] == arr[m+1]:
+      l = m+2
+    else:
+      r = m
+
+  return arr[l]
   
