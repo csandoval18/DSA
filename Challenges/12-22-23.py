@@ -38,11 +38,29 @@ def maxScore(s: str) -> int:
     maxScore = max(maxScore, l_score+r_score)
   
   return maxScore
-    
 
+def maxScoreOP(s: str) -> int:
+  n = len(s)
+  total_ones = s.count('1')
+  max_score = 0
+  left_score = 0
   
-s = "1111"
+  for i in range(n-1):
+    print('i:', i)
+    print('s[i]', s[i])
+    if s[i] == '0':
+      left_score += 1
+      print('left_score:', left_score)
+    else:
+      total_ones -= 1
+      print("total_ones:", total_ones)
+    max_score = max(max_score, left_score + total_ones)
+    print("max_score:", max_score)
+    print("\n")
+  return max_score
+  
+s = "011101"
 # s = "00"
 # print(s[:1])
 # print(s[1:])
-print(maxScore(s))
+print(maxScoreOP(s))
