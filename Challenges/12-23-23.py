@@ -46,16 +46,22 @@ def minOperationsAttempt2(s: str) -> int:
         
 def minOperations(s: str) -> int:
   change_1 = 0
-  curr = True
+  flag = True
 
   for char in s:
-    if curr == (char == "0"):
+    print("char:", char)
+    print("flag:", flag)
+    print("change_1:", change_1)
+    if flag == (char == "0"):
       change_1 += 1
       
-    curr = not curr
+    flag = not flag
+    print("\n")
+  print("change_1", change_1)
+  print("", change_1)
   return min(change_1, len(s) - change_1)
       
-def minOperations(s: str) -> int:
+def minOperationsA(s: str) -> int:
   c0 = 0
   c1 = 0
 
