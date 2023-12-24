@@ -12,4 +12,6 @@
 # Out: 1
 
 def minOperations(s: str) -> int:
-  
+  n = len(s)
+  res = 0
+  l, r = 0, n-1
