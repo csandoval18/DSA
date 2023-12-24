@@ -28,6 +28,10 @@ def minOperationsAttempt1(self, s: str) -> int:
   return res
   
 # Remember strings are immutable in python
+# My attempts dont work because there are 2 possibilities a string that starts with 0 or 1
+# Notice how in the question they ask for the MIN of changes needed to make the string "alternating"
+# This means that I would need to check the possibilities of starting with 0 and 1 and then returning the min
+
 def minOperationsAttempt2(s: str) -> int:
   arr = list(s)
   n = len(arr)
@@ -44,22 +48,7 @@ def minOperationsAttempt2(s: str) -> int:
         arr[i] = "1"
   return res
         
-def minOperations(s: str) -> int:
-  change_1 = 0
-  flag = True
 
-  for char in s:
-    print("char:", char)
-    print("flag:", flag)
-    print("change_1:", change_1)
-    if flag == (char == "0"):
-      change_1 += 1
-      
-    flag = not flag
-    print("\n")
-  print("change_1", change_1)
-  print("", change_1)
-  return min(change_1, len(s) - change_1)
       
 def minOperationsA(s: str) -> int:
   c0 = 0
@@ -80,9 +69,56 @@ def minOperationsA(s: str) -> int:
         c0 += 1
   
   return min(c0, c1)
+  
+def minOperations(self, s: str) -> int:
+  count_start0 = 0
+  count_start1 = 0
+
+  # Iterate through the string with two pointers
+  for i in range(len(s)):
+    # Check for mismatches starting with '0'
+    if s[i] != str(i % 2):
+      count_start0 += 1
+
+    # Check for mismatches starting with '1'
+    if s[i] != str((i + 1) % 2):
+      count_start1 += 1
+
+  # Return the minimum count between the two starting positions
+  return min(count_start0, count_start1)
+  
+# Fastest
+def minOperations(s: str) -> int:
+  change_1 = 0
+  flag = True
+
+  for char in s:
+    print("char:", char)
+    print("flag:", flag)
+    print("change_1:", change_1)
+    if flag == (char == "0"):
+      change_1 += 1
       
+    flag = not flag
+    print("\n")
+  print("change_1", change_1)
+  print("", change_1)
+  return min(change_1, len(s) - change_1)     
+  
+  
 s = "10010100"
 # 01234567
 # 10010100
 # Expected 3 got 1
 print(minOperations(s))
+
+
+# c1 = 0
+# fl = T
+
+# "10010100"
+#  c
+
+# 
+# "10010100"
+#  c
