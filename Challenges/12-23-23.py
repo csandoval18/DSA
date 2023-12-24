@@ -44,22 +44,6 @@ def minOperationsAttempt2(s: str) -> int:
         arr[i] = "1"
   return res
         
-def minOperations(s: str):
-  # Initialize the count of mismatches
-  cnt = 0
-  
-  # Iterate through the str and count mismatches
-  for i in range(len(s)):
-    # Check if the char at position i matches the expected alternating pattern
-    if i%2 == 0:
-      expected_char = '0'
-    else:
-      expected_char = '1'
-    
-    if s[i] != expected_char:
-      cnt += 1
-  return cnt//2
-  
 def minOperations(s: str) -> int:
   change_1 = 0
   curr = True
