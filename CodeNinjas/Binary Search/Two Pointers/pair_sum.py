@@ -18,6 +18,17 @@ def pairSum(arr, n, target):
   cnt = 0
   
   while a != b:
-    if arr[a] + arr[b] == target:
-      cnt += 1
+    s = arr[a] + arr[b]
     
+    if s == target:
+      cnt += 1
+      b -= 1
+    elif s < target:
+      a += 1
+    else:
+      b -= 1
+  return cnt if cnt > 0 else -1
+    
+arr = [1,2,3,4,5]
+target = 6
+print(pairSum(arr, len(arr), target))
