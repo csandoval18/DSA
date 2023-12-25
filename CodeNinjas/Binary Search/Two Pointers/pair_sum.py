@@ -14,7 +14,10 @@
 # t = 6
 
 def pairSum(arr, n, target):
-  a, b = 0, 0
+  a, b = 0, n-1
+  cnt = 0
   
-  while b >= 0:
-    if arr[b] 
+  while a != b:
+    if arr[a] + arr[b] == target:
+      cnt += 1
+    
