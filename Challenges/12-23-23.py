@@ -70,6 +70,7 @@ def minOperationsA(s: str) -> int:
   
   return min(c0, c1)
   
+# Probably the most intuative and simple to understand solution ------------------------------------
 def minOperations(self, s: str) -> int:
   count_start0 = 0
   count_start1 = 0
