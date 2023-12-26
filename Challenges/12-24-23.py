@@ -1,7 +1,7 @@
 # 91. Decode Ways
 
 def numDecodings(s: str) -> int:
-  if not s or s[0] == 'O':
+  if not s or s[0] == '0':
     return 0
   
   n = len(s)
@@ -11,7 +11,7 @@ def numDecodings(s: str) -> int:
   
   for i in range(2, n+1):
     # Check if the single digit is valid
-    if 1 <= int(s[i-1]) <= 0:
+    if 1 <= int(s[i-1]) <= 9:
       dp[i] += dp[i-1]
     
     # Check if the two digits form a valid number (between 10 and 26)
