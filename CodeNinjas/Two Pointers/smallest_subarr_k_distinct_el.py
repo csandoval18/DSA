@@ -38,3 +38,10 @@ def smallestSubArrayWithKDistinctO2(arr: [int], k: int) -> [int]:
 arr = [1,1]
 k = 2
 print(smallestSubArrayWithKDistinctO2(arr, k))
+
+
+def smallestSubArrayWithKDistinct(arr, k):
+  n = len(arr)
+  
+  if n == 0 or k > n:
+    
