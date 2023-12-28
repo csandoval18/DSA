@@ -1,6 +1,8 @@
 # So this is a subarray problem, then best case is O(n) linear time
 # Brute force solutions would be O(n^3) and O(n^2) with nested loops
 
+# These solutions work but codeninjas doesn't accept them due to their shitty testcases
+
 # BF
 def smallestSubArrayWithKDistinctO3(arr: [int], k: int) -> [int]:
   n = len(arr)
