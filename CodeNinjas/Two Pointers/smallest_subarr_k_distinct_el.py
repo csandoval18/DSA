@@ -40,8 +40,20 @@ k = 2
 print(smallestSubArrayWithKDistinctO2(arr, k))
 
 
-def smallestSubArrayWithKDistinct(arr, k):
-  n = len(arr)
+# def smallestSubArrayWithKDistinct(arr, k):
+#   n = len(arr)
   
-  if n == 0 or k > n:
+#   if n == 0 or k > n:
+#     return []
+  
+#   left = right = 0
+#   min_length = float('inf')
+#   result = []
+  
+#   last_occurence = {}
+  
+#   for right in range(n):
+#     last_occurence[arr[right]] = right
     
+#     while len(last_occurence) > k:
+      

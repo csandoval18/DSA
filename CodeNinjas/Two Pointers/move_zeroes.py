@@ -1,6 +1,6 @@
 def moveZeroesToLeft(arr, n):
   a, b = n-1, n-1
-  #a = l, b = r
+  #a = r, b = l
   
   while b >= 0:
     if arr[b] != 0:
@@ -23,7 +23,7 @@ def sortedBinaryArr(arr, n):
   l, r = 0, 0
   
   while l<n:
-    if arr[l] == 1:
+    if arr[l] == 0:
       arr[l], arr[r] = arr[r], arr[l]
       r += 1
     l += 1
