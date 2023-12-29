@@ -19,6 +19,15 @@ def sortedBinaryArr(arr, n):
     l += 1
   return arr
       
+def sortedBinaryArr(arr, n):
+  l, r = 0, 0
+  
+  while l<n:
+    if arr[l] == 1:
+      arr[l], arr[r] = arr[r], arr[l]
+      r += 1
+    l += 1
+  return arr
 #          a
 # [1,2,0,0,1]
 #          b
