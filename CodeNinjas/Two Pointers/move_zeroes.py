@@ -12,22 +12,71 @@ def moveZeroesToLeft(arr, n):
 def sortedBinaryArr(arr, n):
   l, r = 0, 0
   
-  while l<n:
-    if arr[l] != 1:
+  while r<n:
+    if arr[r] != 1:
       arr[l], arr[r] = arr[r], arr[l]
-      r += 1
-    l += 1
+      l += 1
+    r += 1
   return arr
       
 def sortedBinaryArr(arr, n):
   l, r = 0, 0
   
-  while l<n:
-    if arr[l] == 0:
+  while r<n:
+    if arr[r] == 0:
       arr[l], arr[r] = arr[r], arr[l]
-      r += 1
-    l += 1
+      l += 1
+    r += 1
   return arr
+
+# -----------------------------
+
+#  r
+# [1,2,0,0,1]
+#  l
+
+#    r
+# [1,2,0,0,1]
+#  l
+  
+#      r
+# [1,2,0,0,1]
+#  l
+
+#        r
+# [0,2,1,0,1]
+#    l
+
+#          r
+# [0,0,1,2,1]
+#      l
+# -----------------------------
+
+#  r
+# [0,1,1,0,0,0]
+#  l
+# swap arr remains same
+
+#    r
+# [0,1,1,0,0,0]
+#    l
+
+#      r
+# [0,1,1,0,0,0]
+#    l
+
+#        r
+# [0,0,1,1,0,0]
+#      l
+  
+#          r 
+# [0,0,0,1,1,0]
+#      l
+  
+#            r 
+# [0,0,0,0,1,1]
+#        l
+# ------------------------------
 #          a
 # [1,2,0,0,1]
 #          b
