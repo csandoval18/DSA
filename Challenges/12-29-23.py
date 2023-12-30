@@ -9,6 +9,7 @@ def makeEqual(words: [str]) -> bool:
       
   for char, count in hm.items():
     # Check if the count of the curr char is divisible to all word strings
+    # If it is not divisible then partitioning equal letters among all strings is not possible
     if hm[char] % len(words):
       return False
     
