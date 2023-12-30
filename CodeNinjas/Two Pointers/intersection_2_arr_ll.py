@@ -1,13 +1,14 @@
 def intections(arr1: [int], n: int, arr2: [int], m: int):
-  arr2_set = set()
+  st = set()
   res = []
   
   for num in arr2:
-    if num not in arr2_set:
-      arr2_set.add(num)
+    if num not in st:
+      st.add(num)
   
   for num in arr1:
-    if num in arr2_set:
+    if num in st:
       res.append(num)
+      st.remove(num)
   
   return res
