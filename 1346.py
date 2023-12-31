@@ -1,10 +1,3 @@
-# def checkIfExist(arr: [int]) -> bool:
-#   n = len(arr)
-#   maxScore = 0
-  
-#   for i in range(n):
-#     l = arr[:]
-  
 s = "011101"
 
 # Output: 5
@@ -20,4 +13,7 @@ s = "011101"
 # The score after splitting a string is the number of zeros in the 
 # left substring plus the number of ones in the right substring.
 
- 
+def checkIfExist(arr: [int]) -> bool:
+  n = len(arr)
+
+    
