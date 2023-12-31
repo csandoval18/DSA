@@ -25,7 +25,18 @@ def checkIfExist(arr: [int]) -> bool:
         return True
   return False
 
- 
+# Optimal
+def checkIfExistfOP(nums):
+  st = set()
+  
+  for num in arr:
+    if num*2 in st or (num%2 == 0 and num // 2 in st):
+      return True
+    st.add(num)
+  return False
+    
+# Why do need need to check if num is an even #?
+# case: arr = [3,1,7,11] 
 
 # arr = [10,2,5,3]
 arr = [7,1,14,11]
