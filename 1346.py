@@ -15,5 +15,11 @@ s = "011101"
 
 def checkIfExist(arr: [int]) -> bool:
   n = len(arr)
+  
+  for i in range(n):
+    for j in range(1, n):
+      if arr[i] == 2*arr[j]:
+        return True
+  return False
 
     
