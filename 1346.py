@@ -25,6 +25,7 @@ def checkIfExist(arr: [int]) -> bool:
         return True
   return False
 
+ 
 
 # arr = [10,2,5,3]
 arr = [7,1,14,11]
