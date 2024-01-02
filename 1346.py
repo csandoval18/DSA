@@ -13,13 +13,34 @@ s = "011101"
 # The score after splitting a string is the number of zeros in the 
 # left substring plus the number of ones in the right substring.
 
+# BF
 def checkIfExist(arr: [int]) -> bool:
   n = len(arr)
   
   for i in range(n):
-    for j in range(1, n):
-      if arr[i] == 2*arr[j]:
+    for j in range(i+1, n):
+      print(arr[i], end=" ")
+      print(arr[j])
+      if arr[i] == 2*arr[j] or arr[j] == 2*arr[i]:
         return True
   return False
+
+# Optimal
+def checkIfExistfOP(nums):
+  st = set()
+  
+  for num in arr:
+    if num*2 in st or (num%2 == 0 and num // 2 in st):
+      return True
+    st.add(num)
+  return False
+    
+# Why do need need to check if num is an even #?
+# case: arr = [3,1,7,11] 
+
+# arr = [10,2,5,3]
+arr = [7,1,14,11]
+
+print(checkIfExist(arr))
 
     
