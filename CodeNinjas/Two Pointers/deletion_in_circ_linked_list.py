@@ -46,30 +46,30 @@ def deleteNode(head, key):
   if not head:
     return None
 
-  current = head
+  curr = head
   prev = None
 
   # Traverse the circular linked list to find the key
   while True:
-    if current.data == key:
+    if curr.data == key:
       # Key found, adjust pointers to delete the node
       if prev is None:  # Deleting the head node
-        while current.next != head:
-          current = current.next
-        if current == head:  # If only one node in the list
+        while curr.next != head:
+          curr = curr.next
+        if curr == head:  # If only one node in the list
           return None
         else:
-          current.next = head.next
+          curr.next = head.next
           head = head.next
       else:
-        prev.next = current.next
+        prev.next = curr.next
 
       break
 
-    prev = current
-    current = current.next
+    prev = curr
+    curr = curr.next
 
-    if current == head:
+    if curr == head:
       break  # Key not found, break to avoid an infinite loop
 
     return head

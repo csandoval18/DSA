@@ -24,4 +24,3 @@ def shortestSubstring(s):
     j += 1
   ans = s[f_start:f_end + 1]
   return ans
-  pass
