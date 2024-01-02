@@ -24,3 +24,28 @@ def shortestSubstring(s):
     j += 1
   ans = s[f_start:f_end + 1]
   return ans
+  
+  
+def shortest_substring_with_all_chars(s):
+  char_cnt = {}
+  required_chars = set(s)
+  l, r = 0, 0
+  min_len = float('inf')
+  min_substr = ""
+  
+  while r < len(s):
+    char_cnt[s[r]] = char_cnt.get(s[r], 0)+1
+    r += 1
+    
+    while set(char_cnt.keys()) == required_chars:
+      if r-l < min_len:
+        min_len = r-l 
+        min_substr = s[l:r]
+      
+      char_cnt[s[l]] -= 1
+      if char_cnt[s[l]] == 0:
+        del char_cnt[s[l]]
+      
+      l += 1
+  return min_substr
+    
