@@ -13,3 +13,18 @@ def findMatrix(nums: [int]) -> [[int]]:
     dd[num] += 1
   return res
     
+  
+def findMatrix(nums: [int]) -> [[int]]:
+  hm = {}
+  res = []
+  
+  for num in nums:
+    row = hm[num]
+    if len(res) == row:
+      res.append([])
+  
+    res[row].append(num)
+    hm[num] = hm.get(num, 0)+1
+  return res
+
+    
