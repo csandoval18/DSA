@@ -28,3 +28,5 @@ def recyclePens(n, r, k, c):
     else:
       right = mid-1
   return left
+  
+  
