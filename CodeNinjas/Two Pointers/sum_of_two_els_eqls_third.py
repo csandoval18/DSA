@@ -16,8 +16,7 @@ def findTriplet(arr: [int], n: int) -> [int]:
 
 
 arr = [10,5,5,6,2]
-# j
 # 10,5,5,6,2
-#        k i
+#  j     k i
 
 print(findTriplet(arr, len(arr)))
