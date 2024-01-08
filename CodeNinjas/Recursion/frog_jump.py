@@ -8,7 +8,7 @@ def frogJump(n: int, heights: List[int]) -> int:
     
     # Base case: if at the second-to-last position, 
     # consider only 1-step move
-    if urrent
+    if curr
   
   
   
