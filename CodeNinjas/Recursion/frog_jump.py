@@ -1,6 +1,21 @@
 from ast import List
 
 def frogJump(n: int, heights: List[int]) -> int:
+  def frog_energy(i: int, heights: List[int]) -> int:
+    # BC last floor no energy used
+    if i == 0:
+      return 0
+    
+    left = frog_energy(i-1, heights) + abs(heights[i] - heights[i-1])
+    right = float('inf')
+    
+    # Condition check if i>1 because it's not possible to jump 2 floors if the floor left is 1 or less
+    if i>1:
+      right = frog_energy(i-1, heights) + abs(heights[i] - heights[i-1])
+    
+    return min(left, right) 
+      
+      
   # Recusive function starting from 0
   def min_cost_recursive(heights, curr_idx):
     # Base case: if at the first position, no cost to move
