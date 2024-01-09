@@ -1,23 +1,25 @@
 from typing import Optional
 
-
 class TreeNode:
   def __init__(self, val=0, left=None, right=None) -> None:
     self.val = val
-    self.left = left 
+    self.left = left
     self.right = right
-    
-def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
-  if not root:
-    return 0
-    
-  total_sum = 0
   
-  if low <= root.val <= high:
-    total_sum += root.val
+def leafSimilar(root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
+  def leafSequence(root):
+    if not root:
+      return []
   
-  total_sum += self.rangeSumBST(root.left, low, high)
-  total_sum += self.rangeSumBST(root.right, low, high)
-  
-  return total_sum
+    # Check if the node is a leaf
+    if not root.left and not root.right:
+      return [root.val]
     
+    # Recursively get the leaf sequence for left and right subtrees
+    left_seq = leafSequence(root.left)
+    right_seq = leafSequence(root.right)
+    
+    # Combine the leaf sequences
+    return left_seq + right_seq
+
+  return leafSequence(root1) == leafSequence(root2)
