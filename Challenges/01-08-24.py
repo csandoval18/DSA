@@ -1,5 +1,7 @@
 from typing import Optional
 
+# 872. Leaf-Similar Trees
+
 class TreeNode:
   def __init__(self, val=0, left=None, right=None) -> None:
     self.val = val
