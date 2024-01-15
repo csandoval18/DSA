@@ -22,3 +22,10 @@ def closeStrings(word1: str, word2: str) -> bool:
   
   return w1.keys() == w2.keys() and len(c) == 0 
   
+# Explanation based on hints: 
+# Hint 1: Operation 1 allows you to freely reorder the string.
+# Hint 2: Operation 2 allows you to freely reassign the letters' frequencies.
+
+# So we should really worry about the counts/values of the keys/chars in each word since they can be reassgined to another value
+# If the values are the same then the len of c should be equal to 0
+# comparing the keys in the return statement is done to make sure the chars are present in both words
