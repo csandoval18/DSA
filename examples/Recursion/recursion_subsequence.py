@@ -1,3 +1,23 @@
+# [3,2,1]
+#  0 1 2
+def print_subsequences_strivers(arr: [int], i: int, subsequence: [int]) -> None: 
+  n = len(arr)
+  
+  if i >= n:
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 def print_subsequences(arr, i, subsequence):
   # Base case: if index exceeds the array size, print the subsequence
   n = len(arr)
