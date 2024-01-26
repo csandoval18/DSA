@@ -29,3 +29,27 @@ def finSolution(arr: [int], target: int):
   
     
   
+def combinationSum(candidates: [int], target: int):
+  def findCombination(candidates: [int], target: int, idx: int, subsequence: [int], res: [[int]]) -> [[int]]:
+    n = len(candidates)
+    if n == idx:
+      if target == 0:
+        res.append(subsequence.copy())
+      return
+    
+    if candidates[idx] <= target:
+      subsequence.append(candidates[idx])
+      findCombination(candidates, target-candidates[idx], idx, subsequence, res)
+      subsequence.pop()
+    
+    findCombination(candidates, target, idx+1, subsequence, res)
+  
+  res = []
+  subsequence = []
+  findCombination(candidates, target, 0, subsequence, res)
+  return res
+
+arr = [2,3,6,7]
+target = 7
+print(combinationSum(arr, target))
+  
