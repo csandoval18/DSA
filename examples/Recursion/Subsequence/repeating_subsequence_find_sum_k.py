@@ -1,8 +1,14 @@
+# 39. Combination Sum
+
+# Remember that in python lists are mutable, so when you append them to another array you are 
+# also appending their reference, so you need to make a copy of the current state of the array
+# otherwise the appended data will mutate along with the passed array when it is modified
+
 def finSolution(arr: [int], target: int):
-  def findCombination(idx: int, target: int, arr: [int], res, subsequence):
+  def findCombination(idx: int, target: int, arr: [int], res: [int], subsequence: [int]):
     if idx == len(arr):
       if target == 0:
-        res.append(subsequence)
+        res.append(subsequence.copy())
       return
     
     # Pick up the element
