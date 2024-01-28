@@ -18,6 +18,10 @@ def subsetsWithDupStrivers(nums: List[int]) -> List[List[int]]:
   nums.sort()
   findSubsets(0)
   return res
+  
+  
+  
+  
 
 def subsetsWithDup(nums: List[int])-> List[List[int]]:
   def findSubsets(idx: int, nums: List[int], subsequence: List[int], res: List[List[int]]) -> List[List[int]]:
