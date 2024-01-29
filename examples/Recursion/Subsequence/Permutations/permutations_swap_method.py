@@ -16,3 +16,6 @@ def permute(nums: [int]) -> [[int]]:
   res = []
   backtrack(0)
   return res
+
+nums = [1,2,3]
+print(permute(nums))

@@ -11,7 +11,7 @@ def permute(nums: [int]) -> [[int]]:
       return
       
     for i in range(n):
-      if not freq[i]:
+      if freq[i] == False:
         ds.append(nums[i])
         freq[i] = 1
         util(nums, freq)
