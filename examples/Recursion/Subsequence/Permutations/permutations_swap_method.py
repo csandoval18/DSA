@@ -1,10 +1,18 @@
+# 46. Permutations
+
 def permute(nums: [int]) -> [[int]]:
   n = len(nums)
-  res = []
-  ds = []
   
-  for i in range(n):
+  def backtrack(idx: int):
+    if idx == n:
+      res.append(nums[:])
+      return 
+      
+    for i in range(idx, n):
+      nums[idx], nums[i] = nums[i], nums[idx]
+      backtrack(idx+1)
+      nums[idx], nums[i] = nums[i], nums[idx]  
     
-  
-  
-  return
+  res = []
+  backtrack(0)
+  return res
