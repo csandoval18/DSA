@@ -10,21 +10,25 @@
 from typing import List
 
 
-def solveSudoku(board: List[List[str]]) -> None:
+def solveSudoku(board: List[List[str]]) -> bool:
   n = len(board)
   
   def isValid(board: List[List[str]], row: int, col: int, possibleChar: str) -> bool:
     for i in range(9):
+      # Check col
       if board[i][col] == possibleChar:
         return False
+      # Check row
       if board[row][i] == possibleChar:
         return False
-      if board[3 * (row//3)+ i // 3][3 * (col // 3) + i%3] == possibleChar:
+      # Check sudoku quadrant sector
+      if board[3 * (row//3) + i//3][3 * (col // 3) + i%3] == possibleChar:
         return False
+    # No same number was found, therefore the number is a possible solution for the current cell
     return True
         
 
-  def backtrack(board: List[List[str]]) -> None:
+  def backtrack(board: List[List[str]]) -> bool:
     for i in range(n):
       for j in range(len(board[0])):
         
