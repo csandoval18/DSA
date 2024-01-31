@@ -24,76 +24,51 @@ def permute(nums: [int]) -> [[int]]:
 
 nums = [1,2,3]
 print(permute(nums))
+print()
 
 
-def permute(nums: [int]) -> [[int]]:
-  def backtrack(freq: [int]):
-    if n == len(ds):
-      res.append(ds[:])
-      return 
-    
-    for i in range(n):
-      if freq[i] == 0:
-        ds.append(nums[i])
-        freq[i] = 1
-        backtrack(freq)
-        freq[i] = 0
-        ds.pop()
-  
+def permuteRepeating(nums):
   n = len(nums)
-  ds = []
+  res = []
   freq = [0]*n
-  res = []
-  backtrack(freq)
-  return res
   
-def permute(nums):
-  n = len(nums)
-  res = []
-  ds = []
-  
-  def backtrack(freq):
-    if n == len(ds):
+  def backtrack(ds, freq):
+    if len(ds) == n:
       res.append(ds[:])
       return
     
     for i in range(n):
-      if freq[i] == 0:
-        ds.append(nums[i])
-        ds[i] = 1
-        backtrack(freq)
-        ds.pop()
-        ds[i] = 0
-        
-  freq = [0]*n     
-  backtrack(freq)
+      ds.append(nums[i])
+      freq[i] = 1
+      backtrack(ds, freq)
+      ds.pop()
+      freq[i] = 0
+  
+  backtrack([], freq)
   return res
-  
-  
-  
-  
-  
-  
-  
-def permute(nums):
-  n = len(nums)
-  ds = []
-  freq = [0]*n
+
+print(permuteRepeating(nums))
+print()
+
+def permute1(nums):
+  n = len(nums) 
   res = []
+  freq = [0]*n
   
-  def backtrack(freq):
-    if n == len(ds):
-      res.append(ds.copy())
+  def backtrack(ds, freq):
+    if len(ds) == n: 
+      res.append(ds[:])
       return
     
     for i in range(n):
-      if freq[i] == 0:
+      if not freq[i]:
         ds.append(nums[i])
         freq[i] = 1
-        backtrack(freq)
-        freq[i] = 0
+        backtrack(ds, freq)
         ds.pop()
-
-  backtrack(freq) 
+        freq[i] = 0
+    
+  backtrack([], freq)
   return res
-  
+
+print(permute1(nums))
