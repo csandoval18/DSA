@@ -3,42 +3,52 @@ from typing import List
 def partition(s: str) -> List[List[str]]:
   n = len(s)
   res = []
-  
-  def isPalindrome(s: str, l: int, r: int):
-    while l<r:
-      if s[l] != s[r]:
-        return False
-      l += 1
-      r -= 1
-    return True
-  
-  def backtrack(idx: int, path: List[int]):
+
+  def isPalindrome(s: str) -> bool:
+    return s == s[::-1]
+
+  def backtrack(idx: int, path: List[str]):
     if idx == n:
       res.append(path[:])
       return
-      
+
     for i in range(idx, n):
-      if isPalindrome(s, idx, i):
-        path.append(s[idx:i+1])
-        
+      substring = s[idx:i + 1]
+      if isPalindrome(substring):
+        path.append(substring)
+        backtrack(i + 1, path)
+        path.pop()
+
   backtrack(0, [])
   return res
-
 s = "aab"
 print(partition(s))
 
 
-
-def palindrome(string: str) -> bool:
-  n = len(string)
-  l, r = 0, n-1
+def partition(s: str) -> List[List[str]]:
+  n = len(s)
+  res = []
   
-  while l<r:
-    if string[l] != string[r]:
-      return False
-    l += 1
-    r -= 1
-  return True
+  def inPalindrome(s: str) -> bool:
+    return s == s[::-1]
+  
+  def backtrack(idx: int, ds: List[str]) -> None:
+    if idx == n:
+      res.append(ds[:])
+      return
     
-string = "aba"
-print(palindrome(string))
+    
+
+# def palindrome(string: str) -> bool:
+#   n = len(string)
+#   l, r = 0, n-1
+  
+#   while l<r:
+#     if string[l] != string[r]:
+#       return False
+#     l += 1
+#     r -= 1
+#   return True
+    
+# string = "aba"
+# print(palindrome(string))
