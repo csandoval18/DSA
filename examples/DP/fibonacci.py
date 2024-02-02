@@ -17,3 +17,21 @@ def dp_fibonacci(n: int) -> [int]:
 
 n = 5
 print(dp_fibonacci(n))
+
+
+def optimized_fibonacci(n: int) -> [int]:
+  a = 0
+  b = 1
+  
+  for i in range(n):
+    c = a+b
+    a = b
+    b = c
+  
+  return a
+    
+
+print(optimized_fibonacci(10))
+    
+    
+    
