@@ -58,6 +58,3 @@ def merge_sort_pointers(arr: [int], l: int, r: int):
   merge_sort_pointers(arr, l, m)
   merge_sort_pointers(arr, m+1, r)
   merge(arr, l, m, r)
-  
-  
-  

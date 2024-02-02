@@ -31,7 +31,7 @@ def merge(arr : List[int], low : int, mid : int, high : int) -> int:
         left += 1
       else:
         temp.append(arr[right])
-        cnt += (mid - left + 1)  # Modification 2
+        cnt += (mid - left + 1)  # Modification 2 to add the number of elements to the right
         right += 1
 
     # If elements on the left half are still left
