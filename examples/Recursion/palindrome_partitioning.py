@@ -29,14 +29,26 @@ def partition(s: str) -> List[List[str]]:
   n = len(s)
   res = []
   
-  def inPalindrome(s: str) -> bool:
+  def isPalindrome(s: str) -> bool:
     return s == s[::-1]
   
   def backtrack(idx: int, ds: List[str]) -> None:
     if idx == n:
       res.append(ds[:])
-      return
+      return 
     
+    for i in range(idx, n):
+      substring = s[idx:i+1]
+      if isPalindrome(substring):
+        ds.append(substring)
+        backtrack(i+1, ds)
+        ds.pop()
+    
+  backtrack(0, [])
+  return res
+
+s = "aab"
+print(partition(s))
     
 
 # def palindrome(string: str) -> bool:
