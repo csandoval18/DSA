@@ -1,50 +1,30 @@
 from typing import List
 
-def permute(nums: [int]) -> [[int]]:
+# Does not work on arrays with repeating values
+# We need to modify the for loop condition to check for dups
+# as seen in the problem permutations 2
+def permuteUnique(nums: List[int]) -> List[List[int]]:
   n = len(nums)
+  freq = [0] * n
   res = []
   
-  def backtrack(freq: List[int], ds: [int]):
+  def backtrack(freq: List[int], ds: List[int]):
     if len(ds) == n:
       res.append(ds[:])
       return
       
     for i in range(n):
-      if freq[i] == False:
-        ds.append(nums[i])
-        freq[i] = 1
-        backtrack(freq)
-        freq[i] = 0
-        ds.pop()
+      if freq[i]:
+        continue
+      
+      ds.append(nums[i])
+      freq[i] = 1
+      backtrack(freq, ds)
+      freq[i] = 0
+      ds.pop()
     
-  freq = [0] * n
   backtrack(freq, [])
   return res
 
 nums = [1,2,3]
-print(permute(nums))
-print()
-
-
-def permuteRepeating(nums):
-  n = len(nums)
-  res = []
-  freq = [0]*n
-  
-  def backtrack(ds, freq):
-    if len(ds) == n:
-      res.append(ds[:])
-      return
-    
-    for i in range(n):
-      ds.append(nums[i])
-      freq[i] = 1
-      backtrack(ds, freq)
-      ds.pop()
-      freq[i] = 0
-  
-  backtrack([], freq)
-  return res
-
-print(permuteRepeating(nums))
-print()
+print(permuteUnique(nums))
