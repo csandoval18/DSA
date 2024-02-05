@@ -1,19 +1,15 @@
-from typing import List, Optional
+from typing import List
 
-class TreeNode:
-  def __init__(self, left=None, right=None, val=0) -> None:
-    self.left = left
-    self.right = right
-    self.val = val
-
-def pathSum(self, root: Optional[TreeNode]) -> List[List[int]]:
-  def backtrack(node: Optional[TreeNode], ds: List[int]):
-    if not node:
-      res.append(ds[:])
-      return
+def rob(nums: List[int]) -> int:
+  def backtrack(idx: int) -> int:
+    if idx == 0:
+      return nums[idx]
+    if idx < 0:
+      return 0
     
-    backtrack()
+    pick = nums[idx] + backtrack(idx-2)
+    not_pick = 0 + backtrack(idx-1)
+    return max(pick, not_pick)
     
-    
-  
-  res = []
+  n = len(nums)
+  return backtrack(n-1)
