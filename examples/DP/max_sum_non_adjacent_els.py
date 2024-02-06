@@ -1,6 +1,5 @@
 from typing import List
 
-
 # Recursive Solution 
 def maximumNonAdjacentSumRecursive(nums: List[int]) -> int:
   def helper(idx: int) -> int:
