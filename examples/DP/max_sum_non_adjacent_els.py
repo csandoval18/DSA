@@ -26,7 +26,8 @@ def maximumNonAdjacentSumDP(nums: List[int]) -> int:
     # take =  nums[i] + dp[i-2]
     take = nums[i] 
     if i > 1:
-      take += dp[i-2]
+      take += dp[i-2] 
+    # non take because we are going into the adjacent num idx
     nontake = 0 + dp[i-1]
     
     dp[i] = max(take, nontake)
