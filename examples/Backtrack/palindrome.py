@@ -17,7 +17,8 @@ def recPalindromev2(s: str, i: int) -> bool:
   
   return recPalindromev2(s, i+1)
 
-s = "llllabcddcballll"
+# s = "llllabcddcballll"
+s = "dwcblqnxtrwtqmtqenidhxnifdbmdvobwmcvwjxgbyjzgvrqzlskjbfirauguhyyjhlotuckssrkqzppzbqd"
 print(recPalindrome(s, 0, len(s)-1))
 print(recPalindromev2(s, 0))
 
