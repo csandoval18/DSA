@@ -34,6 +34,7 @@ print(findTargetSumWays(nums, target))
 
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
+# Recursive
 def findTargetSumWaysBT(nums: List[int], target: int) -> int:
   def backtrack(idx: int, curr_sum: int) -> int:
     if idx == len(nums):
@@ -73,21 +74,6 @@ def findTargetSumWaysDP(nums: List[int], target: int) -> int:
   return backtrack(0, 0)
 
 print(findTargetSumWaysDP(nums, target))
-
-def findTargetSumWays(self, nums: List[int], target: int) -> int:
-  total_sum = sum(nums)
-  if abs(target) > total_sum or (target + total_sum) % 2 != 0:
-    return 0
-  
-  subset_sum = (target + total_sum) // 2
-  dp = [0] * (subset_sum + 1)
-  dp[0] = 1
-
-  for num in nums:
-    for j in range(subset_sum, num - 1, -1):
-      dp[j] += dp[j - num]
-
-  return dp[subset_sum]
 
 # Tabulation 
 def findTargetSumWaysTB(nums: List[int] ,target: int) -> int:
