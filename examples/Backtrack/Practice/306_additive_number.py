@@ -10,11 +10,11 @@ def isAdditiveNumber(num: str) -> bool:
       if num[start] == '0' and end > start+1: # Leading zero is not allowed except except for single digit
         break
       
-      num1 = int(num[start:end])
-      if len(path) < 2 or num1 == path[-1] + path[-2]:
+      nextNum = int(num[start:end])
+      if len(path) < 2 or nextNum == path[-1] + path[-2]:
         # If we find a number range that matches the conditions then we can backtrack to repeat the search in the next section of the arr 
         # starting from the ending pointer
-        if backtrack(end, path + [num1]):
+        if backtrack(end, path + [nextNum]):
           return True
     return False
     

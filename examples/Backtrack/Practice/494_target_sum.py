@@ -32,6 +32,8 @@ nums = [1,1,1,1,1]
 target = 3
 print(findTargetSumWays(nums, target))
 
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
 def findTargetSumWaysBT(nums: List[int], target: int) -> int:
   def backtrack(idx: int, curr_sum: int) -> int:
     if idx == len(nums):
@@ -98,7 +100,7 @@ def findTargetSumWaysTB(nums: List[int] ,target: int) -> int:
   dp[0] = 1
   
   for num in nums:
-    for j in range(num, subset_sum + 1):
+    for j in range(subset_sum, num-1, -1):
       dp[j] += dp[j - num]
   
   return dp[subset_sum]
