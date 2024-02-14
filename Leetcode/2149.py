@@ -1,6 +1,7 @@
 # Optimal O(n) uses 2 pointers to keep track of negatives and positives 
 # in initiated array with len(nums)
 
+# Uses extra space O(n)
 def rearrangeArray(nums):
   n = len(nums)
   res = [0] * n
@@ -39,8 +40,9 @@ def alternateNumber(nums):
     # by 2 and begin at 0, then only way to that is by multiplying
     
     # i             i
-    # 0 + 2 = 2  |  1 + 2 = 4
-    # 0 * 2 = 0  |  1 * 2 = 2
+    # 0 * 2 = 0  |  0 * 2 + 1 = 1
+    # 1 * 2 = 2  |  1 * 2 + 1 = 3
+    # 2 * 2 = 4  |  2 * 2 + 1 = 5
     for i in range(len(neg)):
       nums[i*2]  = pos[i]
       nums[i*2+1] = neg[i]
@@ -66,8 +68,26 @@ def alternateNumber(nums):
   
   return nums
         
-      
-        
+# Optimized SC: O(n), TC: O(1)      
+def rearrangeArray(nums):
+  i, j = 0, 1  # i for positive, j for negative
+  n = len(nums)
+
+  while i < n and j < n:
+    # Find the next positive element (if missing, break)
+    while i < n and nums[i] >= 0:
+      i += 2
+
+    # Find the next negative element (if missing, break)
+    while j < n and nums[j] < 0:
+      j += 2
+
+    # Swap positive and negative elements
+    if i < n and j < n:
+      nums[i], nums[j] = nums[j], nums[i]
+
+  return nums
+
     
       
   
