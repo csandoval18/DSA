@@ -65,3 +65,38 @@ def minPathSum(matrix: List[List[int]]) -> int:
       
   return dp[n-1][m-1]
         
+# Space Optimization
+def minPathSum(matrix: List[List[int]]) -> int:
+  n = len(matrix)
+  m = len(matrix)
+  # dp = [[-1 for _ in range(m)] for _ in range(n)]
+  
+  prevRow = matrix[0]
+  for i in range(n):
+    currRow = [0 for _ in range(m)]
+    
+    for j in range(m):
+      if i == 0 and j == 0:
+        currRow[j] = matrix[i][j]
+      else:
+        up = matrix[i][j]
+        if i > 0:
+          up += prevRow[i-1]
+        else:
+          # We have surpassed the farthest top index, set the up val to a big integer
+          # so it loses the min comparison
+          up += int(1e9)
+        
+        left = matrix[i][j]
+        if j > 0:
+          left += currRow[j-1]
+        else:
+          # We have surpassd the farthest left index, set the left val to a big integer
+          # so it loses the min comparison
+          left += int(1e9)
+          
+        currRow[j] = min(up, left)
+    
+    prevRow = currRow
+      
+  return prevRow[m-1]
