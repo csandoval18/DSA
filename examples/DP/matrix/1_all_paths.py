@@ -65,7 +65,7 @@ def findAllPathsTab(matrix: List[List[int]]) -> int:
   return dp[n-1][m-1]
 
 
-# Space Optimize
+# Space Optimize Recursion
 def findAllPathsSO(matrix: List[List[int]]) -> int:
   def helper(i: int, j: int, dp: List[int]):
     if i == 0 and j == 0:
@@ -86,7 +86,7 @@ def findAllPathsSO(matrix: List[List[int]]) -> int:
   dp = [-1 for i in range(m)]
   return helper(n-1, m-1, dp)
   
-  
+# Space Optimize Tabulation
 def findAllPathsTab(matrix: List[List[int]]) -> int:
   n = len(matrix)
   m = len(matrix[0])
