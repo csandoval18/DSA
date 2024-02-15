@@ -94,13 +94,13 @@ def findAllPathsTab(matrix: List[List[int]]) -> int:
   
   for i in range(n):
     currRow = [0 for _ in range(m)]
-    for j in range(0, m):
+    for j in range(m):
       if i == 0 and j == 0:
         currRow[j] = 1
       else:
         up, left = 0, 0
         if i > 0:
-          up = prevRow[i-1]
+          up = prevRow[j]
         if j > 0:
           left = currRow[j-1]
         
