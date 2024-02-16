@@ -53,3 +53,9 @@ def getMaxPathSum(matrix: List[List[int]]) -> int:
     res = max(res, f(n-1, j))
   
   return res
+  
+def getMaxPathSum(matrix: List[List[int]]) -> int:
+  n = len(matrix)
+  m = len(matrix[0])
+  dp = [[-1 for _ in range(m)] for _ in range(n)]
+  
