@@ -15,14 +15,14 @@ def findTargetSumWays(nums: List[int], target: int) -> int:
   
   return bt(0, 0)
 
-# nums = [1,1,1,1,1]
-# target = 3
-nums = [1]
-target = 1
+nums = [1,1,1,1,1]
+target = 3
+# nums = [1]
+# target = 1
 print(findTargetSumWays(nums, target))
 
 # Memoization
-def findTargetSumWays(nums: List[int], target: int, dp: List[int]) -> int:
+def findTargetSumWaysMemo(nums: List[int], target: int, dp: List[int]) -> int:
   def bt(idx: int, curr_sum: int) -> int:
     if idx == len(nums):
       if curr_sum == target:
@@ -39,4 +39,13 @@ def findTargetSumWays(nums: List[int], target: int, dp: List[int]) -> int:
     return dp[idx]
   
   dp = [int(-1e9) for _ in range(len(nums))]
+  print(dp)
   return bt(0, 0)
+
+print(findTargetSumWays(nums, target))
+
+# def findTargetSumWays(nums: List[int], target: int, dp: List[int]) -> int:
+#   dp = [-1] * (len(nums)+1)
+#   dp[0] = 0
+  
+  
