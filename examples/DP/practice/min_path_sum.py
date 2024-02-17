@@ -75,25 +75,26 @@ def minPathSumTab(grid: List[List[int]]) -> int:
   dp[0][0] = grid[0][0]
   
   for i in range(n):
-    for j in range(1, m):
-      left = grid[i][j] + dp[i][j-1]
-      if i > 0:
-        up = grid[i][j] + dp[i-1][j]
-      
-      dp[i][j] = min(left, up)
-      
-      
-      
-      
-          
+    for j in range(m):
+      if i == 0 and j == 0:
+        dp[i][j] = grid[0][0]
+      else:
+        up = grid[i][j]
+        if i > 0:
+          up += dp[i-1][j]
+        else:
+          up += int(1e9)
+        
+        left = grid[i][j]
+        if j > 0:
+          left += dp[i][j-1]
+        else:
+          left += int(1e9)
+        
+        dp[i][j] = min(up, left)
+  return dp[n-1][m-1]
         
         
-        
-  
-  
-  
-  
-
 grid = [[1,3,1],[1,5,1],[4,2,1]]
 print(minPathSum(grid))
 print(minPathSumMemo(grid))

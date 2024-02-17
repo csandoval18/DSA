@@ -78,7 +78,7 @@ def minPathSumSO(matrix: List[List[int]]) -> int:
   
   prevRow = matrix[0]
   for i in range(n):
-    currRow = [0 for _ in range(m)]
+    currRow = [0] * m 
     
     for j in range(m):
       if i == 0 and j == 0:
