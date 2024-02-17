@@ -58,33 +58,33 @@ def findTargetSumWaysTabulation(nums: List[int], target: int) -> int:
     
 
 def findTargetSumWaysTab2(nums: List[int], target: int) -> int:
-    # Pre-calculate the total sum of the numbers.
-    total_sum = sum(nums)
+  # Pre-calculate the total sum of the numbers.
+  total_sum = sum(nums)
 
-    # If the target is greater than the total sum or not even, return 0.
-    if abs(target) > total_sum or (target + total_sum) % 2 != 0:
-        return 0
+  # If the target is greater than the total sum or not even, return 0.
+  if abs(target) > total_sum or (target + total_sum) % 2 != 0:
+    return 0
 
-    # Calculate the subset sum we need to achieve.
-    subset_sum = (target + total_sum) // 2
+  # Calculate the subset sum we need to achieve.
+  subset_sum = (target + total_sum) // 2
 
-    # Create a DP table to store the number of ways to form each subset sum.
-    dp = [0] * (subset_sum + 1)
-    dp[0] = 1  # There's 1 way to form an empty subset with a sum of 0.
+  # Create a DP table to store the number of ways to form each subset sum.
+  dp = [0] * (subset_sum + 1)
+  dp[0] = 1  # There's 1 way to form an empty subset with a sum of 0.
 
-    # Iterate through each number in the input list.
-    for num in nums:
-        # Iterate backwards from the current subset sum down to the minimum possible
-        # value (num - 1). This avoids unnecessary calculations.
-        for j in range(subset_sum, num - 1, -1):
-            # Add the number of ways to form the current subset sum using the
-            # previous subset sum (without the current number) to the number of ways
-            # to form the current subset sum using the current number and the previous
-            # subset sum (one less than the current subset sum).
-            dp[j] += dp[j - num]
+  # Iterate through each number in the input list.
+  for num in nums:
+    # Iterate backwards from the current subset sum down to the minimum possible
+    # value (num - 1). This avoids unnecessary calculations.
+    for j in range(subset_sum, num - 1, -1):
+      # Add the number of ways to form the current subset sum using the
+      # previous subset sum (without the current number) to the number of ways
+      # to form the current subset sum using the current number and the previous
+      # subset sum (one less than the current subset sum).
+      dp[j] += dp[j - num]
 
-    # Return the number of ways to form the target subset sum.
-    return dp[subset_sum]
+  # Return the number of ways to form the target subset sum.
+  return dp[subset_sum]
 
 nums = [1,1,1,1,1]
 target = 3
