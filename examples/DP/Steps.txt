@@ -1,0 +1,9 @@
+Recursion 
+1. Express in terms of index
+2. Explore all possibilities (ex: pick and notPick)
+3. 
+
+Recursion (2D Arrays)
+1. Express in terms of rows & cols (i,j)
+2. Explore all possibilities
+3. 
