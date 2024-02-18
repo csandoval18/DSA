@@ -12,7 +12,7 @@ Dynamic Programming
 
 Tabulation (2D Arrays)
 1. Declare dp[] arr size (n*m)
-2. Initialize the base condition values
-3. Our ans should get stored in dp[n-1][m-1]. We want to move from the base case to n-1, m-1
-4. 
+2. Initialize the base condition values 
+3. Our answer should get stored in dp[n-1][m-1]. We want to move from the base case to the ending solution
+4. Vals required for dp[i][j] are:
 
