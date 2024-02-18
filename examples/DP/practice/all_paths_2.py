@@ -69,16 +69,60 @@ def uniquePathSO(n: int, m: int) -> int:
   return prevRow[m-1] 
   
 def uniquePathsWithObstacles2(obstacleGrid: List[List[int]]) -> int:
+  n = len(obstacleGrid)
+  m = len(obstacleGrid[0])
+  
   prevRow = [0] * m
-  for i in range(1, n):
-    currRow = [0] * m
+  
+  for i in range(n):
+    currRow = [0] * m 
     for j in range(m):
-      if obstacleGrid[i][j] == 1:
+      if i == 0 and j == 0:
+        currRow[j] = 1
+      if obstacleGrid[i][j] == 0:
+        top = left = 0
         
-      else:
+        if obstacleGrid[i-1][j] == 0:
+          top = prevRow[j]
+        
+        if obstacleGrid[i][j-1] == 0:
+          left = currRow[j-1]
+      
+        currRow[j] = top + left
+      
+    prevRow = currRow
+  
+  return prevRow[m-1]
+
+
+def uniquePathsWithObstacles2(obstacleGrid: List[List[int]]) -> int:
+  n = len(obstacleGrid)
+  m = len(obstacleGrid[0])
+  
+  prevRow = [0] * m
+  prevRow[0] = 1 if obstacleGrid[0][0] == 0 else 0  # Initialize the first element of prevRow
+  
+  for i in range(n):
+    currRow = [0] * m 
+    for j in range(m):
+      if i == 0 and j == 0:  # Skip the top-left cell
         continue
       
-    
+      if obstacleGrid[i][j] == 0:
+        top = left = 0
+
+        if i > 0 and obstacleGrid[i-1][j] == 0:
+          top = prevRow[j]
+
+        if j > 0 and obstacleGrid[i][j-1] == 0:
+          left = currRow[j-1]
+
+        currRow[j] = top + left
+
+    prevRow = currRow
+
+  return prevRow[-1]  # Return the count of unique paths to the bottom-right cell
+
   
 n = 3
 m = 7
@@ -86,4 +130,6 @@ print(uniquePathsWithObstaclesRec(n, m))
 print(uniquePathsWithObstaclesMemo(n, m))
 print(uniquePathsSO(n, m))
 
-  
+obstacleGrid = [[0,0,0],[0,1,0],[0,0,0]]
+# 2
+print(uniquePathsWithObstacles2(obstacleGrid))
