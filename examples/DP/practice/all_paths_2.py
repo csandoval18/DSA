@@ -94,43 +94,51 @@ def uniquePathsWithObstacles2(obstacleGrid: List[List[int]]) -> int:
   
   return prevRow[m-1]
 
-
-def uniquePathsWithObstacles(obstacleGrid: List[List[int]]) -> int:
+def uniquePathsWithObstaclesAccepted(self, obstacleGrid: List[List[int]]) -> int:
   n, m = len(obstacleGrid), len(obstacleGrid[0])
-  prevRow = [0]*n
-  prevRow[0] = 1 if obstacleGrid[0][0] == 0 else 0 
-  
-  for i in range(m):
-    currRow = [0]*n
-    currRow[0] = 1 if obstacleGrid[0][0] == 0 else 0
-    
-    for j in range(1, n):
+  prevRow = [0]*m
+  prevRow[0] = 1 
+
+  for i in range(n):
+    # Handling top case
+    currRow = [0]*m
+    if obstacleGrid[i][0] == 0:
+      currRow[0] = prevRow[0]
+    else:
+      currRow[0] = 0
+
+    for j in range(1, m):
+      # Handle left case
       if obstacleGrid[i][j] == 0:
-        currRow[j] = currRow[j-1] + prevRow[j] 
+        currRow[j] = currRow[j-1] + prevRow[j]
       else:
         currRow[j] = 0
     prevRow = currRow
-  
   return prevRow[m-1]
-
-def uniquePathsWithObstacles(obstacleGrid: List[List[int]]) -> int:
-  n, m = len(obstacleGrid), len(obstacleGrid[0])
-  prevRow = [0] * m
-  prevRow[0] = 1 
   
-  for i in range(n):
-    currentRow = [0] * m
-    currentRow[0] = prevRow[0] if obstacleGrid[i][0] == 0 else 0  # Initialize the first column
-    
+# Gemini
+def uniquePathsWithObstaclesGemini(obstacleGrid: List[List[int]]) -> int:
+  n, m = len(obstacleGrid, len(obstacleGrid[0]))
+  prevRow = [0] * m 
+  currRow = [0] * m 
+  
+  prevRow[0] = 1 if obstacleGrid[0][0] == 0 else 0
+  currRow[0] = 1 if obstacleGrid[0][0] == 0 and prevRow[0] == 1 else 0
+  
+  for i in range(1, n):
     for j in range(1, m):
-      if obstacleGrid[i][j] == 0:
-        currentRow[j] = currentRow[j - 1] + prevRow[j]
+      if obstacleGrid[i][j] == 1:
+        currRow[j] = 0
       else:
-        currentRow[j] = 0
-    
-    prevRow = currentRow  # Update prevRow for the next iteration
-  
+        top = prevRow[j] if i > 0 else 0
+        left = currRow[j-1] if j > 0 else 0
+        currRow[j] = top + left
+        
+    prevRow = currRow
   return prevRow[-1]
+  
+# Prob the easiest method is either the one accepted or the one where you just first first fill out the first col and row and then fill
+# the inner matrix with the filled row and col
   
 n = 3
 m = 7
@@ -141,5 +149,5 @@ print(uniquePathsSO(n, m))
 obstacleGrid = [[0,0,0],[0,1,0],[0,0,0]]
 # 2
 # print(uniquePathsWithObstacles2(obstacleGrid))
-print(uniquePathsWithObstacles(obstacleGrid))
+print(uniquePathsWithObstaclesGemini(obstacleGrid))
 

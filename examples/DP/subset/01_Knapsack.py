@@ -6,7 +6,7 @@ from typing import List
 # 2. Iterate for each changing parameter (idx & weight) => 2 nested loops
 # 3. Copy the recurrence
 
-def knapsack(weight: List[int], values: List[int], n: int, maxWeight: int) -> None:
+def knapsack(weights: List[int], values: List[int], maxWeight: int) -> None:
   def f(idx: int, ) -> int:
     if idx == 0:
-      if wx[0] 
+      if weights[0] <= 
