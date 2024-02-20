@@ -57,12 +57,19 @@ def subsetSumToKMemoize(n: int, k: int, arr: List[int]) -> bool:
     # Set the first col to True since a sum of 0 is always possible with an empty subset
     dp[i][0] = True
     
-    # Check if the first el of the arr can be used to make the target sum
+    # Check if the first element of the arr can be used to make the target sum
     if arr[0] <= k:
       dp[0][arr[0]] = True
     
     # Fill in the DP table iteratively
-    
+    for i in range(1, n):
+      for target in range(1, k+1):
+        notTake = dp[i-1][target]
+        
+        take = False
+        if arr[i] <= target:
+          take = dp[i-1][target-arr[i]]
+        dp[i][target] = notTake or take
     
 
 arr = [1,2,3,4] 

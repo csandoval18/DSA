@@ -22,5 +22,5 @@ def knapsackRecursive(weights: List[int], values: List[int], maxWeight: int) -> 
     return max(take, notTake)
 
 def knapsackDP(weights: List[int], values: List[int], maxWeight: int)  -> None:
-  def f(idx: int, maxW: int, dp: List):
+  def f(idx: int, maxW: int, max): : intList
   
