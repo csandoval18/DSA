@@ -1,16 +1,12 @@
-def f(idx):
-  if idx == 0:
-    return 
-    
-  print(idx)
-  f(idx-1)
+from typing import List
 
-f(10)
+# Tabulation
 
+# 1. Base case
+# 2. Iterate for each changing parameter (idx & weight) => 2 nested loops
+# 3. Copy the recurrence
 
-# bag weight = 8
-# weights => 3  4  5
-# vals    => 30 50 60
-
-# can't pick 4, 5 because 4+5=9 > 8 bag weight
-
+def knapsack(weight: List[int], values: List[int], n: int, maxWeight: int) -> None:
+  def f(idx: int, ) -> int:
+    if idx == 0:
+      if wx[0] 

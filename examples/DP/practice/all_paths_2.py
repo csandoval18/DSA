@@ -112,7 +112,25 @@ def uniquePathsWithObstacles(obstacleGrid: List[List[int]]) -> int:
     prevRow = currRow
   
   return prevRow[m-1]
-        
+
+def uniquePathsWithObstacles(obstacleGrid: List[List[int]]) -> int:
+  n, m = len(obstacleGrid), len(obstacleGrid[0])
+  prevRow = [0] * m
+  prevRow[0] = 1 
+  
+  for i in range(n):
+    currentRow = [0] * m
+    currentRow[0] = prevRow[0] if obstacleGrid[i][0] == 0 else 0  # Initialize the first column
+    
+    for j in range(1, m):
+      if obstacleGrid[i][j] == 0:
+        currentRow[j] = currentRow[j - 1] + prevRow[j]
+      else:
+        currentRow[j] = 0
+    
+    prevRow = currentRow  # Update prevRow for the next iteration
+  
+  return prevRow[-1]
   
 n = 3
 m = 7
@@ -124,3 +142,4 @@ obstacleGrid = [[0,0,0],[0,1,0],[0,0,0]]
 # 2
 # print(uniquePathsWithObstacles2(obstacleGrid))
 print(uniquePathsWithObstacles(obstacleGrid))
+
