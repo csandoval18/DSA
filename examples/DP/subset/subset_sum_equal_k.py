@@ -20,6 +20,10 @@ def subsetSumToKRec(n: int, k: int, arr: List[int]) -> bool:
     return take or notTake
   
   return f(n-1, k)
+
+def subsetSumToKRec(n: int, k: int, arr: List[int]) -> bool:
+  def f(idx: int, target: int) -> bool:
+    if target
     
       
 def subsetSumToKMemoize(n: int, k: int, arr: List[int]) -> bool:
@@ -45,7 +49,19 @@ def subsetSumToKMemoize(n: int, k: int, arr: List[int]) -> bool:
   dp = [[-1 for _ in range(k+1)] for _ in range(n)]
   return f(n-1, k, dp)
   
+# Tabulation
+def subsetSumToKMemoize(n: int, k: int, arr: List[int]) -> bool:
+  dp = [[False for _ in range(k+1)] for _ in range(n)] 
   
+  for i in range(n):
+    # Set the first col to True since a sum of 0 is always possible with an empty subset
+    dp[i][0] = True
+    
+    # Check if the first el of the arr can be used to make the target sum
+    if arr[0] <= k:
+      dp[0][arr[0]] = True
+    
+    # Fill in the DP table iteratively
     
     
 
