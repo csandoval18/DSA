@@ -31,3 +31,4 @@ def permuteUnique(nums: List[int]) -> List[List[int]]:
 
 nums = [1,1,2]
 print(permuteUnique(nums))
+
