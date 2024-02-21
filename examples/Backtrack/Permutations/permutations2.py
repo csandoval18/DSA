@@ -32,3 +32,22 @@ def permuteUnique(nums: List[int]) -> List[List[int]]:
 nums = [1,1,2]
 print(permuteUnique(nums))
 
+def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+  def backtrack(start):
+    if start == len(nums):
+      result.append(nums[:])  # Make a copy of nums to avoid mutation
+      return
+
+    seen = set()  # To keep track of seen numbers in this level of recursion
+    for i in range(start, len(nums)):
+      if nums[i] in seen:
+        continue  # Skip if we've seen this number at this level
+      seen.add(nums[i])  # Add the number to the set of seen numbers
+      nums[i], nums[start] = nums[start], nums[i]  # Swap
+      backtrack(start + 1)  # Recurse
+      nums[i], nums[start] = nums[start], nums[i]  # Backtrack
+
+    result = []
+    nums.sort()  # Sort the input to handle duplicates properly
+    backtrack(0)
+    return result
