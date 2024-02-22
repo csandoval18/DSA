@@ -1,6 +1,8 @@
 Recursion 
-1. Express in terms of index
+1. Express in terms of index & parameters (ex: target)
 2. Explore all possibilities (ex: pick and notPick)
+  * Remember that is there is a target we can exclude all values that that surpass it since it will 
+    lead to a greater sum than target
 3. Sum up all ways | max | min 
 
 Recursion (2D Arrays)
@@ -12,7 +14,11 @@ Dynamic Programming
 
 Tabulation (2D Arrays)
 1. Declare dp[] arr size (n*m)
-2. Initialize the base condition values 
-3. Our answer should get stored in dp[n-1][m-1]. We want to move from the base case to the ending solution
-4. Vals required for dp[i][j] are:
+2. Initialize the dp depending on the base case condition
+3. Copy the recurrence
+4. Our answer is usually stored in dp[n-1][m-1], but it depends on the problem. (Ex: For falling min path
+we have to find the min of the last row to get the res)
 
+Tips:
+1. When there is an infinite supply of an item (Ex: problem coin change where numbers in input array
+can be repicked) you will stay at the same index in the "take" recursive call
