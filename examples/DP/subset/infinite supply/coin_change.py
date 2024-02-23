@@ -1,5 +1,7 @@
 from typing import List
 
+# Find min coins needed that add up to 'amount' (target)
+
 coins = [1,2,5] 
 amount = 11
 
