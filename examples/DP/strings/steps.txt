@@ -1,0 +1,6 @@
+How to write recurrence?
+
+1. Express everything in terms of (i,j)
+2. Explore all possibilities
+3. Return summation of all possibilities
+4. Base case
