@@ -47,3 +47,9 @@ def shortestSupersequence(s1: str, s2: str):
   
   res = res[::-1]
   return res
+
+s1 = "brute"
+s2 = "groot"
+print(shortestSupersequence(s1, s2))
+# "bgruoote"
+# O(n*m)
