@@ -29,7 +29,7 @@ def lcsMemo(s1: str, s2: str) -> int:
   
 def lcsTab(s1: str, s2: str) -> int:
   n, m = len(s1), len(s2)
-  dp = [[0]*(m+1) for _ in range(n)]
+  dp = [[0]*(m+1) for _ in range(n+1)]
   
   # Initialize the base cases: (Don't need it since it just intializes firt row 
   # and col to 0's
@@ -49,7 +49,26 @@ def lcsTab(s1: str, s2: str) -> int:
         dp[i][j] = max(dp[i-1][j], dp[i][j-1])
 
   return dp[n][m]
+
+def lcsSO(s1: str, s2: str) -> int:
+  n, m = len(s1), len(s2)
+  
+  prev = [0]*(m+1)
+  curr = [0]*(m+1)
+  
+  for i in range(1, n+1):
+    for j in range(1, m+1):
+      if s1[i-1] == s2[j-1]:
+        # If the chars match, increment LCS stength by 1
+        curr[j] = 1 + prev[j-1]
+      else:
+        # If the chars do not match, take the max of LCS by excluding one chars from s1 or s2
+        curr[j] = max(curr[j-1], prev[j])
+    prev = curr
+  return prev[m]
         
 s1 = "acd"
 s2 = "ced"
 print(lcsMemo(s1, s2))
+print(lcsTab(s1, s2))
+print(lcsSO(s1, s2))
