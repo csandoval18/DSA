@@ -62,8 +62,9 @@ def knapsackTabulation(weights: List[int], values: List[int], capacity: int)  ->
   n = len(values)
   dp = [[0 for _ in range(capacity+1)] for _ in range(n)]
   
-  for i in range(weights[0], capacity+1):
-    dp[0][i] = values[0]
+  for j in range(weights[0], capacity+1):
+    dp[0][j] = values[0]
+  print(dp)
     
   # Iterate through the items and capacities both changing parameters
   for i in range(1, n):
@@ -79,6 +80,10 @@ def knapsackTabulation(weights: List[int], values: List[int], capacity: int)  ->
       dp[i][cap] = max(notTake, take)
   
   # The result is stored in the bottom-right cell of the dp array
+  print()
+  for i in range(len(dp)):
+    print(dp[i])
+  print()
   return dp[n-1][capacity]
 
 # def knapsackTabulation(weights: List[int], values: List[int], capacity: int)  -> int:

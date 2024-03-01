@@ -61,11 +61,11 @@ def coinChangeTab(coins: List[int], amount: int) -> int:
   n = len(coins)
   dp = [[0 for _ in range(amount+1)] for _ in range(len(coins))]
   
-  for target in range(amount+1):
-    if target % coins[0] == 0:
-      dp[0][target] = target // coins[0]
-    else:
-      dp[0][target] = float('inf')
+  # for target in range(amount+1):
+  #   if target % coins[0] == 0:
+  #     dp[0][target] = target // coins[0]
+  #   else:
+  #     dp[0][target] = float('inf')
   
   for i in range(1, len(coins)):
     for target in range(amount+1):
@@ -87,11 +87,11 @@ def coinChangeTab(coins: List[int], amount: int) -> int:
 def coinChangeSO(coins: List[int], amount: int) -> int:
   prevRow = [0] * (amount+1)
   
-  for target in range(amount+1):
-    if target % coins[0] == 0:
-      prevRow[target] = target // coins[0]
-    else:
-      prevRow[target] = float('inf')
+  # for target in range(amount+1):
+  #   if target % coins[0] == 0:
+  #     prevRow[target] = target // coins[0]
+  #   else:
+  #     prevRow[target] = float('inf')
   
   for i in range(1, len(coins)):
     currRow = [0] * (amount+1)

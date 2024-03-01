@@ -24,6 +24,7 @@ def shortestSupersequence(s1: str, s2: str):
   index = size-1
   res = ""
   
+  # Traverse dp matrix
   while i > 0 and j > 0:
     if s1[i-1] == s2[j-1]:
       res += s1[i-1]
