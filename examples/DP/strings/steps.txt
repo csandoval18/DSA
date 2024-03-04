@@ -4,3 +4,10 @@ How to write recurrence?
 2. Explore all possibilities
 3. Return summation of all possibilities
 4. Base case
+
+Tabulation
+1. Write down the base cases
+2. Wring down the changing parameters
+  i = 
+  j = 
+3. Copy paste the recurrence
