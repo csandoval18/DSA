@@ -2,25 +2,25 @@ from typing import List
 
 # Memoization
 def lcsMemo(s1: str, s2: str) -> int:
-  def f(i1: int, i2: int, dp: List[List[str]]) -> int:
+  def f(i: int, j: int, dp: List[List[str]]) -> int:
     # Base case: If either of the strings ahs reached the end (0)
-    if i1 < 0 or i2 < 0:
+    if i < 0 or j < 0:
       return 0
     
     # If the result for this state is already calculated, return it
-    if dp[i1][i2] != -1:
-      return dp[i1][i2]
+    if dp[i][j] != -1:
+      return dp[i][j]
     
     # If the chars at the curr idxs match, include them in the lcs
-    if s1[i1] == s2[i2]:
-      dp[i1][i2] = 1 + f(i1-1, i2-1, dp)
+    if s1[i] == s2[j]:
+      dp[i][j] = 1 + f(i-1, j-1, dp)
     else:
       # If the chars do not match, consider both possibilities:
       # 1. Exclude chars from s1 and continue matching in s2
       # 2. Exclude chars from s2 and continue matching in s1
-      dp[i1][i2] = max(f(i1, i2-1, dp), f(i1-1, i2, dp))
+      dp[i][j] = max(f(i, j-1, dp), f(i-1, j, dp))
     
-    return dp[i1][i2]
+    return dp[i][j]
   
   n = len(s1)
   m = len(s2)
