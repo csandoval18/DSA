@@ -21,13 +21,35 @@
 
 # Base case => when its over
 # 2 scenarios: word1 gets exhausted, word2 gets exhausted
+# ------------------------------------------
 
 # if word1 gets exhausted we return j+1 since we will need j+1 insert operations to input the remaining chars in word2
 # Ex: f(-1, 1) => j+1 = 2 inserts 
+
+# i
+# -1 0 1 2 3 4 
+#    h o r s e
+# r o s
+# 0 1 2
+#   j
+# insert('o'), insert('r') 
+
 # if i < 0: return j+1
+
+# ------------------------------------------
 
 # if word2 gets exahusted we return i+1 since we will need to delete the remaining chars in word1
 # Ex: f(2, -1) => i+1 = 3 deletes
+
+#     i
+# 0 1 2 3 4
+# h o r s e
+
+#    r o s 
+# -1 0 1 2
+#  j
+# del('r'), del('o'), del('h')
+
 # if j < 0: return i+1
 
 # Recursion TC => Exponential
@@ -105,6 +127,8 @@ def minDistanceTab(word1: str, word2: str) -> int:
       else:
         dp[i][j] = 1 + min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1])
   
+  for i in range(n):
+    print(dp[i])
   return dp[n][m]
 
 def minDistanceSO(word1: str, word2: str) -> int:

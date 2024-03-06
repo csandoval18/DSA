@@ -1,9 +1,35 @@
 from typing import List
 
+def lcsRecV1(s1: str, s2: str) -> int:
+  def f(i: int, j:int) -> int:
+    if i == 0 or j == 0:
+      return 0
+      
+    if s1[i-1] == s2[j-1]:
+      return 1 + f(i-1, j-1)
+    else:
+      return max(f(i-1, j), f(i, j-1))
+
+  n, m = len(s1), len(s2)
+  return f(n, m)
+
+def lcsRecV2(s1: str, s2: str) -> int:
+  def f(i: int, j: int) -> int:
+    if i < 0 or j < 0:
+      return 0
+    
+    if s1[i] == s2[j]:
+      return 1 + f(i-1, j-1)
+    else:
+      return max(f(i-1, j), f(i, j-1))
+  
+  n, m = len(s1), len(s2)
+  return f(n-1, m-1)
+      
 # Memoization
 def lcsMemo(s1: str, s2: str) -> int:
   def f(i: int, j: int, dp: List[List[str]]) -> int:
-    # Base case: If either of the strings ahs reached the end (0)
+    # Base case: If either of the strings has reached the end (0)
     if i < 0 or j < 0:
       return 0
     
@@ -12,7 +38,7 @@ def lcsMemo(s1: str, s2: str) -> int:
       return dp[i][j]
     
     # If the chars at the curr idxs match, include them in the lcs
-    if s1[i] == s2[j]:
+    if s1[i-1] == s2[j-1]:
       dp[i][j] = 1 + f(i-1, j-1, dp)
     else:
       # If the chars do not match, consider both possibilities:
@@ -69,6 +95,8 @@ def lcsSO(s1: str, s2: str) -> int:
         
 s1 = "acd"
 s2 = "ced"
+print(lcsRecV1(s1, s2))
+print(lcsRecV2(s1, s2))
 print(lcsMemo(s1, s2))
 print(lcsTab(s1, s2))
 print(lcsSO(s1, s2))
