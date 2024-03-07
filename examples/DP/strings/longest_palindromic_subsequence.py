@@ -38,6 +38,7 @@ def longestPalindromeSubseq(self, s: str) -> int:
   t = s[::-1]
   n = len(s)
   return lcs(n, n)
+  
       
     
       
