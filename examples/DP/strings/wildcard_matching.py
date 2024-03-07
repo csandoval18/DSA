@@ -36,7 +36,7 @@ def isMatchMemo(s: str, p: str) -> bool:
       
 def isMatchTab(s: str, p: str) -> bool:
   n, m = len(s), len(p)
-  dp = [[False]*(m) for _ in range(n+1)]
+  dp = [[False]*(m+1) for _ in range(n+1)]
   
   # Initialize dp[0][0] to True since two empty strings match
   dp[0][0] = True
@@ -45,6 +45,13 @@ def isMatchTab(s: str, p: str) -> bool:
   for j in range(1, m):
     dp[0][j] = False
   
+  for i in range(1, n+1):
+    for j in range(1, i+1):
+      if s[j-1] != '*':
+        dp[i][0] = False
+      else:
+        dp[i][0] = True
+    
   # Initailize first col of dp based on weather s consists of all '*' chars
   for i in range(1, n+1):
     for j in range(1, m):
@@ -59,7 +66,7 @@ def isMatchTab(s: str, p: str) -> bool:
         dp[i][j] = False
   
   # The final val in dp[n][m-1] is True if the two string match, False otherwise
-  return dp[n][m-1]
+  return dp[n][m]
 
 def isMatchSO(s: str, p: str) -> bool: 
   def isAllStars(s, i):
