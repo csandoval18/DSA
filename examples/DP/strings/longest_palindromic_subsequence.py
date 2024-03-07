@@ -26,6 +26,23 @@ def longestPalindromeSubseqVer1Rec(s: str) -> int:
 
 # Find lcs of s and s[::-1]
 def longestPalindromeSubseq(self, s: str) -> int:
+  def lcs(i, j):
+    if i == 0 and j == 0:
+      return 0
+    
+    if s[i] == t[j]:
+      return lcs(i -1, j-1)
+      
+    return max(lcs(i-1, j), lcs(i, j-1))
+  
+  t = s[::-1]
+  n = len(s)
+  return lcs(n, n)
+      
+    
+      
+  
+  
   
 
 s = "cbbd"
