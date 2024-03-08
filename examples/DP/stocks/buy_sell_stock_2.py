@@ -65,6 +65,7 @@ def maxProfitTab(prices: List[int]) -> int:
     
   return dp[0][0]
 
+
 def maxProfitSO(prices: List[int]) -> int:
   n = len(prices)
   nxt = [0,0]
@@ -80,10 +81,10 @@ def maxProfitSO(prices: List[int]) -> int:
       
       if buy:
         # We can buy the stock
-        profit = max(0 + nxt[False] -prices[i] + nxt[True])
+        profit = max(0 + nxt[True], prices[i] + nxt[False])
       else:
         # We can sell the stock
-        profit = max(0 + nxt[True], -prices[i] + nxt[False])
+        profit = max(0 + nxt[False], -prices[i] + nxt[True])
       curr[buy] = profit # Store the result in the curr list
     # Update nxt list
     nxt = curr
