@@ -80,10 +80,10 @@ def maxProfitSO(prices: List[int]) -> int:
       profit = 0
       
       if buy:
-        # We can buy the stock
+        # We can sell the stock
         profit = max(0 + nxt[True], prices[i] + nxt[False])
       else:
-        # We can sell the stock
+        # We can buy the stock
         profit = max(0 + nxt[False], -prices[i] + nxt[True])
       curr[buy] = profit # Store the result in the curr list
     # Update nxt list
