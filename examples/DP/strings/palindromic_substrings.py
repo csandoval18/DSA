@@ -40,3 +40,10 @@ def countSubstrings(s: str) -> int:
   # General case: substring of length 3 to n
   for length in range(3, n+1):
     for i in range(n-length+1):
+      j = i + length - 1 # End index of the substring
+      if s[i] == s[j] and dp[i+1][j-1]:
+        dp[i][j] = True
+        res += 1
+        
+  return res
+        
