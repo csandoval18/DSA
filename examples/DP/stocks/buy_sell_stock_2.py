@@ -58,10 +58,13 @@ def maxProfitTab(prices: List[int]) -> int:
       
       if buy:
         # We can sell the stock
-        profit = max(0 + dp[i+1][1], prices[i] + dp[i+1][0])
+        # Remember we caan either keep or not keep the stock if we already own it
+        profit = max(0 + dp[i+1][1] # no transaction
+        , prices[i] + dp[i+1][0]) # sell the stock
       else:
         # We can buy the stock 
-        profit = max(0 + dp[i+1][0], -prices[i] + dp[i+1][1])
+        profit = max(0 + dp[i+1][0], # no transaction
+        -prices[i] + dp[i+1][1]) # buy the stock
       dp[i][buy] = profit # Store the res in the dp table
     
   return dp[0][0]
@@ -82,8 +85,8 @@ def maxProfitSO(prices: List[int]) -> int:
       
       if buy:
         # We can sell the stock
-        # profit = max(-prices[i] + f(i+1, 0, dp), # Take
-        # 0 + f(i+1, 1, dp)) # Not take
+        # profit = max(-prices[i] + f(i+1, 0, dp), # not keep (sell)
+        # 0 + f(i+1, 1, dp)) # keep (not sold)
         profit = max(0 + nxt[True], prices[i] + nxt[False])
       else:
         # We can buy the stock
