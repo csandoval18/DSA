@@ -22,6 +22,7 @@ def maxProfitRecusirve(prices: List[int]):
     return maxProfit
   
   return f(0, 0)
+  
 
 def maxProfitMemo(prices: List[int]) -> int:
   def f(i: int, buy: bool, dp) -> int:
@@ -81,6 +82,8 @@ def maxProfitSO(prices: List[int]) -> int:
       
       if buy:
         # We can sell the stock
+        # profit = max(-prices[i] + f(i+1, 0, dp), # Take
+        # 0 + f(i+1, 1, dp)) # Not take
         profit = max(0 + nxt[True], prices[i] + nxt[False])
       else:
         # We can buy the stock
