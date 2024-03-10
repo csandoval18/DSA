@@ -5,8 +5,8 @@ def maxProfit(prices: List[int]) -> int:
   buy = prices[0]
   
   for i in range(1, len(prices)):
-    cost = prices[i] - buy
-    maxP = max(maxP, cost)
+    curr_profit = prices[i] - buy
+    maxP = max(maxP, curr_profit)
     buy = min(buy, prices[i])
   
   return maxP
