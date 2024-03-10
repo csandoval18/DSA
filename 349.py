@@ -1,7 +1,6 @@
 from typing import List
 
 def intersection(nums1: List[int], nums2: List[int]) -> int:
-  
 
 
 nums1 = [1,2,2,1]
