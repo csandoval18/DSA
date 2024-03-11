@@ -13,15 +13,10 @@ nums = [10,9,2,5,3,7,101,18]
 
 def lengthofLIS(nums: List[int]) -> int:
   n = len(nums)
+  # Array to store length of the LIS ending at i
   dp = [1]*n
-  maxIndex = 1
-  _hash = [0]*n
-  last_index = 0
+  # Array to store the predecessor of each element in the LIS
   
-  for i in range(n):
-    _hash = i
-    for prev in range(i):
-      if nums[prev] < nums[i] and 1 + dp[prev] > dp[i]:
-        dp[i] = 1 + dp[prev]
-        _hash[i] = prev
+  
+    
   return max(dp)
