@@ -114,6 +114,7 @@ def lengthOfLISBest(nums: List[int]) -> int:
         # If nums[i] can be picked after nums[prev]
         dp[i] = max(dp[i], dp[prev]+1)
         
+  print(dp)
   return max(dp)
 
 nums = [10,9,2,5,3,7,101,18]
