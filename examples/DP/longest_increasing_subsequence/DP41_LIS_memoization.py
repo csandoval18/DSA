@@ -36,6 +36,11 @@ def lengthOfLISRec2(nums: List[int]) -> int:
   return f(0, -1)
     
   
+# Tabulation
+# 1. Base Case
+# 2. i = n-1 -> 0
+# 3. Copy the recurrence and follow the coordinate shift -1 -> 0
+
 # prev_i ranges from -1 (no prev) to n-1. When memoizing this solution, the problem arises that -1 is not indexable
 # in a dp table since indexing starts from 0. To solve this problem, a coordinate shift is necessary to allow for the prev_i  indexing
 def lengthOfLISMemo(nums: List[int]) -> int:
@@ -61,6 +66,7 @@ def lengthOfLISMemo(nums: List[int]) -> int:
   return f(0, -1, dp)
 
 
+# Tabulation SC: O((n+1)^2)
 def lengthOfLISTab(nums: List[int]) -> int:
   n = len(nums)
   # Initialize a 2D dp array with 0s
@@ -83,6 +89,7 @@ def lengthOfLISTab(nums: List[int]) -> int:
   return dp[0][0]
   
   
+# Space Optimization SC: O(2+n)
 def lengthOfLISSO(nums: List[int]) -> int:
     n = len(nums)
     nxt = [0] * (n + 1)
@@ -102,7 +109,10 @@ def lengthOfLISSO(nums: List[int]) -> int:
     return curr[0]
 
 
-def lengthOfLISSimple(nums: List[int]) -> int:
+# Algorithmic solution | TC: O(n^2) | SC: O(n)
+# This solution baasically finds the LIS for each element in the nums list, and then we can return the max in the dp list that keeps
+# track of the LIS's found. At each index we traverse through (0, i [inclusive]) to find increasing subsequences of the ith element
+def lengthOfLISAlgorithmic(nums: List[int]) -> int:
   n = len(nums)
   # Initialize dp to all 1's to indicate that the min length of an increasing 
   # subsequence (which includes just nums[i]) is 1
@@ -112,7 +122,7 @@ def lengthOfLISSimple(nums: List[int]) -> int:
     for prev in range(i):
       if nums[prev] < nums[i]:
         # If nums[i] can be picked after nums[prev]
-        dp[i] = max(dp[i], dp[prev]+1)
+        dp[i] = max(dp[i], 1 + dp[prev])
         
   print(dp)
   return max(dp)
@@ -124,4 +134,4 @@ print(lengthOfLISRec2(nums))
 print(lengthOfLISMemo(nums))
 print(lengthOfLISTab(nums))
 print(lengthOfLISSO(nums))
-print(lengthOfLISSimple(nums))
+print(lengthOfLISAlgorithmic(nums))
