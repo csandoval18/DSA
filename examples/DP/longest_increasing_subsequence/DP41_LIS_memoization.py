@@ -102,7 +102,7 @@ def lengthOfLISSO(nums: List[int]) -> int:
     return curr[0]
 
 
-def lengthOfLISBest(nums: List[int]) -> int:
+def lengthOfLISSimple(nums: List[int]) -> int:
   n = len(nums)
   # Initialize dp to all 1's to indicate that the min length of an increasing 
   # subsequence (which includes just nums[i]) is 1
@@ -124,3 +124,4 @@ print(lengthOfLISRec2(nums))
 print(lengthOfLISMemo(nums))
 print(lengthOfLISTab(nums))
 print(lengthOfLISSO(nums))
+print(lengthOfLISSimple(nums))
