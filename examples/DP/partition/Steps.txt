@@ -1,0 +1,30 @@
+Partition DP Steps
+
+arr = [10,20,30,40,50]
+A = 10x20
+B = 20x30
+C = 30x40
+D = 40x50
+
+1. Start with entire block/array
+Ex:
+
+           i  j
+          (ABCD)
+(AB)(CD) (A)(BCD) (ABC)(D)
+ ij  ij   ij i j   i j  ij
+ 
+ i = start point
+ j = ending point
+ f(i, j)
+ 
+ 2. Try all partitions
+  Run a loop to try all partitions
+
+3. Return the best possible 2 partitions
+[10,20,30,40,50]
+   A  B  C  D
+   i        j
+   1        n-1
+  
+f(1,4) -> return the main multiplications to multiply matrix 1 -> n
