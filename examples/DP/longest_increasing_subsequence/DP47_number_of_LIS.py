@@ -10,13 +10,13 @@ def findNumberOfLIS(nums: List[int]) -> int:
   
   for i in range(n):
     for prev in range(i):
-      if nums[prev] < nums[i] and 1+dp[prev] >  dp[i]:
-        dp[i] = 1 + dp[prev]
-        count[i] = count[prev]
-      
-      elif nums[prev] < nums[i] and 1+dp[prev] == dp[i]:
-        # Increase the count
-        count[i] += count[prev]
+      if nums[prev] < nums[i]:
+        if 1 + dp[prev] >  dp[i]:
+          dp[i] = 1 + dp[prev]
+          count[i] = count[prev]
+        elif 1 + dp[prev] == dp[i]:
+          # Increase the count
+          count[i] += count[prev]
     mLength = max(mLength, dp[i])
     
   LIS_cnt = 0
@@ -26,7 +26,7 @@ def findNumberOfLIS(nums: List[int]) -> int:
       
   return LIS_cnt
 
-# nums = [1,3,5,4,7]
-nums = [1, 5, 4, 3, 2, 6, 7, 2]
+nums = [1,3,5,4,7]
+# nums = [1, 5, 4, 3, 2, 6, 7, 2]
 
 print(findNumberOfLIS(nums))
