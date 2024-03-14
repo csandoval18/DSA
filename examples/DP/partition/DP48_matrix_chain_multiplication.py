@@ -60,3 +60,4 @@ def matrix_chain_multiplication(arr: List[int]):
   dp = [[-1 for _ in range(n)] for _ in range(n)]
   return f(1, n-1, dp)
   
+# Tabulation
