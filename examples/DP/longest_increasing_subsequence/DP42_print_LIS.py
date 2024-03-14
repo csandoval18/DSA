@@ -80,12 +80,12 @@ def printLIS(nums: List[int]) -> int:
   lis_index = dp.idndex(lis_length)
   
   # Reconstruct the LIS
-  lis = []
+  LIS = []
   while lis_index != -1:
-    lis.append(nums[lis_index])
+    LIS.append(nums[lis_index])
     lis_index  = prev[lis_index]
   
   # Since we reconstructed it backwards, reverse it
-  lis.reverse()
-  return lis
+  LIS.reverse()
+  return LIS
 nums = [10,9,2,5,3,7,101,18]

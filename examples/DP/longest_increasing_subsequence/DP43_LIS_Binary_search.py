@@ -46,3 +46,11 @@ print(position)  # Output: 5
 value = 0
 position = bisect.bisect_left(a, value)
 print(position)  # Output: 0
+
+
+def LIS_BS(nums: List[int]) -> int:
+  n = len(nums)
+  tmp = [nums[0]]
+  length = 1
+  
+  for 
