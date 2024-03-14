@@ -1,5 +1,8 @@
 from typing import List
 
+# To keep track of adjacencies we can use either a 2d array or a list
+# The list should be the method to use since it saves space complexity
+
 adjacencies = [
   [1,2]
   [1,3]
