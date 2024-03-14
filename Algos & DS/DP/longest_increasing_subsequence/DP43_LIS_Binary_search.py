@@ -18,6 +18,7 @@ def LISBinarySearch(nums: List[int]) -> int:
       length += 1
     else:
       # Use binary search to find the position to replace the element in tmp
+      # Don't need the last 2 parameters they are just the left and right pointer of lower bound binary search which is t <= res
       idx = bisect_left(tmp, nums[i], 0, len(tmp))
       tmp[idx] = nums[i]
   return length
@@ -53,4 +54,12 @@ def LIS_BS(nums: List[int]) -> int:
   tmp = [nums[0]]
   length = 1
   
-  for 
+  for i in range(1, n):
+    if tmp[-1] < nums[i]:
+      tmp.append(nums[i])
+      length += 1
+    else:
+      replace_index = bisect_left(tmp, nums[i]) 
+      
+      
+      
