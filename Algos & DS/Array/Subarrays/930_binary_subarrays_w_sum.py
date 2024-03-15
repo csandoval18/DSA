@@ -19,7 +19,17 @@ def numSubarraysWithSumOP(nums: List[int], goal: int) -> int:
   l, r = 0, 0
   suff = 0
   
-  while l:
+  while l < n:
+    suff += nums[r]
+    
+    if suff == goal:
+      cnt += 1
+    elif suff > goal:
+      l +=  1
+    
+    
+    r += 1
+    
 
 nums = [1,0,1,0,1]
 goal = 2
