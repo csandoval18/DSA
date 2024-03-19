@@ -49,7 +49,7 @@ def bfs(v: int, adj: List[List[int]]) -> List[int]:
   return bfs
       
 def bfs(v: int, adj: List[List[int]]) -> List[int]:
-  visited = [0]
+  visited = [False]*v
   queue = deque()
   bfs = []
   
@@ -62,12 +62,54 @@ def bfs(v: int, adj: List[List[int]]) -> List[int]:
     
     for neighbor in adj[node]:
       if not visited[neighbor]:
-        visited[neighbor] = False
+        visited[neighbor] = True
         queue.append(neighbor)
     
   return bfs
+
+def bfs(v: int, adj: List[List[int]]) -> List[int]:
+  visited = [False]*v
+  queue = deque()
+  bfs = []
+  
+  visited[0] = True
+  queue.append(0)
+  
+  while queue:
+    node = queue.popleft()
+    bfs.append(node)
+    
+    for neighbor in adj[node]:
+      if not visited[neighbor]:
+        visited[neighbor] = True
+        queue.append(neighbor)
+    
+  return bfs
+
+def bfs(v: int, adj: List[List[int]]) -> List[int]:
+  visited = [False]*v
+  queue = deque()
+  bfs = []
+  
+  visited[0] = True
+  queue.append(0)
+  
+  while queue:
+    node = queue.popleft()
+    bfs.append(node)
+    
+    for neighbors in adj[node]:
+      if not visited[neighbors]:
+        visited[neighbors] = True
+        queue.append(neighbors)
+  
+  return bfs
+        
 
 V = 5
 E = 4
 adj = [[1,2,3],[],[4],[],[]]
 print(BFS(V, adj))
+
+
+
