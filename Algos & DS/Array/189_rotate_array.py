@@ -27,3 +27,4 @@ def rotate2(nums: List[int], k: int) -> List[int]:
 # rotating by any multiple of 5 has no effect on the final array. Therefore, we take the modulus (%) of k 
 # with n to handle cases where k is greater than n, effectively reducing it to the equivalent number of 
 # steps needed within the range of the array's length.
+
