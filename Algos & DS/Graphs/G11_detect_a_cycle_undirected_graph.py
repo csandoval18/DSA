@@ -20,3 +20,11 @@ def detect(src: int, adj: List[int], visited: List[bool]) -> bool:
         
         
 def isCycle(V: int, adj: List[List[int]]) -> bool:
+  visited = [False] * V
+  for node in range(V):
+    if not visited[node]:
+      if detect(node, adj, visited):
+        return True
+  
+  return False
+    
