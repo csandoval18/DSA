@@ -13,10 +13,10 @@ def detect(src: int, adj: List[int], visited: List[bool]) -> bool:
       if not visited[adjNode]: # If not visited add to queue and mark as visited
         visited[adjNode] = True
         queue.push(adjNode, node)
-      else: # If the adjacent node has been visited, a cycle is detected
-        
-        
+      elif parent != adjNode: # If the adjacent node has been visited, a cycle is detected
+        return True
       
-
-
+  return False
+        
+        
 def isCycle(V: int, adj: List[List[int]]) -> bool:
