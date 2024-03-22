@@ -2,24 +2,6 @@ from collections import deque
 from typing import List
 
 # Works for directed and undirected graphs
-def BFS(V: int, adj: List[List[int]]) -> List[int]:
-  visited = [False]*V
-  queue = deque()
-  bfs = []
-  
-  visited[0] = 1
-  queue.append(0)
-  
-  while queue:
-    node = queue.popleft()
-    bfs.append(node)
-    
-    for neightbor in adj[node]:
-      if not visited[neightbor]:
-        visited[neightbor] = True
-        queue.append(neightbor)
-  return bfs
-  
 def bfs(v: int, adj: List[List[int]]) -> List[int]:
   visited = [False]*v 
   queue = deque()
@@ -48,68 +30,34 @@ def bfs(v: int, adj: List[List[int]]) -> List[int]:
     
   return bfs
       
-def bfs(v: int, adj: List[List[int]]) -> List[int]:
-  visited = [False]*v
-  queue = deque()
-  bfs = []
-  
-  visited[0] = True
-  queue.append(0)
-  
-  while queue:
-    node = queue.popleftf()
-    bfs.append(node)
-    
-    for neighbor in adj[node]:
-      if not visited[neighbor]:
-        visited[neighbor] = True
-        queue.append(neighbor)
-    
-  return bfs
 
-def bfs(v: int, adj: List[List[int]]) -> List[int]:
-  visited = [False]*v
+
+
+
+
+
+
+def bfs1(v: int, adj: List[List[int]]) -> List[int]:
   queue = deque()
-  bfs = []
+  visited = [False]*v
+  res = []
   
-  visited[0] = True
   queue.append(0)
+  visited[0] = True
   
   while queue:
     node = queue.popleft()
-    bfs.append(node)
+    res.append(node)
     
     for neighbor in adj[node]:
-      if not visited[neighbor]:
+      if not visited[node]:
         visited[neighbor] = True
         queue.append(neighbor)
+  
+  return res
     
-  return bfs
-
-def bfs(v: int, adj: List[List[int]]) -> List[int]:
-  visited = [False]*v
-  queue = deque()
-  bfs = []
-  
-  visited[0] = True
-  queue.append(0)
-  
-  while queue:
-    node = queue.popleft()
-    bfs.append(node)
-    
-    for neighbors in adj[node]:
-      if not visited[neighbors]:
-        visited[neighbors] = True
-        queue.append(neighbors)
-  
-  return bfs
-        
 
 V = 5
 E = 4
 adj = [[1,2,3],[],[4],[],[]]
-print(BFS(V, adj))
-
-
-
+print(bfs(V, adj))
