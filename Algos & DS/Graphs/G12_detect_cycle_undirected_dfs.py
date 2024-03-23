@@ -12,9 +12,8 @@ def isCycle(V: int, adj: List[List[int]]) -> List[int]:
       if not visited[adjNode]:
         if dfs(adjNode, node):
           return True
-      elif parent != adjNode:
+      elif adjNode != parent:
         return True
-    
     return False
     
   for node in range(V):
@@ -22,4 +21,5 @@ def isCycle(V: int, adj: List[List[int]]) -> List[int]:
       if dfs(node, -1):
         return True
   return False
-  
+
+ 
