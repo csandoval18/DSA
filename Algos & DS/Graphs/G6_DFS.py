@@ -18,8 +18,8 @@ def dfsOfGraph(v: int, adj: List[List[int]]) -> List[int]:
   dfs(start)
   return res
 
-def dfsOfGraph(v: int, adj: List[List[int]]) -> List[int]:
-  visited = [False]*v
+def dfsOfGraph(V: int, adj: List[List[int]]) -> List[int]:
+  visited = [False]*V
   start = 0 
   res = []
   
@@ -33,24 +33,24 @@ def dfsOfGraph(v: int, adj: List[List[int]]) -> List[int]:
   
   dfs(start)
   return res
-  
-def dfsOfGraph(v: int, adj: List[List[int]]) -> List[int]:
-  visited = [False]*v
+
+def dfsOfGraph(V: int, adj: List[List[int]]) -> List[int]:
+  visited = [False]*V
   start = 0
   res = []
-    
+  
   def dfs(node: int) -> List[int]:
     visited[node] = True
     res.append(node)
     
-    for neighbor in adj[node]:
-      if not visited[neighbor]:
-        dfs(neighbor)
+    for adjNode in adj[node]:
+      if not visited[adjNode]:
+        dfs(adjNode)
+  
+  dfs(start)
+  return res
     
-    dfs(start)
-    return res
-    
-    
+
 # TC: O(N) + O(2xE)
 v = 5        
 adj = [[2,3,1] , [0], [0,4], [0], [2]]
