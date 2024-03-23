@@ -1,5 +1,7 @@
 from typing import List
 
+# TC: O(N+2E)
+# SC: O(N)
 def isCycle(V: int, adj: List[List[int]]) -> List[int]:
   visited = [False] * V
   
