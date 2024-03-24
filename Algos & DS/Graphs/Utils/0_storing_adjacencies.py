@@ -36,4 +36,8 @@ def adjacencyMatrix(n: int, m: int, adjacencies: List[List[int]]):
   return 0
   
 # Adjacency list
-
+# 0 [1,2]
+# 1 [3]
+# 2 [4]
+# 3 [1,4]
+# 4 [2,3]
