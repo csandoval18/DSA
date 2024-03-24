@@ -27,7 +27,7 @@ def orangesRotting(grid: List[List[int]]) -> List[List[int]]:
     minutes = max(minutes, time)
     
     # The delta matrix is used to explore the top, left, right, & bottom cells adjacent to the current cell
-    delta_matrix = [(1,0), (-1,0), (0,1), (0, -1)]
+    delta_matrix = [(1,0), (-1,0), (0,1), (0,-1)]
     for dx, dy in delta_matrix:
       nx = x + dx
       ny =  y + dy
