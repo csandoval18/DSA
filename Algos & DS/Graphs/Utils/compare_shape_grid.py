@@ -8,6 +8,8 @@ grid = [
   [1,1,0,1,0], # 3
 ]
 
+# Unique shapes = 2
+
 shape1 = [
 #  0  1
   [1, 1], # 0
@@ -45,6 +47,8 @@ shape2 = [
 
 # Notice they give the same output 
 # Basically we need to use (curr_x, curr_y) - (reference_x, reference_y) = Shape comparison coordinates.
+# We can use a set to maintain the unique shapes found in the matrix
 # Keep in mind that we need to have the same starting base location cell of the shape, otherwise the comparsion will not work,
 # Once we have traversed the shape we should mark the visited cells of the island as True so the algorithm does not think
 # a new island body has been found.
+# Follow the same pattern of traversal weather we are using BFS or DFS to find the adjacent cells
