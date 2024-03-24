@@ -7,17 +7,17 @@ def countDistinctIslands(grid: List[List[int]]) -> int:
   distinct_islands = set()
   
   def dfs(curr_x: int, curr_y: int, island_pattern: List[Tuple[int, int]], ref_x: int, ref_y: int):
-    visited[i][j] = True
+    visited[curr_x][curr_y] = True
     island_pattern.append((curr_x-ref_x, curr_y-ref_y))
     
     # delrow = [-1,0,1,0]
     # delcol = [0,-1,0,1]
     delta_matrix = [(1, 0), (-1,0), (0,1), (0,-1)]
     for dx, dy in delta_matrix:
-      nrow = ref_x + dx
-      ncol = ref_y + dy
+      nrow = curr_x + dx
+      ncol = curr_y + dy
       
-      if 0 < nrow <= n and 0 < ncol <= m and not visited[nrow][ncol] and grid[nrow][ncol] == 1:
+      if 0 <= nrow < n and 0 <= ncol < m and not visited[nrow][ncol] and grid[nrow][ncol] == 1:
         dfs(nrow, ncol, island_pattern, ref_x, ref_y)
     
   for i in range(n):
