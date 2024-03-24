@@ -36,10 +36,10 @@ def findDuplicate(nums: List[int]) -> int:
     if tortoise == hare:
       break
     
-    # Phase 2: Finding the "entrance" to the cycle
-    tortoise = nums[0]
-    while tortoise != hare:
-      tortoise = nums[tortoise]
-      hare = nums[hare]
+  # Phase 2: Finding the "entrance" to the cycle
+  tortoise = nums[0]
+  while tortoise != hare:
+    tortoise = nums[tortoise]
+    hare = nums[hare]
     
-    return hare
+  return hare
