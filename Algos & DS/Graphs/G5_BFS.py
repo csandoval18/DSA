@@ -29,12 +29,6 @@ def bfs(v: int, adj: List[List[int]]) -> List[int]:
         queue.append(neightbor)
     
   return bfs
-      
-
-
-
-
-
 
 
 def bfs1(v: int, adj: List[List[int]]) -> List[int]:
