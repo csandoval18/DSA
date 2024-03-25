@@ -17,7 +17,8 @@ def isBipartite(V: int, adj: List[List[int]]) -> bool:
       for adjNode in adj[node]:
         # If the adj node is yet not colored you will give the opposite color of the node
         if color[adjNode] == -1:
-          color[adjNode] = 1 if color[node]  == 0 else 0
+          # color[adjNode] = 1 if color[node]  == 0 else 0
+          color[adjNode] = 1 - color[node]
           queue.append(adjNode)
         # If the adjacent node has the same color, another node colored the node in another path
         elif color[adjNode] == color[node]:

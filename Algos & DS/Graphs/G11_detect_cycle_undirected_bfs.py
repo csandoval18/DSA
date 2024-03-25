@@ -40,7 +40,7 @@ def isCycle(V: int, adj: List[List[int]]) -> bool:
     queue.append((src, -1))
     
     while queue:
-      currNode, parent = queue.popleft
+      currNode, parent = queue.popleft()
       
       for adjNode in adj[currNode]:
         if not visited[adjNode]:
@@ -53,6 +53,6 @@ def isCycle(V: int, adj: List[List[int]]) -> bool:
   
   for node in range(V):
     if not visited[node]:
-      if isCycle(node):
+      if detectCycle(node):
         return True
   return False
