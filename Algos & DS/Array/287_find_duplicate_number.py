@@ -43,3 +43,14 @@ def findDuplicate(nums: List[int]) -> int:
     hare = nums[hare]
     
   return hare
+
+
+# Tortoise reset: 0
+# Tortoise moves: 0 -> 3 -> 4 -> 2 -> 3
+# Hare moves:     4 -> 2 -> 3
+
+# Last step
+# Indices:    0    1    2    3    4
+#             |         |    |    |
+# Values:    [3,   1,   3,   4,   2]
+#                      T/H
