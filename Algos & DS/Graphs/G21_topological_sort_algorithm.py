@@ -11,11 +11,13 @@ def topoSort(V: int, adj:List[List[int]]) -> List[int]:
       if not visited[adjNode]:
         dfs(adjNode)
         
-    stack.append(node)
+    # stack.append(node)
+    stack.insert(0, node)
   
   for node in range(V):
     if not visited[node]:
       dfs(node)
   
-  return stack[::-1]
+  # return stack[::-1]
+  return stack
     
