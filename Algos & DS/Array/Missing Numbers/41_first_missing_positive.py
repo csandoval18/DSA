@@ -34,6 +34,7 @@ def firstMissingPositive(nums: List[int]) -> int:
     
   return n+1
 
+
 def firstMissingPositive2(nums: List[int]) -> int:
   n = len(nums)
   
