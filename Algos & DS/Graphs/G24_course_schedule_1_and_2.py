@@ -57,7 +57,7 @@ def canFinish2(numCourses: int, prerequisites: List[List[int]]) -> bool:
   return []
 
 
-def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+def findOrder(numCourses: int, prerequisites: List[List[int]]) -> List[int]:
   adj = defaultdict(list)
   indegree = [0]*numCourses
   topo = []
