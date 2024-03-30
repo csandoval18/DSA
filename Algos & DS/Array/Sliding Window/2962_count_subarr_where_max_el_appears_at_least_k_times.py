@@ -57,10 +57,31 @@ def countSubarrays(nums: List[int], k: int) -> int:
       if nums[l] == max_num:
         curr_max_cnt -= 1
       l += 1
-    res += l
+      
+    res += l # Not sure why res is incremented by l
     
   return res
+
+
+def countSubarraysS2(nums: List[int], k: int) -> int:
+  n = len(nums)
+  max_num = max(nums)
+  curr_cnt = res = l = 0
+  
+  for r in range(n):
+    # Increment count when the current right element is equal to the max number
+    if nums[r] == max_num:
+      curr_cnt += 1
+  
+    # While the count of the max number is equal to or greater within the window, calculate
+    # all possible subarrays that can be formed
+    while curr_cnt >= k:
+      res += n-r 
       
+      if nums[l] == r:
+        curr_cnt -= 1 # Decrease count as the left-most occurence of max is removed
+      l += 1 # Shrink window from left
+        
       
 nums = [1,3,2,3,3] 
 k = 2
