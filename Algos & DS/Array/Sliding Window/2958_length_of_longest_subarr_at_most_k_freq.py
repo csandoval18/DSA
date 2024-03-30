@@ -3,6 +3,7 @@
 from collections import defaultdict
 from typing import List
 
+# Exceeds time limit
 def maxSubarrayLength(nums: List[int], k: int) -> int:
   n = len(nums)
   left = 0
@@ -23,6 +24,7 @@ def maxSubarrayLength(nums: List[int], k: int) -> int:
     max_length = max(max_length, right - left+1)
   return max_length
   
+# Solution 
 def maxSubarrayLength(nums: List[int], k: int) -> int:
   n = len(nums)
   l = res = 0
