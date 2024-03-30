@@ -78,10 +78,31 @@ def countSubarraysS2(nums: List[int], k: int) -> int:
     while curr_cnt >= k:
       res += n-r 
       
-      if nums[l] == r:
+      if nums[l] == max_num:
         curr_cnt -= 1 # Decrease count as the left-most occurence of max is removed
       l += 1 # Shrink window from left
+  
+  return res
+
+
+def countSubarrayS2(nums, k):
+  n = len(nums)
+  max_num = max(nums)
+  max_cnt = res = l = 0
+    
+  for r in range(n):
+    if nums[r] == max_num:
+      max_cnt += 1
+    
+    while max_cnt >= k:
+      if nums[l] == max_num:
+        max_cnt -= 1
         
+      res += n-r
+      l += 1
+  
+  return res
+      
       
 nums = [1,3,2,3,3] 
 k = 2
