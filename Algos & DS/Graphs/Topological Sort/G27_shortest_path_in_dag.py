@@ -1,42 +1,41 @@
+from collections import defaultdict
 from typing import List
 
-
-def shortestPath(self, n : int, m : int, edges : List[List[int]]) -> List[int]:
-  adj = [[] for _ in range(n)]
-  topo = []
-  
-  # Create graph holding (vertex, weight)
-  for i in range(n):
-    u = edges[i][0]
-    v = edges[i][1]
-    wt = edges[i][2]
+def shortestPath(n : int, m : int, edges : List[List[int]]) -> List[int]:
+  adj = defaultdict(list)
+  for i in range(m):
+    u, v, wt = edges[i]
     adj[u].append((v, wt))
-  
-  # Find the topo sort
+
   visited = [False]*n
   stack = []
   
-  def dfs_topo_sort(node: int):
+  def dfsTopoSort(node):
     visited[node] = True
-  
-    for node in range(n):
-      v = node[0]
-      if not visited[node]:
-        dfs_topo_sort(v)
     
-    topo.append(node)
-  
-  # Step 2: do the distance calculations
-  dist = [float('inf')]*n
+    for adjNode in adj[node]:
+      v = adjNode[0]
+      if not visited[v]:
+        dfsTopoSort(v)
+        
+    stack.append(node)  # Use list as a stack, append/push to end
+
+  for node in range(n):
+    if not visited[node]:
+      dfsTopoSort(node)
+
+  dist = [float('inf')] * n
   dist[0] = 0
-  
+
   while stack:
-    node = stack.pop()
-    
-    for node in adj[node]:
-      v = node[0]
-      wt = node[1]
-      
-      if dist[node] + wt < dist[v]:
-        dist[v] = dist[node] + wt
+    node = stack.pop()  # Pop from end of list to simulate stack
+
+    if dist[node] != float('inf'):
+      for adjNode in adj[node]:
+        v, wt = adjNode
+        if dist[node] + wt < dist[v]:
+          dist[v] = dist[node] + wt
+
+  # Replace 'inf' with -1 to indicate no path
+  dist = [-1 if x == float('inf') else x for x in dist]
   return dist
