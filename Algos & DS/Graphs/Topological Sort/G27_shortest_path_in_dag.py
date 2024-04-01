@@ -1,7 +1,7 @@
 from collections import defaultdict
 from typing import List
 
-def shortestPath(n : int, m : int, edges : List[List[int]]) -> List[int]:
+def shortestPath(n : int, m : int, edges: List[List[int]]) -> List[int]:
   adj = defaultdict(list)
   for i in range(m):
     u, v, wt = edges[i]
@@ -39,3 +39,4 @@ def shortestPath(n : int, m : int, edges : List[List[int]]) -> List[int]:
   # Replace 'inf' with -1 to indicate no path
   dist = [-1 if x == float('inf') else x for x in dist]
   return dist
+  
