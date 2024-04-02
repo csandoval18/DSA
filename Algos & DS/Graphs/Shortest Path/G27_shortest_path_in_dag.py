@@ -39,4 +39,3 @@ def shortestPath(n : int, m : int, edges: List[List[int]]) -> List[int]:
   # Replace 'inf' with -1 to indicate no path
   dist = [-1 if x == float('inf') else x for x in dist]
   return dist
-  
