@@ -85,3 +85,37 @@ word = "ABCCED"
 # board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]]
 # word = "ABCB"
 print(exist(board, word))
+
+
+def existPrac(board: List[List[str]], word: str) -> bool:
+  n, m = len(board), len(board[0])
+  
+  def bt(row: int, col: int, i: int) -> None:
+    if i == len(word):
+      return True
+    
+    if 0 <= row < n and 0 <= col < m and board[row][col] == word[i]:
+      tmp = board[row][col]
+      board[row][col] = '#'
+      
+      if (
+        bt(row+1, col, i+1) or
+        bt(row-1, col, i+1) or
+        bt(row, col+1, i+1) or
+        bt(row, col-1, i+1)
+      ):
+        return True
+      board[row][col] = tmp # backtrack
+      
+    return False
+  
+  for i in range(n):
+    for j in range(m):
+      if bt(i, j, 0):
+        return True
+  return False
+  
+  
+    
+    
+    
