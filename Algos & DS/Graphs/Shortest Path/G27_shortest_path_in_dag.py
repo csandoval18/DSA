@@ -3,8 +3,7 @@ from typing import List
 
 def shortestPath(n : int, m : int, edges: List[List[int]]) -> List[int]:
   adj = defaultdict(list)
-  for i in range(m):
-    u, v, wt = edges[i]
+  for u, v, wt in edges:
     adj[u].append((v, wt))
 
   visited = [False]*n

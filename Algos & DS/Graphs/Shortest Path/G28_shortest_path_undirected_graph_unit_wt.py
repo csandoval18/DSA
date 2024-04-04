@@ -11,9 +11,9 @@ def shortestPath(edges: List[List[int]], n: int, m: int, src: int):
     
   # A dist array of size N initialised with a large number to indicate that initially all the nodes are untraversed.
   dist = [float('inf')]*n
+  dist[src] = 0
   
   # BFS Implementation
-  dist[src] = 0
   queue = deque()
   queue.append(src)
   
@@ -37,7 +37,6 @@ def shortestPathUnitWeight(edges: List[List[int]], n: int, m: int, src: int) :
     adj[v].append(u)
     
   dist = [float('inf')]*n
-  
   dist[src] = 0
   queue = deque([src])
   
