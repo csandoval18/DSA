@@ -1,5 +1,7 @@
-# The Bellman Ford Algorithm unlike the dijkstra algorithm does work in graphs with negative edges.
-# This algorithm only works in directed graphs
+# The Bellman Ford Algorithm 
+
+# This algorithm only works in directed graphs,
+# unlike the dijkstra algorithm, it does work in graphs with negative edges.
 # BF finds negative cycles
 
 # dist[u] + wt < dist[v]
