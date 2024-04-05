@@ -41,7 +41,7 @@ def bellman_ford_geeksforgeeks(V: int, edges: List[List[int]], S: int) -> List[i
       if dist[u] != int(1e8) and dist[u] + wt < dist[v]:
         dist[v] = dist[u] + wt
   
-  for u, v, t in edges:
+  for u, v, wt in edges:
     if dist[u] != int(1e8) and dist[u] + wt < dist[v]:
       return [-1]
   
