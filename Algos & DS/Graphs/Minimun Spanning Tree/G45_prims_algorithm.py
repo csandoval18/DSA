@@ -1,7 +1,7 @@
 from ast import List
 import heapq
 
-def spanningTree(V: int, adj: List[List[int]]):
+def spanningTree(V: int, adj: List[List[int]]) -> List[int]:
   visited = [False]*V
   pq = [(0,0)]
   total_sum = 0

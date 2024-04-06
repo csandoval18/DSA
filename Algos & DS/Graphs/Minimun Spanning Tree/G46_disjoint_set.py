@@ -7,7 +7,7 @@ class DisjointSet:
   def __init__(self, n: int) -> None:
     self.rank = [0] * (n+1)
     self.parent = [i for i in range(n+1)]
-    self.size = [1]*(n+1)
+    self.size = [1] * (n+1)
     
   def findUltimateParent(self, node: int) -> int: 
     if node == self.parent[node]:
