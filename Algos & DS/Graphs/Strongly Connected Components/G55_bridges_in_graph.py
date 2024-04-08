@@ -1,6 +1,10 @@
 # tm[] = time of insertion
 # low[] = min lowerst time insertion of all adj nodes apart from parent
 
+# Condition for bridge:
+# if low[it] > time[node]:
+#   node -> it = bridge
+
 # 1192. Critical Connections in a Network
 from ast import List
 
