@@ -1,6 +1,9 @@
 # time[] =  store the time of motion during dfs
 # low[] = min of all adj nodes apart frm parent & visited nodes
 
+# Main difference between this problem and the bridges one is that for this one we are removing the node itself,
+# not the edge like in the bridge problem so we have to take into account the adjacent/parent node of the removed node
+
 from typing import List
 
 def articulationPoints(V: int, adj: List[List[int]]):
@@ -43,3 +46,14 @@ def articulationPoints(V: int, adj: List[List[int]]):
   if len(res) == 0:
     return [-1]
   return res
+
+# The starting node can not be the articulation point that is why we need to check (parent != -1) because if the starting node is removed
+# then we would still have one component
+# Ex: If we remove 0 then there is still one component
+
+#    0
+#    |
+#    1
+#   / \
+#  2   3
+
