@@ -1,5 +1,5 @@
-# time[] =  store the time of motion during dfs
-# low[] = min of all adj nodes apart frm parent & visited nodes
+# time[] =  store the time of dfs traversal starting 1 and incrementing to V vertices
+# low[] = min entry point of dfs serach
 
 # Main difference between this problem and the bridges one is that for this one we are removing the node itself,
 # not the edge like in the bridge problem so we have to take into account the adjacent/parent node of the removed node
