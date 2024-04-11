@@ -1,20 +1,19 @@
 from collections import deque
 
 def deckRevealedIncreasing(deck):
-  # Step 1: Sort the deck to know the target order
-  sorted_deck = sorted(deck, reverse=True)
+  deck.sort()
+  n = len(deck)
+  res = [0]*n
+  queue = deque(range(n)) # Start a queue from range(0, n) symbolizing the indices
+  # [0,1,2,3,4,5]
   
-  # Step 2: Use a deque to simulate the reverse process
-  queue = deque()
-  
-  # Reverse process: place cards from sorted in their correct position.
-  for card in sorted_deck:
-    # If there's already a card in the queue, move the top one to the bottom.
-    if queue:
-      queue.append(queue.pop())
-      
-    # Place the current card in its "final" position (which is the top for our reverse simulation).
-    queue.appendleft(card)
+  for num in deck:
+    # First we need to take the first num, then skip the next index
+    i = queue.popleft() # Get the index
+    res[i] = num # Set value in res to current sorted value
     
-  # The queue now represents the initial order to achieve the desired reveal process.
-  return list(queue)
+    if queue:
+      queue.append(queue.popleft()) # Skip the next index
+  
+  return res
+    
