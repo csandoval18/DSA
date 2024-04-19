@@ -1,7 +1,8 @@
+from collections import deque
 from typing import List
 
 # dfs
-def islandPerimeter(grid: List[List[int]]) -> int:
+def islandPerimeterDFS(grid: List[List[int]]) -> int:
   n, m = len(grid), len(grid[0])
   
   def dfs(x: int, y: int):
@@ -32,7 +33,7 @@ def islandPerimeter(grid: List[List[int]]) -> int:
   
   return 0 # If no land is found
 
-def islandPerimeterDM(grid: List[List[int]]) -> int:
+def islandPerimeterDFS_DM(grid: List[List[int]]) -> int:
   n, m = len(grid), len(grid[0])
   
   def dfs(x: int, y: int):
@@ -62,6 +63,34 @@ def islandPerimeterDM(grid: List[List[int]]) -> int:
   
   return 0
 
+def islandPerimeterBFS(grid: List[List[int]]) -> int:
+  n, m = len(grid)
+  perimeter = 0
+  
+  for i in range(n):
+    for j in range(m):
+      # We can perform bfs once an island is found in the grid
+      if grid[i][j] == 1:
+        # Initialize bfs with the first land cell found
+        queue = deque([i, j])
+        visited = set([(i, j)]) # Set to store visited cells
+        
+        while queue:
+          x, y = queue.popleft()
+          
+          # Check all possible movements using delta
+          delta_matrix = [(1,0), (-1,0), (0,1), (0,-1)]
+          for dx, dy in delta_matrix:
+            nx, ny = dx + x, dy + y
+            # Check if the new position is contributing edge to perimeter
+            if x < 0 or y < 0 or x >= n or y >= m or grid[x][y] == 0:
+              perimeter += 1
+            elif (nx, ny) not in visited:
+              queue.append((nx, ny))
+              visited.add((nx, ny))
+        return perimeter
+    return 0
+            
 grid = [
     [0, 1, 0, 0],
     [1, 1, 1, 0],
