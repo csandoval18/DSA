@@ -17,4 +17,5 @@ def openLock(deadends: List[str], target: str) -> int:
       # Produce next and prev digits for the current position
       for move in (-1, 1):
         next_digit = (digit + move) % 10
+        # Form the new combination by replacing the current 
         
