@@ -2,6 +2,7 @@ from typing import List
 
 def findCircleNum(isConnected: List[List[int]]) -> int:
   
+  
 
 
 isConnected = [
