@@ -1,10 +1,10 @@
 from collections import deque
 from typing import List
 
-# Attempt
+# Attempt using island search in matrix, but it doesn't work. We can thing of the matrix as a adj list
 def findCircleNum(isConnected: List[List[int]]) -> int:
   n = len(isConnected)
-  cnt = 0
+  provinces = 0
   
   def bfs(x: int, y: int):
     isConnected[i][j] = 0
@@ -33,6 +33,17 @@ def findCircleNum(isConnected: List[List[int]]) -> int:
 def findCircleNum(isConnected: List[List[int]]) -> int:
   n = len(isConnected)
   visited = [False]*n
+  provinces = 0
+  
+  def bfs(node: int):
+    queue = deque([start])
+    
+    while queue:
+      node = queue.popleft()
+      
+      for it in range(n):
+        if isConnected[node][it] 
+    
   
   
           
