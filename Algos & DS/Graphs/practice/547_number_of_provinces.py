@@ -42,11 +42,18 @@ def findCircleNum(isConnected: List[List[int]]) -> int:
       node = queue.popleft()
       
       for it in range(n):
-        if isConnected[node][it] 
+        if isConnected[node][it] == 1 and not visited[it]:
+          visited[it] = True
+          queue.append(it)
+  
+  for node in range(n):
+    if not visited[node]:
+      visited[node] = True
+      bfs(node)
+      provinces += 1
+      
+  return provinces
     
-  
-  
-          
 
 isConnected = [
 #  0 1 2 
