@@ -54,5 +54,6 @@ def updateMatrixAttempt(mat: List[List[int]]) -> List[List[int]]:
         if dist[nx][ny] > dist[x][y] + 1:
           dist[nx][ny] = dist[x][y] + 1
           queue.append((nx, ny))
+          
   return dist
   
