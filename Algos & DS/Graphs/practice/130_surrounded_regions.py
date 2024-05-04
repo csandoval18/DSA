@@ -29,7 +29,40 @@ def solve(board: List[List[str]]) -> None:
         
 
 def solveBFS(board: List[List[str]]) -> None: 
-  
+  if not board:
+    return
+
+  n, m = len(board), len(board[0])
+
+  # Define the directions to explore
+  directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+
+  # Start BFS from boundary 'O's and mark connected 'O's as not-flippable
+  def bfs(x, y):
+    queue = deque([(x, y)])
+    while queue:
+      curr_x, curr_y = queue.popleft()
+      if 0 <= curr_x < n and 0 <= curr_y < m and board[curr_x][curr_y] == 'O':
+        board[curr_x][curr_y] = 'E'  # Mark as not-flippable
+        for dx, dy in directions:
+          nx, ny = curr_x + dx, curr_y + dy
+          queue.append((nx, ny))
+
+  # Start BFS from 'O's on the boundary
+  for i in range(n):
+    bfs(i, 0)
+    bfs(i, m - 1)
+  for j in range(m):
+    bfs(0, j)
+    bfs(n - 1, j)
+
+  # Flip all 'O's to 'X' except those marked as not-flippable ('E')
+  for i in range(n):
+    for j in range(m):
+      if board[i][j] == 'O':
+        board[i][j] = 'X'
+      elif board[i][j] == 'E':
+        board[i][j] = 'O'  # Restore the original 'O' 
   
 # Example usage
 board = [["X","X","X","X"],
