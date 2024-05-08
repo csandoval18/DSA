@@ -1,3 +1,4 @@
+from collections import deque
 from typing import List
 
 # Using DFS
@@ -69,6 +70,7 @@ board = [["X","X","X","X"],
          ["X","O","O","X"],
          ["X","X","O","X"],
          ["X","O","X","X"]]
+         
 solve(board)
 for row in board:
   print(row)

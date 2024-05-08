@@ -1,7 +1,7 @@
 from collections import defaultdict, deque
 from typing import List
 
-def findMinHeightTrees(n: int, edges: List[List[int]]) -> List[int]:
+def findMinHeightTreesBFS(n: int, edges: List[List[int]]) -> List[int]:
   if n == 1:
     return [0]
   if n == 2:
@@ -19,7 +19,7 @@ def findMinHeightTrees(n: int, edges: List[List[int]]) -> List[int]:
   # Trimp the leaves until the number of nodes is <= 2
   remaining_nodes = n
   while remaining_nodes > 2:
-    leaves_count = len(leaves)
+    leaves_count = len(queue)
     remaining_nodes -= leaves_count
     
     for _ in range(leaves_count):
@@ -34,6 +34,21 @@ def findMinHeightTrees(n: int, edges: List[List[int]]) -> List[int]:
   
   # The remaining nodes are the roots of the minimum height trees
   return list(queue)
+
+def findMinHeightTreesDFS(n: int, edges: List[List[int]]) -> List[int]:
+  adj = defaultdict(list)
+  
+  for u, v in edges:
+    adj[u].append(v)
+    adj[v].append(u)
+    
+  edge_cnt = {}
+  queue = deque()
+  
+  # Indegree
+  for node in range(n):
+    if len(adj[node]) == 1: 
+      queue.append(src)
   
 # Example usage
 n = 6
