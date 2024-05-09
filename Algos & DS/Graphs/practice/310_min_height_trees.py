@@ -3,6 +3,7 @@ from typing import List
 
 # Remember:
 # Notice that the problem is looking for min height TREE not DAG, so we can not use 
+# topo sort with indegrees we instead need to search for leaf nodes with 1 edge
 
 def findMinHeightTreesBFS(n: int, edges: List[List[int]]) -> List[int]:
   if n == 1:

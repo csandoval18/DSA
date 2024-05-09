@@ -43,6 +43,7 @@ def solveBFS(board: List[List[str]]) -> None:
     queue = deque([(x, y)])
     while queue:
       curr_x, curr_y = queue.popleft()
+      
       if 0 <= curr_x < n and 0 <= curr_y < m and board[curr_x][curr_y] == 'O':
         board[curr_x][curr_y] = 'E'  # Mark as not-flippable
         for dx, dy in directions:
@@ -64,6 +65,50 @@ def solveBFS(board: List[List[str]]) -> None:
         board[i][j] = 'X'
       elif board[i][j] == 'E':
         board[i][j] = 'O'  # Restore the original 'O' 
+
+
+def striverSol(board: List[List[str]]) -> None:
+  n, m = len(board), len(board[0])
+  visited = [[False]*m for _ in range(n)]
+  
+  def dfs(x: int, y: int):
+    visited[i][j] = True
+    
+    for dx, dy in [(0,1), (0,-1), (1,0), (-1,0)]:
+      nx, ny = dx + x, dy + y
+      
+      if 0 <= nx < n and 0 <= ny < m and board[nx][ny] == 'O' and not visited[nx][ny]:
+        dfs(nx, ny)
+        
+  
+  for j in range(m):
+    # First row
+    if not visited[0][j] and board[0][j] == 'O': 
+      dfs(0, j)
+    
+    # Last row
+    if not visited[n-1][j] and board[n-1][j] == "O":
+      dfs(n-1, j)
+    
+  for i in range(n):
+    # First col
+    if not visited[i][0] and board[i][0] == 'O':
+      dfs(i, 0)
+
+    # Last col
+    if not visited[i][m-1]  and board[i][m-1] == 'O':
+      dfs(i, m-1)
+
+  for i in range(n):
+    for j in range(m):
+      if not visited[i][j] and board[i][j] == 'O':
+        board[i][j] = 'X'
+  
+  return board
+    
+      
+      
+  
   
 # Example usage
 board = [["X","X","X","X"],
