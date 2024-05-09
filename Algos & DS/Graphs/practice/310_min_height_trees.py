@@ -1,6 +1,9 @@
 from collections import defaultdict, deque
 from typing import List
 
+# Remember:
+# Notice that the problem is looking for min height TREE not DAG, so we can not use 
+
 def findMinHeightTreesBFS(n: int, edges: List[List[int]]) -> List[int]:
   if n == 1:
     return [0]
@@ -36,6 +39,9 @@ def findMinHeightTreesBFS(n: int, edges: List[List[int]]) -> List[int]:
   return list(queue)
 
 def findMinHeightTreesDFS(n: int, edges: List[List[int]]) -> List[int]:
+  if n == 1:
+    return [0]
+    
   adj = defaultdict(list)
   
   for u, v in edges:
@@ -44,11 +50,31 @@ def findMinHeightTreesDFS(n: int, edges: List[List[int]]) -> List[int]:
     
   edge_cnt = {}
   queue = deque()
+  for src, neighbors in adj.items():
+    if len(neighbors) == 1:
+      edge_cnt[src] = len(neighbors)
+  
+  while queue:
+    if n <= 2:
+      return list(queue)
+      
+    for node in range(len(queue)):
+      node = queue.popleft()
+      
+      for it in adj[node]:
+        edge_cnt[it] -= 1
+        if edge_cnt == 1:
+          queue.append(it)
   
   # Indegree
-  for node in range(n):
-    if len(adj[node]) == 1: 
-      queue.append(src)
+  # for node in range(n):
+  #   if len(adj[node]) == 1: 
+  #     queue.append()
+  #     edge_cnt = len(adj[node])
+
+  
+  
+  
   
 # Example usage
 n = 6
