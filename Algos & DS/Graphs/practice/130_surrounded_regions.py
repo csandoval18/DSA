@@ -5,7 +5,6 @@ from typing import List
 def solve(board: List[List[str]]) -> None:
   n, m = len(board), len(board[0])
   
-  
   def dfs(x, y):
     if x < 0 or x >= n or y < 0 or y >= m or board[x][y] != 'O':
       return
@@ -72,7 +71,7 @@ def striverSol(board: List[List[str]]) -> None:
   visited = [[False]*m for _ in range(n)]
   
   def dfs(x: int, y: int):
-    visited[i][j] = True
+    visited[x][y] = True
     
     for dx, dy in [(0,1), (0,-1), (1,0), (-1,0)]:
       nx, ny = dx + x, dy + y
@@ -103,12 +102,6 @@ def striverSol(board: List[List[str]]) -> None:
     for j in range(m):
       if not visited[i][j] and board[i][j] == 'O':
         board[i][j] = 'X'
-  
-  return board
-    
-      
-      
-  
   
 # Example usage
 board = [["X","X","X","X"],
