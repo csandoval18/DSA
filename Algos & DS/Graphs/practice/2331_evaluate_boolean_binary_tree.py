@@ -7,3 +7,4 @@ class TreeNode:
     self.right = right
 
 def evaluateTree(root: Optional[TreeNode]) -> bool:
+  
