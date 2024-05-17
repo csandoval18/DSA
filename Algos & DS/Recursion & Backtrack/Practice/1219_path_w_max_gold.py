@@ -10,7 +10,6 @@ def getMaximumGold(grid: List[List[int]]) -> int:
     gold = grid[x][y]
     grid[x][y] = 0 # Mark current cell as visited
     
-    # Calc new gold amount including current cell
     curr_gold += gold
     # Explore all four directions nd keep track of max gold found
     max_gold = 0
@@ -25,7 +24,6 @@ def getMaximumGold(grid: List[List[int]]) -> int:
     return max_gold
     
   res = 0
-  
   for i in range(n):
     for j in range(m):
       if grid[i][j] > 0: # Start dfs if the cell has gold
