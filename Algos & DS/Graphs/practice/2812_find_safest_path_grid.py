@@ -1,3 +1,5 @@
+from collections import deque
+from heapq import heappop, heappush
 from typing import List
 
 # 1 = thief
@@ -32,4 +34,18 @@ def maximumSafenessFactor(grid: List[List[int]]) -> int:
     
     # Initialize a min heap to find the shortest path to the end cell
     heap = [(-grid[0][0], 0, 0)] # Use negative values to create a min heap
+    
+    while heap:
+      # Pop the cell with the smallest dist from the heap
+      d, x, y = heappop(heap)
+      # If the end cell is reached, return the maximum safeness factor
+      if x == y == n-1:
+          return -d-1  # Return the maximum safeness factor
+      # Explore adjacent cells and update the heap
+      for nx, ny in [(x+1,y),(x-1,y),(x,y+1),(x,y-1)]:
+        if 0 <= nx < n and 0 <= ny < n and grid[nx][ny] != -1:
+          # Calculate the maximum safeness factor considering the current cell and adjacent cell
+          heappush(heap, (max(-grid[nx][ny], d), nx, ny))
+          grid[nx][ny] = -1 # Mark as visited
+    
     
