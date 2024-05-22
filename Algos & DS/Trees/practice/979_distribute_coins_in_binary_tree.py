@@ -6,5 +6,22 @@ class TreeNode:
     self.left = left
     self.right = right
     
-def distributeCoins(root: Optional[TreeNode]) -> int:
-  
+class Solution:
+  def distributeCoins(self, root: Optional[TreeNode]) -> int:
+    self.moves = 0
+    
+    def postorder(node: TreeNode) -> int:
+      if not node:
+        return 0
+      
+      left_excess = postorder(node.left)
+      right_excess = postorder(node.right)
+      
+      excess = node.val + left_excess + right_excess - 1
+      self.moves += abs(excess)
+      
+      return excess
+    
+    postorder(root)
+    return self.moves
+      
