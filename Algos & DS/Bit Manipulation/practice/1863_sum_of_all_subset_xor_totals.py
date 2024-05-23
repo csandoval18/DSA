@@ -10,7 +10,7 @@ class Solution:
       # Iterate over the remaining elements to create new subsets
       for i in range(idx, n):
         # Include nums[i] in the 
-        bt(i + 1, curr_xor ^ nums[i])
+        bt(idx + 1, curr_xor ^ nums[i])
     
     # Initialize total sum to be 0
     self.total_sum = 0
