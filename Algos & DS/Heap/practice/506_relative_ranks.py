@@ -54,47 +54,47 @@ def find_relative_ranks(score: List[int]):
   
   return result
   
+# Using Hash Maps
 class Solution:
   def findRelativeRanks(self, score: List[int]) -> List[str]:
-      sortedscore = sorted(score, reverse=True)
-      # print(sortedscore)
-      mapping = {}
-      medals = 0
-      for i in range(len(sortedscore)):
-          if medals == 0:
-              mapping[sortedscore[i]] = "Gold Medal"
-              medals += 1
-          elif medals == 1:
-              mapping[sortedscore[i]] = "Silver Medal"
-              medals += 1
-          elif medals == 2:
-              mapping[sortedscore[i]] = "Bronze Medal"
-              medals += 1
-          else:
-              mapping[sortedscore[i]] = str(i+1)
-      # print(mapping)
-      ans = []
-      for s in score:
-          ans.append(mapping[s])
-      return ans
+    sortedscore = sorted(score, reverse=True)
+    # print(sortedscore)
+    mapping = {}
+    medals = 0
+    for i in range(len(sortedscore)):
+      if medals == 0:
+        mapping[sortedscore[i]] = "Gold Medal"
+        medals += 1
+      elif medals == 1:
+        mapping[sortedscore[i]] = "Silver Medal"
+        medals += 1
+      elif medals == 2:
+        mapping[sortedscore[i]] = "Bronze Medal"
+        medals += 1
+      else:
+        mapping[sortedscore[i]] = str(i+1)
+  # print(mapping)
+    ans = []
+    for s in score:
+      ans.append(mapping[s])
+    return ans
 
 
-# Using hm
 def findRelativeRanks(self, score: List[int]) -> List[str]:
-    arr = score.copy()
-    arr.sort(reverse = True)
-    dict = {}
-    l=[]
-    for i in range(len(score)):
-        if arr[i] not in dict:
-            if i == 0:
-                dict[arr[i]]="Gold Medal"
-            elif i == 1:
-                dict[arr[i]]="Silver Medal"
-            elif i == 2:
-                dict[arr[i]]="Bronze Medal"
-            else:
-                dict[arr[i]]=str(i+1)
-    for k in score:
-        l.append(dict[k])
-    return l
+  arr = score.copy()
+  arr.sort(reverse = True)
+  dict = {}
+  l=[]
+  for i in range(len(score)):
+    if arr[i] not in dict:
+        if i == 0:
+            dict[arr[i]]="Gold Medal"
+        elif i == 1:
+            dict[arr[i]]="Silver Medal"
+        elif i == 2:
+            dict[arr[i]]="Bronze Medal"
+        else:
+          dict[arr[i]]=str(i+1)
+  for k in score:
+    l.append(dict[k])
+  return l
