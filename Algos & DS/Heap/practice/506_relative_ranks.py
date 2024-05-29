@@ -98,3 +98,27 @@ def findRelativeRanks(self, score: List[int]) -> List[str]:
   for k in score:
     l.append(dict[k])
   return l
+
+def findRelativeRanksHM(score: List[int]) -> List[str]:
+  arr = score[:]
+  arr.sort(reverse = True)
+  print(arr)
+  hm = {}
+  res = []
+
+  for i in range(len(score)):
+    if arr[i] not in hm:
+      if i == 0:
+        hm[arr[i]] = 'Gold Medal'
+      elif i == 1:
+        hm[arr[i]] = 'Silver Medal'
+      elif i == 2:
+        hm[arr[i]] = 'Bronze Medal'
+      else:
+        hm[arr[i]] = str(i+1)
+  for k in score:
+    res.append(hm[k])
+  return res
+
+score = [5,4,3,2,1]
+print(findRelativeRanksHM(score))
