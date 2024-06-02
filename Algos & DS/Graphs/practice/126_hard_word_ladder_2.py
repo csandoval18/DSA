@@ -1,7 +1,6 @@
-from collections import defaultdict, deque
-from typing import List
+from collections import deque
 
-def findLadders(beginWord: str, endWord: str, wordList: List[str]) -> List[List[str]]:
+def findSequences(beginWord: str, endWord: str, wordList: List[str]) -> List[List[str]]:
   # Convert the wordList into a set for O(1) lookups
   word_set = set(wordList)
   # Initialize the queue with the beginWord in a list
@@ -23,7 +22,7 @@ def findLadders(beginWord: str, endWord: str, wordList: List[str]) -> List[List[
         if word in word_set:
           word_set.remove(word)
       used_on_level = []
-  
+    
     # Get the last word in the current sequence
     word = seq[-1]
     
@@ -47,6 +46,5 @@ def findLadders(beginWord: str, endWord: str, wordList: List[str]) -> List[List[
           used_on_level.append(word)
       # Restore the original word
       word = word[:i] + original_char + word[i+1:]
-      
+
   return ans
-  
