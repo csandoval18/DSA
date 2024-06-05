@@ -28,6 +28,9 @@ def find_relative_ranks(score: List[int]):
       res[i] = str(rank)
     
   return res
+  
+def find_relative_ranks(score: List[int]):
+  heap = [(-score, i) for i, score in enumerate()] 
 
 # Using Hash Maps
 class Solution:
