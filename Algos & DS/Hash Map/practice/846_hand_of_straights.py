@@ -40,14 +40,38 @@ def isNStraightHand(hand: List[int], groupSize: int) -> bool:
   return True
 
 
-hand = [1,2,3,6,2,3,4,7,8] 
-groupSize = 3
-print(isNStraightHand(hand, groupSize))
+# hand = [1,2,3,6,2,3,4,7,8] 
+# groupSize = 3
+# print(isNStraightHand(hand, groupSize))
+
 # Output: true
 # Explanation: Alice's hand can be rearranged as [1,2,3],[2,3,4],[6,7,8]
 
+# hand = [1,2,3,4,5] 
+# groupSize = 4
+# print(isNStraightHand(hand, groupSize))
+
+# Output: false
+# Explanation: Alice's hand can not be rearranged into groups of 4.
+
+
+def isNStraightHand(hand: List[int], groupSize: int) -> bool:
+  if len(hand) % groupSize != 0:
+    return False
+  
+  hm = Counter(hand)
+  sorted_cards = sorted(hm.keys())
+  
+  for card in sorted_cards:
+    while hm[card] > 0:
+      for i in range(groupSize):
+        if hm[card + i] > 0:
+          hm[card + i] -= 1
+        else:
+          return False
+  return True
+  
+  
 hand = [1,2,3,4,5] 
 groupSize = 4
 print(isNStraightHand(hand, groupSize))
-# Output: false
-# Explanation: Alice's hand can not be rearranged into groups of 4.
