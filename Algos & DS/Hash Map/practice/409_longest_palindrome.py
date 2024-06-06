@@ -14,7 +14,7 @@ def longestPalindromeS(s: str) -> int:
   odd_found = False
   
   for count in hm.values():
-    L += (count // 2) * 2
+    L += (count // 2) * 2 # Calculation gives largest even number <= to count
     
     if count % 2 == 1:
       odd_found = True
