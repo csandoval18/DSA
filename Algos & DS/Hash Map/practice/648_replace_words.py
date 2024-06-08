@@ -46,7 +46,7 @@ class Solution1:
 class TrieNode:
   def __init__(self) -> None:
     self.children = {}
-    self.is_end_of_word = False
+    self.wordEnd = False
 
 class Trie:
   def __init__(self) -> None:
@@ -59,7 +59,7 @@ class Trie:
       if c not in node.children:
         node.children[c] = TrieNode()
       node = node.children[c]
-    node.is_end_of_word = True
+    node.wordEnd = True
   
   def search_shortest_prefix(self, word: str):
     node = self.root
@@ -72,7 +72,7 @@ class Trie:
       node = node.children[c]
       prefix += c
       
-      if node.is_end_of_word:
+      if node.wordEnd:
         return prefix
         
     return word
@@ -88,7 +88,6 @@ def replaceWords(dictionary: List[str], sentence: str):
   # Replace each word with the shortest root
   res = []
   for word in words:
-    trie.search_shortest_prefix(word)
     res.append(trie.search_shortest_prefix(word))
   
   # Join the words abck into a setence string
