@@ -2,6 +2,7 @@ from typing import List
 
 
 def checkSubarraySum(nums: List[int], k: int) -> bool:
+  #                     sum
   prefix_sum_remainder = {0: -1}
   curr_sum = 0
   
