@@ -1,7 +1,7 @@
 from collections import defaultdict, deque
 from typing import List
 
-def topoSort(self, graph: List[List[int]]) -> List[int]:
+def topoSort(graph: List[List[int]]) -> List[int]:
   V = len(graph)
   indegree = [0]*V
   topo = []
@@ -47,23 +47,19 @@ def eventualSafeNodes(graph: List[List[int]]) -> List[int]:
     topo.append(node)
     
     for it in reversed_graph[node]:
-      indegree -= 1
+      indegree[it] -= 1
       if indegree[it] == 0:
         q.append(it)
   
-  return topo.sort()
-    
-    
+  return sorted(topo)
     
   
-    
-s = Solution()
 graph = [[1,2],[2,3],[5],[0],[5],[],[]]
 # Output: [2,4,5,6]
 # Explanation: The given graph is shown above.
 # Nodes 5 and 6 are terminal nodes as there are no outgoing edges from either of them.
 # Every path starting at nodes 2, 4, 5, and 6 all lead to either node 5 or 6.
-print(s.eventualSafeNodes(graph))
+print(eventualSafeNodes(graph))
 
 
 
