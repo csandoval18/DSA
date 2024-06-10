@@ -16,56 +16,27 @@ class Solution:
     adj = [[] for _ in range(n)]
 
     for u, v, w in flights:
-      adj[u].append((v, w))
+      adj = [[] for _ in range(n)]
 
-    dist = [float('inf')]*n # changed
-    dist[src] = 0
-    pq = [(0, src, k+1)]
+      for u, v, w in flights:
+        adj[u].append((v, w))
 
-    while pq:
-      cost, u, stops = heapq.heappop(pq)
-      if u == dst:
-        return cost
-          
-      if stops == 0:
-        continue
-      for v, w in adj[u]:
-        if cost + w < dist[v]:
-          dist[v] = cost + w
-          heapq.heappush(pq, (dist[v], v, stops-1))
-
-    return -1
-
-import heapq
-
-class Solution1:
-  def findCheapestPrice(self, n, flights, src, dst, k):
-    print("hi")
-    graph = [[] for _ in range(n)]
-
-    for flight in flights:
-      u, v, w = flight
-      graph[u].append((v, w))
-
-    return self.dijkstra(graph, src, dst, k)
-
-  def dijkstra(self, graph, src, dst, k):
-      INF = float('inf')
-      dist = [[INF] * (k + 2) for _ in range(len(graph))]
-      minHeap = [(0, src, k + 1)]
-
+      # (cost, node, stops_remaining)
+      pq = [(0, src, k + 1)]
+      dist = [[float('inf')] * (k + 2) for _ in range(n)]
       dist[src][k + 1] = 0
 
-      while minHeap:
-        d, u, stops = heapq.heappop(minHeap)
+      while pq:
+        cost, u, stops = heapq.heappop(pq)
+
         if u == dst:
-          return d
-        if stops == 0:
-            continue
-        for v, w in graph[u]:
-          if d + w < dist[v][stops - 1]:
-            dist[v][stops - 1] = d + w
-            heapq.heappush(minHeap, (dist[v][stops - 1], v, stops - 1))
+          return cost
+        
+        if stops > 0:
+          for v, w in adj[u]:
+            if cost + w < dist[v][stops - 1]:  # Check if this new cost is better with the remaining stops
+              dist[v][stops - 1] = cost + w
+              heapq.heappush(pq, (cost + w, v, stops - 1))
 
       return -1
 
