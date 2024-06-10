@@ -30,15 +30,6 @@ class Solution:
 
     return dist[n - 1][m - 1]
     
-    
-class Solution1:
-  def minimumEffortPath(self, heights: List[List[int]]) -> int:
-    n, m = len(heights), len(heights[0])
-    dist = 
-    
-    
-
-  
 s = Solution()
 heights = [[1,2,2],[3,8,2],[5,3,5]]
 print(s.minimumEffortPath(heights))
