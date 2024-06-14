@@ -50,35 +50,35 @@ class Solution:
     MOD = 10**9 + 7
     
     # Create adjacency list
-    graph = defaultdict(list)
+    adj = defaultdict(list)
     for u, v, t in roads:
-      graph[u].append((v, t))
-      graph[v].append((u, t))  # Assuming undirected roads, add both directions
+      adj[u].append((v, t))
+      adj[v].append((u, t))  # Assuming undirected roads, add both directions
     
     # Dijkstra's algorithm to find the shortest paths
     pq = [(0, 0)]  # (distance, node)
-    distances = {i: float('inf') for i in range(n)}
-    distances[0] = 0
-    ways = {i: 0 for i in range(n)}
+    dist = [float('inf')]*n
+    dist[0] = 0
+    ways = [0]*n # Declare ways list to keep track of count of ways to reach the ith node
     ways[0] = 1
 
     while pq:
-      current_dist, node = heapq.heappop(pq)
+      utime, u = heapq.heappop(pq)
       
       # Skip if the popped distance is greater than the recorded shortest distance
-      if current_dist > distances[node]:
+      if utime > dist[u]:
         continue
       
       # Explore neighbors
-      for neighbor, travel_time in graph[node]:
-        distance = current_dist + travel_time
-        
+      for v, vtime in adj[u]:
+        # dist = vtime + utime
         # Found a shorter path to the neighbor
-        if distance < distances[neighbor]:
-          distances[neighbor] = distance
-          ways[neighbor] = ways[node]  # Reset ways to the new shortest path
-          heapq.heappush(pq, (distance, neighbor))
+        if utime + vtime  < dist[v]:
+          dist[v] = utime + vtime
+          ways[v] = ways[u]  # Reset ways to the new shortest path
+          heapq.heappush(pq, (vtime, v))
         # Found another shortest path to the neighbor
-        elif distance == distances[neighbor]:
-          ways[neighbor] = (ways[neighbor] + ways[node]) % MOD
+        elif utime + vtime == dist[v]:
+          ways[v] = (ways[v] + ways[u]) % MOD
+          
     return ways[n-1]
