@@ -1,3 +1,84 @@
+from collections import defaultdict
+import heapq
+from typing import List
+
+
+# u = current node
+# v = adjacent node / neighbor
+# utime = current node weight/time
+# vtime = cost of traversing to adjacent v node
+
 class Solution:
   def countPaths(self, n: int, roads: List[List[int]]) -> int:
+    MOD = 10**9 + 7
+    
+    # Create adjacency with bidirectional edges
+    adj = defaultdict(list)
+    for u, v, time in roads:
+      adj[u].append((v, time))
+      adj[v].append((u, time))
+      
+    # Dijkstra's algorithm to find the shortest path
+    dist = [float('inf')]*n
+    dist[0] = 0
+    pq = [(0, 0)]
+    ways = {i: 0 for i in range(n)}
+    ways[0] = 1
+    
+    while pq:
+      u, utime = heapq.heappop(pq)
+      
+      # Skip if the popped distance is greater than the recorded shortest distance in dist array
+      if utime > dist[u]:
+        continue
         
+      for v, vtime in adj[u]:
+        # ntime = utime + vtime
+        if utime + vtime < dist[v]: # Found a shorter parth to the neighbor
+          dist[v] = utime + vtime
+          ways[v] = ways[u]
+          heapq.heappush(pq, (utime + vtime))
+        # Found another shortest path tot he neighbor
+        elif utime == dist[v]:
+          ways[v] = (ways[v] + ways[u]) % MOD
+
+    return ways[n-1]
+    
+    
+class Solution:
+  def countPaths(self, n: int, roads: List[List[int]]) -> int:
+    MOD = 10**9 + 7
+    
+    # Create adjacency list
+    graph = defaultdict(list)
+    for u, v, t in roads:
+      graph[u].append((v, t))
+      graph[v].append((u, t))  # Assuming undirected roads, add both directions
+    
+    # Dijkstra's algorithm to find the shortest paths
+    pq = [(0, 0)]  # (distance, node)
+    distances = {i: float('inf') for i in range(n)}
+    distances[0] = 0
+    ways = {i: 0 for i in range(n)}
+    ways[0] = 1
+
+    while pq:
+      current_dist, node = heapq.heappop(pq)
+      
+      # Skip if the popped distance is greater than the recorded shortest distance
+      if current_dist > distances[node]:
+        continue
+      
+      # Explore neighbors
+      for neighbor, travel_time in graph[node]:
+        distance = current_dist + travel_time
+        
+        # Found a shorter path to the neighbor
+        if distance < distances[neighbor]:
+          distances[neighbor] = distance
+          ways[neighbor] = ways[node]  # Reset ways to the new shortest path
+          heapq.heappush(pq, (distance, neighbor))
+        # Found another shortest path to the neighbor
+        elif distance == distances[neighbor]:
+          ways[neighbor] = (ways[neighbor] + ways[node]) % MOD
+    return ways[n-1]
