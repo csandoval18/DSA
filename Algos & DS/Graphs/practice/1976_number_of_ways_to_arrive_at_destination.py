@@ -69,9 +69,9 @@ class Solution:
         continue
       
       for v, vt in adj[u]:
-        if ut + vt < dist[v]:
+        if ut + vt < dist[v]: # Checking for a shorter path to v
           dist[v] = ut + vt
-          ways[v] = ways[u] 
+          ways[v] = ways[u]  # Update ways[v] to the num of ways to reach u because now the shortest path to v goes through u
           heapq.heappush(pq, (ut + vt, v))
         elif ut + vt == dist[v]:
           ways[v] = (ways[v] + ways[u]) % MOD
