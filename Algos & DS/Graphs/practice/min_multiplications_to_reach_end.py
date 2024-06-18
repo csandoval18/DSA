@@ -3,29 +3,31 @@ from typing import List
  
 class Solution:
   def minimumMultiplications(self, arr : List[int], start : int, end : int) -> int:
-    if start == end:
-      return 0
+    n = len(arr)
+    if n == 1:  # If the array has only one element, no multiplication is needed
+        return 0
     
-    # Initialize BFS queue and visited set
-    q = deque([(start, 0)])
-    visited = set([start])
+    # BFS initialization
+    queue = deque([(0, 0)])  # (current_index, current_steps)
+    visited = set([0])
     
-    while q:
-      curr, steps = q.popleft()
-      
-      for multiplier in arr:
-        new_number = curr * multiplier
-      
-      # If we reach the end number, return the steps count
-      if new_number == end:
-        return steps + 1
-      
-      # If new_number is not visited, add to the queue
-      if new_number not in visited:
-        visited.add(new_number)
-        q.append((new_number, steps + 1))
+    while queue:
+        current_index, current_steps = queue.popleft()
+        
+        # Iterate through all possible multiplications
+        for multiplier in range(1, arr[current_index] + 1):
+            new_index = current_index + (current_index * multiplier)
+            
+            # If new index is the end of the array, return steps
+            if new_index >= n - 1:
+                return current_steps + 1
+            
+            # If new index is within bounds and not visited
+            if 0 <= new_index < n and new_index not in visited:
+                visited.add(new_index)
+                queue.append((new_index, current_steps + 1))
     
-    return -1
+    return -1  # If no path is found
   
 start = 2
 end = 12
