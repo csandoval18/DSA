@@ -1,36 +1,50 @@
 from collections import deque
 from typing import List
+
+# The problem "Minimum Multiplications to reach End" can be understood as 
+# finding the shortest path in a weighted graph where the weights represent multiplication operations
+
+# Given an array arr[] of size N and two integers start and end, find the 
+# minimum number of multiplications needed to reach from start to end using 
+# the elements of the array arr[] as multipliers. You can multiply start by any 
+# element of arr[] any number of times to reach end.
  
 class Solution:
-  def minimumMultiplications(self, arr : List[int], start : int, end : int) -> int:
-    n = len(arr)
-    if n == 1:  # If the array has only one element, no multiplication is needed
-        return 0
+  def minimum_multiplications(arr: List[int], start: int, end):
+    # Create a queue for storing the numbers as a result of multiplication
+    # of the numbers in the array and the start number.
+    q = deque([(start, 0)])
     
-    # BFS initialization
-    queue = deque([(0, 0)])  # (current_index, current_steps)
-    visited = set([0])
+    # Create a dist array to store the no. of multiplications to reach
+    # a particular number from the start number.
+    dist = [int(1e9)] * 100000
+    dist[start] = 0
+    mod = 100000
     
-    while queue:
-        current_index, current_steps = queue.popleft()
+    # Multiply the start no. with each of numbers in the arr
+    # until we get the end no.
+    while q:
+      node, steps = q.popleft()
+      
+      for it in arr:
+        num = (it * node) % mod
         
-        # Iterate through all possible multiplications
-        for multiplier in range(1, arr[current_index] + 1):
-            new_index = current_index + (current_index * multiplier)
-            
-            # If new index is the end of the array, return steps
-            if new_index >= n - 1:
-                return current_steps + 1
-            
-            # If new index is within bounds and not visited
-            if 0 <= new_index < n and new_index not in visited:
-                visited.add(new_index)
-                queue.append((new_index, current_steps + 1))
-    
-    return -1  # If no path is found
+        # If the no. of multiplications are less than before
+        # in order to reach a number, we update the dist array.
+        if steps + 1 < dist[num]:
+          dist[num] = steps + 1
+          
+          # Whenever we reach the end number
+          # return the calculated steps
+          if num == end:
+            return steps + 1
+          q.append((num, steps + 1))
+          
+    # If the end no. is unattainable.
+    return -1
   
-start = 2
-end = 12
-arr = [2, 3]
+start = 3 
+end = 30
+arr = [2, 5, 7]
 s = Solution()
 print(s.minimumMultiplications(arr, start, end))
