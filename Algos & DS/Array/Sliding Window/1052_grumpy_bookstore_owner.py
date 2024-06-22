@@ -41,6 +41,22 @@ class Solution:
       
     # Total satisfied customers is the sum of initially satisfied and the best additional satisfaction
     return initital_satisfaction + max_additioinal_satisfaction
+  
+class Solution1:
+  def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:
+      i, j = 0, minutes-1
+      ms = sum(customers[i] for i in range(len(customers)) if not grumpy[i])
+      inc = sum(customers[i] for i in range(minutes) if grumpy[i])
+      t = max(ms, ms+inc)
+      while j < len(customers)-1:
+          i += 1
+          j += 1
+          if grumpy[j]:
+              inc += customers[j]
+          if grumpy[i-1]:
+              inc -= customers[i-1]
+          t = max(t, ms+inc)
+      return t
 
 
 customers = [1,0,1,2,1,1,7,5] 
