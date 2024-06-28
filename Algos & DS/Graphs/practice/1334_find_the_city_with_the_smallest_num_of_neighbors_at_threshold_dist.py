@@ -10,25 +10,36 @@ class Solution:
       adj[u].append((v, w))
       adj[v].append((u, w))
 
-    dist = [float('inf')]*n
-    dist[0] = 0
-    pq = [(0, 0)]
-    
-    while pq:
-      uw, u = heapq.heappop(pq)
+
+    def dijkstra(source: int) -> List[int]:
+      dist = [float('inf')]*n
+      dist[0] = 0
+      pq = [(0, 0)]
       
-      if uw > dist[u]:
-         continue
-      
-      for v, vw in adj[u]:
-        nw = uw + vw
+      while pq:
+        uw, u = heapq.heappop(pq)
         
-        if nw < dist[u]:
-          dist[v] = nw
-          heapq.heappush((nw, v))
+        if uw > dist[u]:
+          continue
+        
+        for v, vw in adj[u]:
+          nw = uw + vw
           
+          if nw < dist[u]:
+            dist[v] = nw
+            heapq.heappush((nw, v))
+            
+      return dist
+      
+    min_v_cnt = float('inf')
+    res_city = -1
+
+    for i in range(n):
+      dist = dijkstra(i)
+      v_cnt = sum(1 for j in range(n) if dist[j] <= distanceThreshold and i != j)
+      
+      if  v_cnt < min_v_cnt or (v_cnt == min_v_cnt and i > res_city):
+        min_v_cnt = v_cnt
+        res_city = i
     
-    min_cnt = float('inf')
-    
-    
-  
+    return res_city
