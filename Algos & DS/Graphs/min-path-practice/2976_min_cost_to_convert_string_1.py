@@ -7,15 +7,15 @@ class Solution:
   def minimumCost(self, source: str, target: str, original: List[str], changed: List[str], cost: List[int]) -> int:
     def dijkstra(s_char: str, t_char: str) -> int:
       n = len(source) # same as target len
+      all_chars = set(source) | set(target)
       
-      # (original, changed, cost)
       adj = defaultdict(list)
       for u, v, swap_cost in zip(original, changed, cost):
         adj[u].append((v, swap_cost))
       
       pq = [(0, s_char)]
-      min_cost = {char: float('inf') for char in adj}
-      min_cost[source] = 0
+      min_cost = {char: float('inf') for char in all_chars}
+      min_cost[s_char] = 0
       
       while pq:
         ucost, u = heapq.heappop(pq)
@@ -28,6 +28,7 @@ class Solution:
         
         for v, vcost in adj[u]:
           ncost =  ucost + vcost
+          
           if ncost < min_cost[v]:
             min_cost[v] = ncost
             heapq.heappush(pq, (ncost, v))
