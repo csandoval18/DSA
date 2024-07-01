@@ -24,7 +24,7 @@ def criticalConnections(n: int, connections: List[List[int]]) -> List[List[int]]
   def dfs(node: int, parent: int):
     visited[node] = True
     time[node] = low[node] = timer[0]
-    timer += 1
+    timer[0] += 1
     
     for adjNode in adj[node]:
       if adjNode == parent:
