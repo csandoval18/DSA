@@ -35,12 +35,12 @@ print(minDifference(nums))  # Output: 2
 # - Remove two smallest and one largest elements.
 # - Remove one largest and two smallest elements.
 
-Steps to Solve
-Sort the Array: [0, 1, 5, 10, 14].
+# Steps to Solve
+# Sort the Array: [0, 1, 5, 10, 14].
 
-Calculate the Differences for the four scenarios:
+# Calculate the Differences for the four scenarios:
 
-Remove the three largest elements: Difference between 0 and 1 (remaining elements: [0, 1]).
-Remove the three smallest elements: Difference between 10 and 14 (remaining elements: [10, 14]).
-Remove two largest and one smallest elements: Difference between 1 and 10 (remaining elements: [1, 5, 10]).
-Remove two smallest and one largest element: Difference between 5 and 14 (remaining elements: [5, 10, 14]).
+# Remove the three largest elements: Difference between 0 and 1 (remaining elements: [0, 1]).
+# Remove the three smallest elements: Difference between 10 and 14 (remaining elements: [10, 14]).
+# Remove two largest and one smallest elements: Difference between 1 and 10 (remaining elements: [1, 5, 10]).
+# Remove two smallest and one largest element: Difference between 5 and 14 (remaining elements: [5, 10, 14]).
