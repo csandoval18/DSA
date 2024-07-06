@@ -24,6 +24,24 @@ class Solution:
       curr = curr.next
       
     return dummy.next # Return the head of the new linked list, skipping the initial node
+
+
+class Solution1:
+  def mergeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    c = head.next
+    d = ListNode(0)
+    p = d
+    c_sum = 0
+    
+    while c:
+      if c.val == 0:
+        p.next = ListNode(c_sum)
+        p = p.next
+        c_sum = 0
+      else:
+        c_sum += c.val
+        
+    return d.next
   
   
 # Construct the linked list: 0 -> 3 -> 1 -> 0 -> 4 -> 5 -> 2 -> 0
