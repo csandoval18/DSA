@@ -8,22 +8,22 @@ class ListNode:
 
 
 class Solution:
-    def mergeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
-      curr = head.next # Skip initial zero
-      dummy = ListNode(0) # dummy node to start the result linked list
-      res_tail = dummy
-      curr_sum = 0
+  def mergeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    curr = head.next # Skip initial zero
+    dummy = ListNode(0) # dummy node to start the result linked list
+    res_tail = dummy
+    curr_sum = 0
+    
+    while curr:
+      if curr.val == 0: # When encountering a zero, add the sum to the result list
+        res_tail.next = ListNode(curr_sum)
+        res_tail = res_tail.next
+        curr_sum = 0 # Reset sum
+      else: # Accumulate the values between zeroes
+        curr_sum += curr.val
+      curr = curr.next
       
-      while curr:
-        if curr.val == 0: # When encountering a zero, add the sum to the result list
-          res_tail.next = ListNode(curr_sum)
-          res_tail = res_tail.next
-          curr_sum = 0 # Reset sum
-        else: # Accumulate the values between zeroes
-          c += curr.val
-        curr = curr.next
-      return dummy.next # Return the head of the new linked list, skipping the initial node
-      
+    return dummy.next # Return the head of the new linked list, skipping the initial node
   
   
 # Construct the linked list: 0 -> 3 -> 1 -> 0 -> 4 -> 5 -> 2 -> 0
