@@ -9,6 +9,7 @@
 # Given the two positive integers n and time, return the index of the person holding the pillow after time seconds.
 
 
+
 class Solution:
   def passThePillow(self, n: int, time: int) -> int:
     pillow = 1
@@ -68,8 +69,23 @@ class Solution:
       if i % (n-1) == 0:
         left_to_right = not left_to_right
     return pos
-  
-  
+
+
+# To simulate a cycle using modulo, you can use the modulus operation to "wrap around" indices. 
+# This is particularly useful in scenarios like the "Pass the Pillow" game, where 
+# the pillow is passed around in a circular manner.
+
+# Here’s a step-by-step explanation of how you can use modulo to simulate this cycle:
+
+# 1. Define the Total Number of Players: Let's say there are N players.
+# 2. Define the Current Position: Let's say the pillow is currently with player at position current_pos (using 0-based indexing).
+# 3 .Define the Number of Passes: Let's say you want to pass the pillow T times.
+
+# The new position after T passes can be calculated using the formula:
+
+# new_pos = (current_pos + T) % N
+
+
 # n = 4
 # time = 5
 n = 18
