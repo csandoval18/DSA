@@ -85,6 +85,8 @@ class Solution:
 
 # new_pos = (current_pos + T) % N
 
+def pass_the_pillow(n: int, )
+
 
 # n = 4
 # time = 5
