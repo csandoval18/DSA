@@ -17,25 +17,33 @@ from typing import List
 class Solution:
   def minimumTime(self, n: int, edges: List[List[int]], disappear: List[int]) -> List[int]:
     adj = defaultdict(list)
-    for u, v, w in edges:
-      adj[u].append((v, w))
-      adj[v].append((u, w))
+    for u, v, l in edges:
+      adj[u].append((v, l))
+      adj[v].append((u, l))
     
-    dist = [float('in')] * n
+    dist = [float('inf')] * n
+    dist[0] = 0
     pq = [(0, 0)]
     
     while pq:
-      uw, u = heapq.heappop(pq)
+      ul, u = heapq.heappop(pq)
       
-      if uw > disappear[u]:
+      if ul > disappear[u]:
         continue
         
-      for v, vw in adj[u]:
-        nw = uw + vw
+      for v, vl in adj[u]:
+        nl = ul + vl
         
-        if nw < disappear[v]:
-          dist[v] = nw
-          heapq.heappush(pq, (nw, v))
+        if nl < disappear[v]:
+          dist[v] = nl
+          heapq.heappush(pq, (nl, v))
     
-    res = [-1 if dist[i] == float('in') or dist[i] > disappear[i] else dist[i] for i in range(n)]
+    # res = [-1 if dist[i] == float('in') or dist[i] > disappear[i] else dist[i] for i in range(n)]
+    res = []
+    for i in range(n):
+      if dist[i] == float('inf') or dist[i] > disappear[i]:
+        res.append(-1)
+      else:
+        res.append(dist[i])
+        
     return res
