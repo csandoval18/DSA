@@ -85,7 +85,18 @@ class Solution:
 
 # new_pos = (current_pos + T) % N
 
-def pass_the_pillow(n: int, )
+def pass_the_pillow(n: int, time: int) -> int:
+  # Determine the length of one full cycle
+  cycle_len = 2 * (n - 1)
+  # Find the position within the current cycle
+  cycle_pos = time % cycle_len
+  
+  # Determine the final position
+  if cycle_pos < n: # Forward direction
+    return cycle_pos + 1 # Convert 0-based to 1-based index
+  else:
+    # Backward direction
+    return n - (cycle_pos - n + 1) # Convert to 0-based to 1-based index
 
 
 # n = 4

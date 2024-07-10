@@ -1,3 +1,5 @@
+from collections import defaultdict
+import heapq
 from typing import List
 
 # There is an undirected graph of n nodes. 
@@ -14,4 +16,26 @@ from typing import List
 
 class Solution:
   def minimumTime(self, n: int, edges: List[List[int]], disappear: List[int]) -> List[int]:
+    adj = defaultdict(list)
+    for u, v, w in edges:
+      adj[u].append((v, w))
+      adj[v].append((u, w))
     
+    dist = [float('in')] * n
+    pq = [(0, 0)]
+    
+    while pq:
+      uw, u = heapq.heappop(pq)
+      
+      if uw > disappear[u]:
+        continue
+        
+      for v, vw in adj[u]:
+        nw = uw + vw
+        
+        if nw < disappear[v]:
+          dist[v] = nw
+          heapq.heappush(pq, (nw, v))
+    
+    res = [-1 if dist[i] == float('in') or dist[i] > disappear[i] else dist[i] for i in range(n)]
+    return res
