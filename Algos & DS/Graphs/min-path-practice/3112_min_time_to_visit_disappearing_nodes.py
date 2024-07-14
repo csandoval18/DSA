@@ -47,3 +47,17 @@ class Solution:
         res.append(dist[i])
         
     return res
+  
+
+class Solution:
+  def minimumTime(self, n: int, edges: List[List[int]], disappear: List[int]) -> List[int]:
+    adj = [[] for _ in range(n)]
+    for u, v, l in edges:
+      adj[u].append((v, l))
+      adj[v].append((u, l))
+    
+    dist = [float('inf')] * n
+    dist[0] = 0
+    pq = [(0, 0)]
+    
+    
