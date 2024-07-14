@@ -16,7 +16,7 @@ from typing import List
 
 class Solution:
   def minimumTime(self, n: int, edges: List[List[int]], disappear: List[int]) -> List[int]:
-    adj = defaultdict(list)
+    adj = [[] for _ in range(n)]
     for u, v, l in edges:
       adj[u].append((v, l))
       adj[v].append((u, l))
@@ -28,13 +28,13 @@ class Solution:
     while pq:
       ul, u = heapq.heappop(pq)
       
-      if ul > disappear[u]:
+      if ul > dist[u]:
         continue
         
       for v, vl in adj[u]:
         nl = ul + vl
         
-        if nl < disappear[v]:
+        if nl < dist[v] and nl < disappear[v]:
           dist[v] = nl
           heapq.heappush(pq, (nl, v))
     
