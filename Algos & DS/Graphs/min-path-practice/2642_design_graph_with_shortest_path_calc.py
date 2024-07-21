@@ -31,7 +31,7 @@ class Graph:
                 if nc < dist[v]:
                     dist[v] = nc
                     
-        if dist[node1] != float('inf'):
-            return dist[node1]
+        if dist[node2] != float('inf'):
+            return dist[node2]
         return -1
                     
