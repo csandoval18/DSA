@@ -17,7 +17,7 @@ class Graph:
 
     def shortestPath(self, node1: int, node2: int) -> int:
         dist = [float('inf')] * self.n 
-        pq = [(node1, 0)]
+        pq = [(0, node1)]
         
         while pq:
             uc,  u = heapq.heappop(pq)
