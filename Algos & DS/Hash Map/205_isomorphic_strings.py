@@ -38,3 +38,13 @@ def isIsomorphic(s: str, t: str) -> bool:
     else:
       t2s[t[i]] = s[i]
   return True
+
+def isIsomorphic2(s: str, t: str) -> bool:
+  ls = len(set(s))
+  lt = len(set(t))
+  lst = len(set(zip(s, t)))
+  
+  if ls == lt and ls == lst:
+    return True
+  else:
+    return False
