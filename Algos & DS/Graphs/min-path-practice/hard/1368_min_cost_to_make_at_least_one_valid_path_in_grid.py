@@ -13,8 +13,8 @@ class Solution:
     n, m = len(grid), len(grid[0])
     dist = [[float('inf')] * m for _ in range(n)]
     dist[0][0] = 0
-    
     pq = [(0, 0, 0)]
+    
     while pq:
       cost, x, y = heapq.heappop(pq)
     
@@ -23,24 +23,26 @@ class Solution:
         return cost
       
       # Skip if the current cost is greater than the recorded cost
-      if cost > cost[x][y]:
+      if cost > dist[x][y]:
         continue
       
-      for i, (dx, dy) in enumerate([(0,1),(0,-1),(1,0), (-1,0)]):
+      for i, (dx, dy) in enumerate([(0,1),(0,-1),(1,0),(-1,0)]):
         nx, ny = dx + x, dy + y
         
         if 0 <= nx < n and 0 <= ny < m: # Calculate the cost to reach the neighbor
           nc = cost + (grid[x][y] != i+1)
-          if nc < cost[nx][ny]:
-            cost[nx][ny] = nc
+          
+          if nc < dist[nx][ny]:
+            dist[nx][ny] = nc
             heapq.heappush(pq, (nc, nx, ny))
             
-    return cost[n-1][m-1]
+    return dist[n-1][m-1]
+    
 
 grid = [
-    [1, 1, 3],
-    [3, 2, 2],
-    [1, 1, 4]
+  [1, 1, 3],
+  [3, 2, 2],
+  [1, 1, 4]
 ]
 
 s = Solution()
