@@ -3,7 +3,10 @@
 # [3,1,2,4,5,2,6,4]
 # [3,1,2,4] [5,2,6,4]
 
-def merge(arr1: [int], arr2: [int]) -> [int]:
+from typing import List
+
+
+def merge(arr1: List[int], arr2: List[int]) -> List[int]:
   n, m = len(arr1), len(arr2)
   i, j = 0,0
   res = []
@@ -50,7 +53,7 @@ arr2 = [1,3,5]
 print(merge_sort([1,3,1,9,6,5]))
 
 # Same time complexity, but better space complexity of O(n) instead of the O(n log n) using splicing
-def merge_sort_pointers(arr: [int], l: int, r: int):
+def merge_sort_pointers(arr: List[int], l: int, r: int):
   if l == r:
     return
   

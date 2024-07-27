@@ -4,6 +4,8 @@
 # Basically this brute forces the paths of all paths for every kth node and stores the shortest (min) path in a 2d array since it is
 # a dynamic programming algorithm
 
+# This is best used on graphs with small amounts of vertices
+
 from typing import List
 
 def shortest_distance(matrix: List[List[int]]) -> List[int]:

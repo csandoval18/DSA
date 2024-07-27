@@ -1,35 +1,35 @@
 from heapq import heappop, heappush
+import itertools
 from typing import List
 
 
 class Solution:
   def numberOfSets(self, n: int, maxDistance: int, roads: List[List[int]]) -> int:
-    adj = [[] for _ in range(n)]
+    def check(subset: List[int]):
+      dist = [[float('inf')] * n for _ in range(n)]
+      for i in range(n):
+        dist[i][i] = 0
+      for u, v, w in roads:
+        if u in subset and v in subset:
+          dist[u][v] = min(dist[u][v], w)
+          dist[v][u] = min(dist[v][u], w)
+      for k in subset:
+        for i in subset:
+          for j in subset:
+            dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
+      for i in subset:
+        for j in subset:
+          if dist[i][j] > maxDistance:
+            return False
+      return True
     
-    for u, v, w in roads:
-      adj[u].append((v, w))
-      adj[v].append((u, w))
-      
-    dist = [float('inf')]*n
-    dist[0] = 0
-    pq = [(0,0)]
-    
-    while pq:
-      uw, u = heappop(pq)
-      
-      if uw > dist[u]:
-        continue
-        
-      for v, vw in adj[u]:
-        nw = uw + vw 
-        
-        if nw < maxDistance and nw < dist[v]:
-          dist[v] = nw
-          heappush(pq, (nw, v))
-    
-    return dis
-          
-        
+    ans = 0
+    for r in range(n + 1):
+        for subset in itertools.combinations(range(n), r):
+            if check(subset, n, maxDistance, roads):
+                ans += 1
+    return ans
+
 
 n = 3
 maxDistance = 5
