@@ -24,11 +24,11 @@ class Solution:
       visited[u] = True
       
       for v, vcnt in adj[u]:
-          ncnt = ucnt + vcnt + 1
-          
-          if ncnt < dist[v]:
-            dist[v] = ncnt
-            heappush(pq, (ncnt, v))
+        ncnt = ucnt + vcnt + 1
+        
+        if ncnt < dist[v]:
+          dist[v] = ncnt
+          heappush(pq, (ncnt, v))
             
     # Step 3: Count reachable nodes including subdivided nodes
     reachable_nodes = 0
@@ -42,3 +42,9 @@ class Solution:
       reachable_nodes += min(cnt, reach_u + reach_v)
     
     return reachable_nodes
+
+edges = [[0,1,10],[0,2,1],[1,2,2]]
+maxMoves = 6
+n = 3
+# Output: 13
+
