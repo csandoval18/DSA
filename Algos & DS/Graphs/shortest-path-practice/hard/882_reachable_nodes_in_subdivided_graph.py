@@ -4,14 +4,16 @@ from typing import List
 
 class Solution:
   def reachableNodes(self, edges: List[List[int]], maxMoves: int, n: int) -> int:
+    # Step 1: Build the adjacency list for graph
     adj = [[] for _ in range(n)]
     for u, v, cnt in edges:
       adj[u].append((v, cnt))
       adj[v].append((u, cnt))
     
+    # Step 2: Dijkstra's algorithm to find shortest path from node 0
     dist = [float('inf')]*n
     dist[0] = 0
-    pq = [(cnt, 0)]
+    pq = [(0, 0)]
     visited = [False]*n
     
     while pq:
@@ -22,13 +24,13 @@ class Solution:
       visited[u] = True
       
       for v, vcnt in adj[u]:
-        if v not in visited: 
           ncnt = ucnt + vcnt + 1
           
           if ncnt < dist[v]:
             dist[v] = ncnt
             heappush(pq, (ncnt, v))
             
+    # Step 3: Count reachable nodes including subdivided nodes
     reachable_nodes = 0
     for d in dist:
       if d <= maxMoves:

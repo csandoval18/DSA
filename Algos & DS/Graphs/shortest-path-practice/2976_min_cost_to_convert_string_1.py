@@ -86,15 +86,6 @@ class SolutionOptimized:
     
     return min_cost
 
-# Example usage
-original = ['a', 'b', 'c']
-changed = ['b', 'c', 'd']
-cost = [1, 2, 3]
-source = ['a', 'b']
-target = ['c', 'd']
-s = Solution()
-print(s.minCost(original, changed, cost, source, target))  # Output: 3
-
 source = "abcd"
 target = "acbe"
 original = ["a","b","c","c","e","d"]
