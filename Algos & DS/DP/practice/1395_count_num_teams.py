@@ -18,7 +18,6 @@ from typing import List
 
 
 # DP solution
-
 class Solution:
   def numTeams(self, rating: List[int]) -> int:
     n = len(rating)
@@ -40,7 +39,45 @@ class Solution:
           
     return count
 
+# Other Optimized Solution
+class Solution:
+  def numTeams(self, rating: List[int]) -> int:
+    n = len(rating)
+    if n < 3:
+      return 0
+    
+    count = 0
+    for i in range(1, n-1):
+      less_left = greater_left = 0
+      less_right = greater_right = 0
+      
+      for j in range(i): # Count soldiers on the left
+        if rating[j] < rating[i]:
+          less_left += 1
+        elif rating[j] > rating[i]:
+          greater_left += 1
+      
+      for k in range(i+1, n): # Count soldiers on the right
+        if rating[k] < rating[i]:
+          less_right += 1
+        elif rating[k] > rating[i]:
+          greater_right += 1
+      
+      count += less_left * greater_right + greater_left * less_right
+    return count
+    
+    
 rating = [2,5,3,4,1]
 # Output: 3
+s = Solution()
+print(s.numTeams(rating))
+
+rating = [2,1,3]
+# Output: 0
+s = Solution()
+print(s.numTeams(rating))
+
+rating = [1,2,3,4]
+# Output: 0
 s = Solution()
 print(s.numTeams(rating))
