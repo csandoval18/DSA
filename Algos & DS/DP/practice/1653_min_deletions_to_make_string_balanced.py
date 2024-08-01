@@ -9,6 +9,14 @@
 class Solution:
   def minimumDeletions(self, s: str) -> int:
     n = len(s)
-    def rec(i: int, j: int):
-      if j == n-1:
-        
+    dp = [0] * (n+1) # Initialize a DP array where dp[i] represents the minimum deletions for s[0:i]
+    count_b = 0 # Tracks number of 'b' at current index
+    
+    for i in range(1, n+1):
+      if s[i-1] == 'a':
+        dp[i] = min(dp[i-1] + 1, count_b)
+      else: # s[i-1] == 'b'
+        dp[i] = dp[i-1]
+        count_b += 1
+
+    return dp[n]
