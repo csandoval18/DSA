@@ -50,44 +50,42 @@ class Solution:
 class Solution1:
   def findAnswer(self, n: int, edges: List[List[int]]) -> List[bool]:
     adj = [[] for _ in range(n)]
-    for u, v, w in edges:
-        adj[u].append((v, w))
-        adj[v].append((u, w))
+    for u, v, w in edges: 
+      adj[u].append((v, w))
+      adj[v].append((u, w))
     
-    def dijkstra(source):
+    def dijkstra(source: int) -> List[int]: 
+      dist = [float('inf')]*n
+      dist[source] = 0 
       pq = [(0, source)]
-      dist = [float('inf')] * n
-      dist[source] = 0
-      
-      while pq:
-        uw, u = heappop(pq)
-        if uw != dist[u]:
-          continue
-        
-        for v, vw in adj[u]:
-          nw = uw + vw
-          
-          if nw < dist[v]:
-            dist[v] =  nw
-            heappush(pq, (nw, v))
-      return dist
+      while pq: 
+        x, u = heappop(pq)
+        if dist[u] == x: 
+          for v, w in adj[u]: 
+            if x+w < dist[v]: 
+              dist[v] = x+w
+              heappush(pq, (x+w, v))
+      return dist 
     
-    source_dist = dijkstra(0)
-    target_dist = dijkstra(n-1)
-    
-    if n-1 not in source_dist:
-      return [False] * len(edges)
-      
-    min_w = source_dist[n-1]
-    ans = []
+    dist0, dist1 = dijkstra(0), dijkstra(n-1)
+    min_dist = dist0[n-1]
+    res = []
     for u, v, w in edges:
-        if source_dist[u] + w + target_dist[v] == min_w \
-            or source_dist[v] + w + target_dist[u] == min_w:
-            ans.append(True)
-        else:
-            ans.append(False)
-    return ans
+      if min_dist < float('inf') and (dist0[u] + w + dist1[v] == min_dist or dist0[v] + w + dist1[u] == min_dist):
+        res.append(True)
+      else:
+        res.append(False)
+        
+    return res
+    
+    # return [dist0[n-1] < float('inf') and 
+    # (dist0[u] + w + dist1[v] == dist0[n-1] or 
+    # dist0[v] + w + dist1[u] == dist0[n-1]) 
+    # for u, v, w in edges]
+
 
 n = 6
 edges = [[0,1,4],[0,2,1],[1,3,2],[1,4,3],[1,5,1],[2,3,1],[3,5,3],[4,5,2]]
 # Output: [true,true,true,false,true,true,true,false]
+s = Solution1()
+print(s.findAnswer(n, edges))
