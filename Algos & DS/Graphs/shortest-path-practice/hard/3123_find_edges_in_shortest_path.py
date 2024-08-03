@@ -59,12 +59,14 @@ class Solution1:
       dist[source] = 0 
       pq = [(0, source)]
       while pq: 
-        x, u = heappop(pq)
-        if dist[u] == x: 
-          for v, w in adj[u]: 
-            if x+w < dist[v]: 
-              dist[v] = x+w
-              heappush(pq, (x+w, v))
+        uw, u = heappop(pq)
+        
+        if uw == dist[u]: 
+          for v, vw in adj[u]: 
+            nw = uw + vw
+            if nw  < dist[v]: 
+              dist[v] = nw
+              heappush(pq, (nw, v))
       return dist 
     
     dist0, dist1 = dijkstra(0), dijkstra(n-1)
