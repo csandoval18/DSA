@@ -7,38 +7,41 @@ from typing import List
 
 class Solution:
   def findAnswer(self, n: int, edges: List[List[int]]) -> List[bool]:
-    adj = [[] for _ in range(n)]
-    
-    for u, v, w in edges:
-      adj[u].append((v, w))
-      adj[v].append((u, w))
+    graph = defaultdict(list)
+    for i, (a, b, w) in enumerate(edges):
+      graph[a].append((b, w, i))
+      graph[b].append((a, w, i))
       
-    def dijkstra(start: int) -> List[int]:
-      dist = [float('inf')]*n
-      dist[start] = 0
-      pq = [(0, start)]
-      
-      while pq:
-        uw, u = heappop(pq)
-        
-        if uw > dist[u]:
-          continue
-          
-        for v, vw in adj[u]:
-          nw = uw + vw
-          
-          if nw < dist[v]:
-            dist[v] = nw
-            heappush(pq, (nw, v))
-            
-      return dist
-      
-    dist_0 = dijkstra(0)
-    dist_n1 = dijkstra(n-1)
-    total_dist = dist_0[n-1]
+    parent = defaultdict(set)
+    queue = []
+    queue.append((0, 0))
+    dist = [inf] * n        
+    dist[0] = 0
     
-    res = []
-    for u, v, w in edges:
-      res.append(dist_0[u] + w + dist_n1[v] == total_dist)
+    while queue:
+      d, node = heappop(queue)
+
+      if d > dist[node]:
+        continue
+      
+      for child, w, i in graph[node]:
+        new_d = w + d
+        if new_d <= dist[child]:
+          if new_d < dist[child]:
+            dist[child] = new_d
+            parent[child].clear()
+          parent[child].add((node, i))
+          heappush(queue, (new_d, child))
+  
+    result = [False] * len(edges)
+    def dfs(node):
+      if node == 0:
+        return
+      
+      for p, i in parent[node]:
+        result[i] = True
+        dfs(p)
+      return
     
-    return res
+    dfs(n - 1)
+    return result
