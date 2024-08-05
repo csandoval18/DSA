@@ -4,7 +4,14 @@ from typing import List
 
 # You are given an undirected weighted graph of n nodes numbered from 0 to n-1. 
 # The graph consists of m edges represented by a 2D array edges, where edges[i] = [a, b, w] 
-# indicates that there is an edge between nodes
+# indicates that there is an edge between nodes ai and bi with weight wi.
+
+# Consider all the shortest paths from node 0 to node n - 1 in the graph. You need to find a
+# boolean array answer where answer[i] is true if the edge edges[i] is part of at least
+# one shortest path. Otherwise, answer[i] is false.
+
+# Return the array answer.
+# Note that the graph may not be connected.
 
 class Solution:
   def findAnswer(self, n: int, edges: List[List[int]]) -> List[bool]:
@@ -61,6 +68,17 @@ class Solution1:
       while pq: 
         uw, u = heappop(pq)
         
+        # Notice we dont use the usual check of  "if uw > dist[u]" to skip processing a node that has already been relaxed to a better distance.
+        # Why not "uw > dist[u]"?
+        
+        # - Guaranteeing Relaxation: By ensurering that "uw == dist[u]", we guarantee that we're processing a node whose distance has 
+        #   just been finalized. This means any adjacent nodes can be safely relaxed without the risk of processing a node with an 
+        #   outdated distance.
+        # - Avoiding Duplicate Processing: Without this check, it's possible to process the same node multiple times with different tentative
+        #   distance, leading to unnecessary computations.
+        # - Optimizing Priority Queue: By only processing nodes with finalized distances, we effectively reduce the number of elements 
+        #   in the priority queue, improving its performance.
+        
         if uw == dist[u]: 
           for v, vw in adj[u]: 
             nw = uw + vw
@@ -72,7 +90,7 @@ class Solution1:
     dist0, dist1 = dijkstra(0), dijkstra(n-1)
     min_dist = dist0[n-1]
     res = []
-    for u, v, w in edges:
+    for u, v, w in edges: # Remember the problems requires to check if the edges are 
       if min_dist < float('inf') and (dist0[u] + w + dist1[v] == min_dist or dist0[v] + w + dist1[u] == min_dist):
         res.append(True)
       else:
