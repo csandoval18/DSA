@@ -6,12 +6,7 @@ from typing import List
 
 class Solution:
   def minimumWeight(self, n: int, edges: List[List[int]], src1: int, src2: int, dest: int) -> int:
-    adj = [[] for _ in range(n)]
-    
-    for u, v, w in edges:
-      adj[u].append((v, w))
-    
-    def dijkstra(source: int) -> List[int]:
+    def dijkstra(adj: List[List[int]], source: int) -> List[int]:
       dist = [float('inf')]*n
       dist[source] = 0
       pq = [(0, source)]
@@ -30,6 +25,20 @@ class Solution:
             heappush(pq, (nw, v))
       
       return dist
+      
+    g = [[] for _ in range(n)]
+    rev_g = [[] for _ in range(n)]
+    
+    for u, v, w in edges:
+      g[u].append((v, w))
+      rev_g[v].append((u, w))
   
-  
-          
+    dist1 = dijkstra(g, src1)
+    dist2 = dijkstra(g, src2)
+    dist3 = dijkstra(rev_g, dest)
+    
+    res = float('inf')
+    for i in range(n):
+      if dist1[i] < float('inf') and dist2[i] < float('inf') and dist3[i] < float('inf'):
+        res = min(res, dist1[i] + dist2[i] + dist3[i])
+    return res if res != float('inf') else -1
