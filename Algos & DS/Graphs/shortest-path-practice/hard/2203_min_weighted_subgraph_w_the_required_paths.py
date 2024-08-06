@@ -38,7 +38,20 @@ class Solution:
     dist3 = dijkstra(rev_g, dest)
     
     res = float('inf')
-    for i in range(n):
-      if dist1[i] < float('inf') and dist2[i] < float('inf') and dist3[i] < float('inf'):
-        res = min(res, dist1[i] + dist2[i] + dist3[i])
+    for u in range(n):
+      if dist1[u] < float('inf') and dist2[u] < float('inf') and dist3[u] < float('inf'):
+        res = min(res, dist1[u] + dist2[u] + dist3[u])
     return res if res != float('inf') else -1
+
+n = 6
+edges = [[0,2,2],[0,5,6],[1,0,3],[1,4,5],[2,1,1],[2,3,3],[2,3,4],[3,4,2],[4,5,1]]
+src1 = 0
+src2 = 1
+dest = 5
+
+# Output: 9
+# Explanation:
+# The above figure represents the input graph.
+# The blue edges represent one of the subgraphs that yield the optimal answer.
+# Note that the subgraph [[1,0,3],[0,5,6]] also yields the optimal answer.
+# It is not possible to get a subgraph with less weight satisfying all the constraints.

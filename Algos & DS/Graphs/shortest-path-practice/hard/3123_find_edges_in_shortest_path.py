@@ -69,8 +69,8 @@ class Solution1:
         uw, u = heappop(pq)
         
         # Notice we dont use the usual check of  "if uw > dist[u]" to skip processing a node that has already been relaxed to a better distance.
-        # Why not "uw > dist[u]"?
         
+        # Why not "uw > dist[u]"?
         # - Guaranteeing Relaxation: By ensurering that "uw == dist[u]", we guarantee that we're processing a node whose distance has 
         #   just been finalized. This means any adjacent nodes can be safely relaxed without the risk of processing a node with an 
         #   outdated distance.
