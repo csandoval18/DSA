@@ -1,3 +1,4 @@
+from heapq import heapify, heappop, heappush
 from typing import Counter
 
 # You are given a string word containing lowercase English letters.
@@ -16,6 +17,26 @@ from typing import Counter
 # *, #, and 0 do not map to any letters.
 
 
+# Basically we need to spread out the chars of word into the start of each key (2,3,4,5,6,7,8,9)
+# This way we minimize the amount of clicks needed to type out the word in the num pad.
+
+# Hash Map solution:
+class Solution:
+  def minimumPushes(self, word: str) -> int:
+    hm = Counter(word) # Frequency map to store countof each letter
+    pq = [-val for val in hm.values()]
+    heapify(pq)
+    
+    res = 0
+    i = 0
+    
+    while pq:
+      res += (1 + (i // 8)) * (-heappop(pq))
+      i += 1
+      
+    return res
+
+# Sorting solution (Optimal SO):
 class Solution:
   def minimumPushes(self, word: str) -> int:
     l=[0]*(32)
