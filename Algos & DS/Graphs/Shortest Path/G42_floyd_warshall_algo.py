@@ -11,7 +11,7 @@ from typing import List
 def shortest_distance(matrix: List[List[int]]) -> List[int]:
   n = len(matrix)
   
-  # Change -1's in matrix to inf
+  # Change -1's in matrix to inf, -1's symbolize no edge from source to dest node
   for i in range(n):
     for j in range(n):
       if matrix[i][j] == -1:
