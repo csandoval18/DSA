@@ -20,7 +20,7 @@ from typing import Counter
 # Basically we need to spread out the chars of word into the start of each key (2,3,4,5,6,7,8,9)
 # This way we minimize the amount of clicks needed to type out the word in the num pad.
 
-# Hash Map solution:
+# Hash Map and Priority Queue solution:
 class Solution:
   def minimumPushes(self, word: str) -> int:
     hm = Counter(word) # Frequency map to store countof each letter
@@ -39,16 +39,16 @@ class Solution:
 # Sorting solution (Optimal SO):
 class Solution:
   def minimumPushes(self, word: str) -> int:
-    l=[0]*(32)
+    l = [0]*(32)
     
     for i in range(26):
-      l[i]=word.count(chr(97+i))
+      l[i] = word.count(chr(97+i))
       
     l.sort(reverse=True)
     
-    res=0
+    res = 0
     for i in range(4):
       for j in range(8):
-        res+=(i+1)*l[8*i+j]
+        res += (i+1)*l[8*i+j]
         
     return res
