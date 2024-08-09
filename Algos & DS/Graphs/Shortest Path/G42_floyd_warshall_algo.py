@@ -16,7 +16,6 @@ def shortest_distance(matrix: List[List[int]]) -> List[int]:
     for j in range(n):
       if matrix[i][j] == -1:
         matrix[i][j] = float('inf')
-        
       if i == j: # When i and j are equal we are comparing the distance to travel between the same node wich is 0. See matrix 1
         matrix[i][j] = 0
       
