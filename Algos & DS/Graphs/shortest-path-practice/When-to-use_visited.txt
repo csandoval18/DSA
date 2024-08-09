@@ -1,0 +1,44 @@
+- How can it be determined that a visited array is needed in a shortest path problem?
+
+1. Cycle Avoidance:
+  Visited Array Needed: If the problem involves an unweighted or weighted graph where you need to avoid revisiting nodes, 
+  especially if revisiting can cause cycles or unnecessary paths, a visited array helps prevent reprocessing nodes that 
+  have already been processed optimally.
+  Example: In problems using BFS (like finding the shortest path in an unweighted graph), a visited array ensures that 
+  each node is processed only once.
+  
+2. Unique Path Criteria:
+  Visited Array Needed: If you need to ensure that each node is visited at most once to find a unique path (e.g., shortest 
+  path or minimum cost path), a visited array is necessary.
+  Example: In a Dijkstra's algorithm (for weighted graphs), a visited array is used to mark nodes whose shortest path has 
+  already been found and shouldn't be revisited.
+  
+3. Multiple Paths Consideration:
+  No Visited Array: If the problem allows revisiting nodes under certain conditions (e.g., with different costs), you might
+  skip the visited array. This is common in problems where nodes can have multiple states or where different paths to the
+  same node can lead to different results.
+  Example: In problems like dynamic programming on graphs or where you track different states (like remaining moves, different
+  keys, etc.), the lack of a visited array lets you consider all valid paths.
+  
+4. Grid Problems:
+  Visited Array Often Used: In grid-based shortest path problems, a visited array is typically used to prevent reprocessing
+  cells and to ensure the shortest path is maintained.
+  Example: In maze-solving problems or minimum time to reach a cell in a grid (like LeetCode 2577), the visited array helps
+  avoid redundant processing of cells.
+  
+5. Algorithm Specific:
+  DFS with Backtracking: In DFS, a visited array is often temporary, being used to mark nodes in the current path to avoid
+  revisiting them during the current exploration. After backtracking, you typically unmark the nodes.
+  *Dijkstra/A: When using Dijkstra's or A*, the visited array helps in ensuring nodes are only processed once with their
+  minimum possible cost.
+  
+6. Problem Constraints:
+  Multiple Visits Allowed: If the problem allows revisiting nodes, but under different conditions (like with different
+  path lengths or resources), a visited array might be modified or omitted in favor of more complex state management.
+  Example: Problems where you need to explore all possible paths with varying conditions might involve revisiting nodes
+  with different criteria.
+  
+Summary:
+  Use a visited array when you want to prevent cycles, ensure unique path processing, or when nodes shouldn’t be revisited
+  once their shortest path is found.
+  Skip the visited array when revisiting nodes is necessary for different states or when the problem's nature allows multiple valid paths.
