@@ -41,3 +41,50 @@ def shortest_distance(matrix: List[List[int]]) -> List[int]:
 
 # Ignore the 1's. In the actual problem there will be edge weights between the nodes. Notice how the diagonal line of 0s when i = j.
 # This just symbolizes that there is no cost to travel to the same node.
+
+
+
+# Example:
+# 1334. Find the City With the Smallest Number of Neighbors at a Threshold Distance
+
+# This problems shows how we would create the adjacency matrix to handle the algirthm
+
+class Solution:
+  def findTheCity(self, n: int, edges: List[List[int]], distanceThreshold: int) -> int: 
+    dist = [[float('inf')]*n for _ in range(n)] # Declare adjacency matrix keeping track of weights between nodes
+    
+    for u in range(n): # Set distance of a node to travel to itself to 0
+      dist[u][u] = 0
+    
+    for u, v, w in edges:
+      dist[u][v] = w
+      dist[v][u] = w
+    
+    for k in range(n):
+      for u in range(n):
+        for v in range(n):
+          dist[u][v] = min(dist[u][v], dist[u][v] + dist[u][k] + dist[k][v]) # Find shortest paths
+    
+    # Find the city with the smallest number of cities that are reachable through some path and
+    # whose distance is at most distanceThreshold. Return the city with the greatest number if there are multiple cities.
+    min_v_cnt = float('inf')
+    res_city = -1
+    
+    # Traverse through dist matrix
+    for u in range(n):
+      v_cnt = 0
+      
+      for v in range(n):
+        # Find count of paths that are <= distance threshold and make sure the node path is not to itself
+        if dist[u][v] <= distanceThreshold and u != v:
+          v_cnt += 1
+          
+      # Check current reachable cities count is < the stored min reachable cities found so far OR 
+      # if the current reachable cities count is == to the stored min reachable cities count then we
+      # need to check if the current node is bigger than the current responce city. If condiditons are met
+      # update the min_v_cnt and response city.
+      if v_cnt < min_v_cnt or (v_cnt == min_v_cnt and u > res_city):
+        min_v_cnt = v_cnt
+        res_city = u
+          
+    return res_city
