@@ -12,10 +12,21 @@ class Solution:
         nx, ny = dx + dx, dy + y
         
         # Check if next position is within bounds
-      
-
+        if 0 <= nx < m and 0 <= ny < n and grid2[nx][ny] == 1:
+          # Check if grid1 does not have an island at the same position
+          if grid1[nx][ny] == 0:
+            is_sub_island = False
+          
+          # Recurse for next cell
+          if not dfs(nx, ny):
+            is_sub_island = False
+      return is_sub_island
+    
+    sub_islands = 0
     for x in range(m): 
       for y in range(n):
         if grid2[x][y] == 1:
           if dfs(x, y):
             sub_islands += 1
+    return sub_islands
+    
