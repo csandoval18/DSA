@@ -9,17 +9,18 @@ class Solution:
       grid2[x][y] = 0 # Mark as visited
       
       for dx, dy in [(0,1),(0,-1),(1,0),(-1,0)]:
-        nx, ny = dx + dx, dy + y
+        nx, ny = dx + x, dy + y
         
         # Check if next position is within bounds
         if 0 <= nx < m and 0 <= ny < n and grid2[nx][ny] == 1:
-          # Check if grid1 does not have an island at the same position
-          if grid1[nx][ny] == 0:
-            is_sub_island = False
-          
           # Recurse for next cell
           if not dfs(nx, ny):
             is_sub_island = False
+            
+      # Check if grid1 does not have an island at the same position
+      if grid1[x][y] == 0:
+        is_sub_island = False
+        
       return is_sub_island
     
     sub_islands = 0
