@@ -29,7 +29,7 @@ class Solution1:
     for x in range(numRows):
       row = [1] * (x+1)
       
-      for y in range(1, y):
+      for y in range(1, x):
         row[y] = triangle[x-1][y-1] + triangle[x-1][y]
       triangle.append(row)
     return triangle
