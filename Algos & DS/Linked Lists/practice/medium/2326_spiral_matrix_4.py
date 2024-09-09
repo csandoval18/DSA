@@ -12,21 +12,40 @@ class Solution:
     left, right = 0, n-1
     matrix = [[-1]*n for _ in range(m)]
     curr = head
-    
+
     while left <= right and top <= bottom:
       for y in range(left, right+1):
-        matrix[top][y] = head.val
-        curr = curr.next
+        if curr:
+          matrix[top][y] = curr.val
+          curr = curr.next
+        else:
+          return matrix
       top += 1
-      
+
       for x in range(top, bottom+1):
-        matrix[x][right]
+        if curr:
+          matrix[x][right] = curr.val
+          curr = curr.next
+        else:
+          return matrix
       right -= 1
-      
+
       if top <= bottom:
         for y in range(right, left-1, -1):
-          matrix[bottom][y]
-        bottom -= 1
-      
+          if curr:
+            matrix[bottom][y] = curr.val
+            curr = curr.next
+          else:
+            return matrix
+          bottom -= 1
+
       if left <= right:
-        for x in range
+        for x in range(bottom, top-1, -1):
+          if curr:
+            matrix[x][left] = curr.val
+            curr = curr.next
+          else:
+            return matrix
+        left += 1
+        
+    return matrix
