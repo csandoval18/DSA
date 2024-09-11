@@ -15,14 +15,29 @@ class SolutionRecursion:
 		return min(rec(0), rec(1))
 		
 	
-class SolutionRecursion:
+class SolutionMemoizationDict:
 	def minCostClimbingStairs(self, cost: List[int]) -> int:
 		dp = {}
 		# Base cases:
 		def rec(i: int):
-			if i < 0: # i is exahausted
+			if i < 0: 				
 				return 0
 			if i == 0 or i == 1:
+				return cost[i]
+
+			dp[i] = min(rec[i-1], rec(i-2) + cost[i])
+			
+		n = len(cost)
+		return min(dp(n-1), dp(n-2))
+
+class SolutionMemoizationArray:
+	def minCostClimbingStairs(self, cost: List[int]) -> int:
+		dp = [-1]*n
+		# Base cases:
+		def rec(i: int):
+			if i < 0: # Index i is exahausted
+				return 0
+			if i == 0 or i == 1: # First or second steps are reached
 				return cost[i]
 
 			dp[i] = min(rec[i-1], rec(i-2) + cost[i])
@@ -45,7 +60,10 @@ class SolutionMemoization:
 			if i in dp:
 				return dp[i]
 
-			dp[i] = min(rec[i-1], rec(i-2) + cost[i])
+			dp[i] = min(rec(i-1), rec(i-2)) + cost[i]
+			return dp[i]
+		n = len(cost)
+		return min(rec(n-1), rec(n-2))
 		
 		
 class SolutionSpaceOptimized:
