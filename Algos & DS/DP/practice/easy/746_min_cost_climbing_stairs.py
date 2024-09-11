@@ -1,6 +1,19 @@
 from typing import List
 
 
+class SolutionRecursion:
+	def minCostClimbingStairs(self, cost: List[int]) -> int:
+		n = len(cost)
+		
+		def rec(i: int):
+			# Base case: if you're at or beyond the last step, no cost to pay anymore
+			if i >= n:
+				return 0
+			# Recursive case: take the current step and move to the next step
+			return cost[i] + min(rec(i+1), rec(i+2))
+		# You can start from either step 0 or step 1
+		return min(rec(0), rec(1))
+		
 	
 class SolutionRecursion:
 	def minCostClimbingStairs(self, cost: List[int]) -> int:
@@ -33,24 +46,7 @@ class SolutionMemoization:
 				return dp[i]
 
 			dp[i] = min(rec[i-1], rec(i-2) + cost[i])
-	
 
-class SolutionRecursion:
-	def minCostClimbingStairs(self, cost: List[int]) -> int:
-		n = len(cost)
-		
-		def rec(i: int):
-			# Base case: if you're at or beyond the last step, no cost to pay anymore
-			if i >= n:
-				return 0
-			# Recursive case: take the current step and move to the next step
-			return cost[i] + min(rec(i+1), rec(i+2))
-		# You can start from either step 0 or step 1
-		return min(rec(0), rec(1))
-
-class Recursive:
-    def minCostClimbingStairs(self, cost: List[int]) -> int:
-			
 		
 class SolutionSpaceOptimized:
 	def minCostClimbingStairs(self, cost: List[int]) -> int:
