@@ -12,6 +12,20 @@ def gcd(a: int, b: int) -> int:
   while b != 0:
     a, b = b, a % b
   return a
+  
+# 18 -> 6 -> 10 -> 3 | 18 -> (6) -> 6 -> (2) -> 10 -> (1) -> 3
+  
+# a = 18, b = 6
+# 0-1: 18, 6 = 6, 0
+
+# 1-2: 6, 10 = 10, 6
+#      10, 6 = 6, 4
+#      6, 4 = 4, 2
+#      4, 2 = 2, 0
+
+# 2-3: 10, 3 = 3, 1
+#      3, 1 = 1, 0
+
 
 class Solution:
   def insertGreatestCommonDivisors(self, head: Optional[ListNode]) -> Optional[ListNode]:

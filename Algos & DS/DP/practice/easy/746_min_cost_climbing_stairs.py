@@ -30,11 +30,12 @@ class SolutionMemoizationDict:
 		n = len(cost)
 		return min(dp(n-1), dp(n-2))
 
+
 class SolutionMemoizationArray:
 	def minCostClimbingStairs(self, cost: List[int]) -> int:
 		dp = [-1]*n
-		# Base cases:
 		def rec(i: int):
+			# Base cses:
 			if i < 0: # Index i is exahausted
 				return 0
 			if i == 0 or i == 1: # First or second steps are reached
@@ -65,7 +66,27 @@ class SolutionMemoization:
 		n = len(cost)
 		return min(rec(n-1), rec(n-2))
 		
+
+class SolutionTabulation:
+	def minCostClimbingStairs(self, cost: List[int]) -> int:
+		n = len(cost)
+		if n == 0:
+			return 0
+		if n == 1:
+			return cost[0]
+			
+		dp = [0] * n
+		dp[0] = cost[0]
+		dp[1] = cost[1]
 		
+		# Fill dp array iteratively
+		for i in range(2, n):
+			dp[i] = min(dp[i-1], dp[i-2]) + cost[i]
+		
+		# The result will be minimum cost to reach the last or second last strip
+		return min(dp[n-1], dp[n-2])
+			
+
 class SolutionSpaceOptimized:
 	def minCostClimbingStairs(self, cost: List[int]) -> int:
 		n = len(cost)
@@ -85,6 +106,7 @@ class SolutionSpaceOptimized:
 			second = curr
 				
 		return min(first, second)
+			
         
 cost = [10,15,20]
 # Output: 15
