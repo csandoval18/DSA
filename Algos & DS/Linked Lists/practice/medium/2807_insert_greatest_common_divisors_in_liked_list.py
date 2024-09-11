@@ -13,7 +13,6 @@ def gcd(a: int, b: int) -> int:
     a, b = b, a % b
   return a
 
-    
 class Solution:
   def insertGreatestCommonDivisors(self, head: Optional[ListNode]) -> Optional[ListNode]:
     curr = head 

@@ -46,7 +46,7 @@ class SolutionMemoization:
 				return dp[i]
 
 			dp[i] = min(rec[i-1], rec(i-2) + cost[i])
-
+		
 		
 class SolutionSpaceOptimized:
 	def minCostClimbingStairs(self, cost: List[int]) -> int:
