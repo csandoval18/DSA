@@ -30,6 +30,28 @@ class SolutionTabulation:
       dp[i] = dp[i-3] + dp[i-2] + dp[i-1]
     
     return dp[n]
+
+class SolutionSO:
+  def tribonacci(self, n: int) -> int:
+    if n == 0:
+      return 0
+    if n == 1 or n == 2:
+      return 1
+
+    f = 0
+    s = 1
+    t = 1
+    c = 0
+
+    for i in range(3, n+1):
+      c = f + s + t
+      tmp = t
+      t = c
+      tmp2 = s
+      s = tmp
+      f = tmp2
+
+    return c
   
 n = 4
 s = SolutionTabulation()

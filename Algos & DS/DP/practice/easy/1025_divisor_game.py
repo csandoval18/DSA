@@ -1,7 +1,9 @@
 # 1. Alice start with a number N and they take turns
 # 2. On each player's turn, the current player chooses any X such that 0 < X < N and N % X == 0, 
 # then they replace N with N - x.
-# 3. 
+# 3. The game ends when a player cannot make a move, and the other player wins.
+
+
 class SolutionSimple:
   def divisorGame(self, n: int) -> bool:
     return n % 2 == 0
