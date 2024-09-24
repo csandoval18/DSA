@@ -1,3 +1,11 @@
+class SolutionSimple:
+  def maxRepeating(self, sequence: str, word: str) -> int:
+    k = 0
+    while word * (k + 1) in sequence:
+      k += 1
+    return k
+    
+    
 class SolutionRecursionK:
   def maxRepeating(self, sequence: str, word: str) -> int:
     def helper(k: int) -> int:
@@ -5,9 +13,10 @@ class SolutionRecursionK:
       if word * k not in sequence:
         return k-1
       # Recursive case: check for k+1
-      return rec(k+1)
+      return helper(k+1)
 
-    return rec(1)
+    return helper(1)
+
 
 class SolutionMemoHM:
   def maxRepeating(self, sequence: str, word: str) -> int:
@@ -38,6 +47,7 @@ class SolutionMemoHM:
         k += 1
 
     return max_k
+
 
 class Solution:
   def maxRepeating(self, sequence: str, word: str) -> int:
