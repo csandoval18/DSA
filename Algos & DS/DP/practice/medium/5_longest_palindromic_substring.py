@@ -19,11 +19,22 @@ class Solution:
       return ""
       
     def helper(left: int, right: int, longest: str) -> str:
+      # Base case: left pointer reaches end of string
       if left == n:
         return longest
-      
+        
       # Recursively check for palindromes expanding around the current character
+      for j in range(left, n):
+        if self.isPalindrome(s, left, j):
+          curr_palindrome = s[left:j+1]
+          
+          if len(curr_palindrome) > len(longest):
+            longest = curr_palindrome
       
+      # Recursive call for the next starting point (left+1)
+      return self.helper(left+1, right, longest)
+    # Start the recursion from the first character
+    return self.helper(0, n-1, "")
   
 s = "babad"
 # Output: "bab"
