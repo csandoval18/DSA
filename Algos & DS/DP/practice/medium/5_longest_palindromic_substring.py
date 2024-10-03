@@ -24,9 +24,9 @@ class Solution:
         return longest
         
       # Recursively check for palindromes expanding around the current character
-      for j in range(left, n):
-        if self.isPalindrome(s, left, j):
-          curr_palindrome = s[left:j+1]
+      for i in range(left, n):
+        if self.isPalindrome(s[left:i+1]):
+          curr_palindrome = s[left:i+1]
           
           if len(curr_palindrome) > len(longest):
             longest = curr_palindrome
