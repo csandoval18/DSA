@@ -1,4 +1,4 @@
-class Solution:
+class Solution1:
   def isPalindrome(s: str):
     return s == s[::-1]
   
@@ -16,25 +16,48 @@ class Solution:
   def longestPalindrome(self, s: str) -> str:
     n = len(s)
     if n == 0:
-      return ""
-      
+        return ""
+
+    # Helper function to recursively find the longest palindrome
     def helper(left: int, right: int, longest: str) -> str:
-      # Base case: left pointer reaches end of string
+      if left == n:  # Base case: when we've checked all characters
+        return longest
+
+      # Recursively check for palindromes expanding around the current character
+      for j in range(left, n):
+        if helper(s, left, j):
+          current_palindrome = s[left:j + 1]
+          if len(current_palindrome) > len(longest):
+            longest = current_palindrome
+
+      # Recursive call for the next starting point (left+1)
+      return helper(left + 1, right, longest)
+
+    # Start the recursion from the first character
+    return helper(0, n - 1, "")
+
+class Solution:
+  def isPalindrome(self, s: str) -> bool:
+    return s == s[::-1]
+  
+  def longestPalindrome(self, s: str) -> str:
+    n = len(s)
+    if n == 0:
+      return ""
+    
+    def helper(left: int, right: int, longest: int):
       if left == n:
         return longest
+      
+      for j in range(left, n):
+        if self.isPalindrome(s[left:j+1]):
+          curr_palindrome = s[left:j+1]
         
-      # Recursively check for palindromes expanding around the current character
-      for i in range(left, n):
-        if self.isPalindrome(s[left:i+1]):
-          curr_palindrome = s[left:i+1]
-          
           if len(curr_palindrome) > len(longest):
             longest = curr_palindrome
-      
-      # Recursive call for the next starting point (left+1)
-      return self.helper(left+1, right, longest)
-    # Start the recursion from the first character
-    return self.helper(0, n-1, "")
+            
+      return helper(left+1, right, longest)
+    return helper(0, n-1, "")
   
 s = "babad"
 # Output: "bab"
