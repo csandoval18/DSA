@@ -1,7 +1,7 @@
 from typing import List
 
 # op = open parenthesis count
-# m = st curr len
+# m = str curr len
 def generateParenthesis(n: int) -> List[str]:
   def backtrack(m: int, op: int, st: str) -> None:
     if m == n*2:
