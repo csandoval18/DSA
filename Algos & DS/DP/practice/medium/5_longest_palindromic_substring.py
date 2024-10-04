@@ -45,7 +45,7 @@ class Solution:
     if n == 0:
       return ""
     
-    def helper(left: int, right: int, longest: int):
+    def helper(left: int, right: int, longest: str):
       if left == n:
         return longest
       
