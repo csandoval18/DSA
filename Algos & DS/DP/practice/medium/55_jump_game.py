@@ -11,7 +11,7 @@ class SolutionRec:
       # Calculate the furthest index we can jump to
       furthestJump = min(curr_position + nums[curr_position], n-1)
       # Try each possible jump length from 1 to the max jump distance
-      for nextPosition in range(nextPosition+1, furthestJump+1):
+      for nextPosition in range(curr_position+1, furthestJump+1):
         if helper(nextPosition):
           return True
       return False
@@ -45,17 +45,16 @@ class SolutionMemo:
 class SolutionDP:
   def canJump(self, nums: List[int]) -> bool:
     n = len(nums)
-    # Initialize the dp array where dp[i] indicates if index i is reachable
+    # Create a DP table, initialized to False, except for the first index
     dp = [False] * n
-    dp[0] = True
+    dp[0] = True # The first index is already reachable
     
     for i in range(n):
       # If the current position is reachable 
       if dp[i]:
         # Update all positions that can be reached from index i
-        for j in range(1, nums[i] + 1):
-          if i+j < n:
-            dp[i+j] = True
+        for j in range(i+1, min(i + nums[i] + 1, n)):
+          dp[j] = True
     return dp[n-1]
   
     
