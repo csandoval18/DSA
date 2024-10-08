@@ -45,7 +45,16 @@ class SolutionMemo:
     
 class SolutionDP:
   def jump(self, nums: List[int]) -> int:
+    n = len(nums)
+    dp = [-1]*n # DP arr to store the min jumps to reach the last index from each index
+    dp[n-1] = 0 # No jumps needed from the last index
     
+    # Fill the dp array by calc the min jumps from each position
+    for i in range(n-2, -1, -1):
+      # Explore all the positions that can be reached from index i
+      for j in range(i+1, min(i + nums[i] + 1, n)):
+        dp[i] = min(dp[i], 1 + dp[j]) # Update dp[i] with the min jumps
+    return dp[0]
 
 nums = [2,3,1,1,4]
 # Output: 2
