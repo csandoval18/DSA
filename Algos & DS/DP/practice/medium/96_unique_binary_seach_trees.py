@@ -80,11 +80,14 @@ class SolutionDP:
     dp[0] = 1 # One unique BST with 0 nodes (empty tree)
     dp[1] = 1 # One unique BST with 1 node
     
-    for i in range(2, n+1):
+    # Fill the DP table for all numbers of nodes from 2 to n
+    for num in range(2, n+1):
       # For each possible root node `j` (from 1 to `i`) , calc the number of trees
-      for j in range(1, i+1):
+      for u in range(1, num+1):
         # The number of trees with `i` nodes is the product of left and right subtrees
-        dp[i] += dp[j-1] * dp[i-j]
+        left_trees = dp[u-1]
+        right_trees = dp[num-u]
+        dp[u] += left_trees * right_trees
     
     # The answer is the number of unique BSTs with `n` nodes
     return dp[n]
