@@ -1,3 +1,36 @@
+# Recursion Explanaition | PS: u = i
+""" 
+1. Choosing the root:
+  In a BST, the root node determines how the tree is structured.
+  Any node from 1 ton can be selected as the root. 
+    - For each root node i, all nodes less than i must go into the left subtree,
+    - All nodes greater than i must go into the right subtree.
+
+2. Recursively counting trees for left and right subtrees:
+  For each root node i:
+    left subtree contains the nodes {1,2, ..., i-1} (i-1 nodes)
+    right subtrere contain the nodes {i+1, i+2, ..., n} (n-i nodes)
+
+3. Combining left and right subtree counts:
+  The total number of unique BSTs for a given root u (i) is the product of the number
+  of unique BSTs that can be formed with the left and right subtrees. This is because:
+    * For every unique way to arrange the left subtree, there are multiple unique
+      ways to arrange the right subtree.
+    * If there are left_trees unique ways to arrange the left subtree, and 
+      right_trees unique ways to arrange the right subtree, then the total number
+      of trees with u (i) as the root is the product left_trees * right_trees.
+
+4. Summing up all possibilities:
+  For each possible root i, we add the product of the number of unique left and right 
+  subtree trees to the total:
+  
+  total_trees += left_trees * right_trees
+  
+  This accounts for all possible configurations where u/i is the root. Since we are 
+  interating over all possible roots (from 1 to n), we sum the products for all values of
+  u/i 
+"""
+
 
 class SolutionRec:
   def numTrees(self, n: int) -> int:
@@ -18,18 +51,6 @@ class SolutionRec:
       total_trees += left_trees * right_trees
     return total_trees
 
-# Recursion Explanaition | PS: u = i
-""" 
-1. Choosing the root:
-  In a BST, the root node determines how the tree is structured.
-  Any node from 1 ton can be selected as the root. 
-    - For each root node i, all nodes less than i must go into the left subtree,
-    - All nodes greater than i must go into the right subtree.
-
-2. Recursively counting trees for left and right subtrees:
-For each root node i:
-  left subtree contains the nodes {1,2, ..., i-1} (i-1 nodes)
-"""
 
 class SolutionMemo:
   def numTrees(self, n: int) -> int:
