@@ -73,7 +73,22 @@ class SolutionMemo:
       memo[n] = total_trees
       return total_trees
     return helper(n)
-
+    
+class SolutionDP:
+  def numTrees(self, n: int) -> int:
+    dp = [0] * (n+1)
+    dp[0] = 1 # One unique BST with 0 nodes (empty tree)
+    dp[1] = 1 # One unique BST with 1 node
+    
+    for i in range(2, n+1):
+      # For each possible root node `j` (from 1 to `i`) , calc the number of trees
+      for j in range(1, i+1):
+        # The number of trees with `i` nodes is the product of left and right subtrees
+        dp[i] += dp[j-1] * dp[i-j]
+    
+    # The answer is the number of unique BSTs with `n` nodes
+    return dp[n]
+    
 n = 3
 # Output: 5
 s = SolutionRec()
