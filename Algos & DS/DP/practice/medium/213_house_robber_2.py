@@ -3,7 +3,8 @@ from typing import List
 
 class SolutionRec:
   def rob(self, nums: List[int]) -> int:
-    if len(nums) == 1:
+    n = len(nums)
+    if n == 1:
       return nums[0]
     return max(self.rob_range(nums, 0, n-2), self.rob_range(nums, 1, n-1))
     
