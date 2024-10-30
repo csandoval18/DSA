@@ -1,6 +1,8 @@
 from typing import List
 
-# Given an integer n, return the count of all numbers with unique digits, x, where 0 <= x < 10^n.
+'''
+Given an integer n, return the count of all numbers with unique digits, x, where 0 <= x < 10^n.
+'''
 
 '''
 Approach:
@@ -35,12 +37,13 @@ class Solution:
       return 1  
       
     def helper(pos: int, used: List[bool]) -> int:
-      # If we reach a position beyond n, return 1 as we count this valid number
+      # When pos == 0, we return 1, as we've formed a valid number
       if pos == 0:
         return 1
       
       cnt = 0
       # For the first digit (pos == n), don't allow "0" as the starting digit
+      # This ensures that we do not have a leading zero in the second level of the recursive tree
       start = 1 if pos == n else 0
       for digit in range(start, 10):
         if not used[digit]: # Check if the digit is not already used
@@ -55,6 +58,68 @@ class Solution:
       used = [False] * 10
       total_cnt += helper(length, used)
     return total_cnt
+
+class Solution:
+  def countNumbersWithUniqueDigits(self, n: int) -> int:
+    if n == 0:
+      return 1
+      
+    def helper(pos: int, ds: List[bool]) -> int:
+      if pos == 0:
+        return 1
+      
+      cnt = 0
+      start = 1 if pos == n else 0
+      for digit in range(start, 10):
+        if not ds[digit]:
+          ds[digit] = True
+          cnt += helper(pos-1, ds)
+          ds[digit] = False
+      return cnt
+
+    total_cnt = 1
+    for length in range(1, n+1):
+      ds = [False] * 10
+      total_cnt += helper(length, ds)
+    return total_cnt
+      
+      
+class SolutionDP:
+  def countNumbersWithUniqueDigits(self, n: int) -> int:
+    if n == 0:
+      return 1
+    
+    dp = [0] * (n+1)
+    dp[0] = 1 
+    dp[1] = 9
+    
+    # Fill dp array for lengths 2 to n
+    for length in range(2, n+1):
+      # Start with 9 single-digit numbers (1 through 9)
+      cnt = 9
+      # Multiply choices for each subsequent position
+      for i in range(9, 10 - length, -1):
+        count *= i
+      dp[length] = count
+      
+          
+          
+class SolutionSO:
+  def countNumbersWithUniqueDigits(self, n: int) -> int:
+    if n == 0:
+      return 1
+    
+    total_cnt = 1
+    curr_cnt = 9
+    
+    for length in range(1, n+1):
+      if length == 1:
+        total_cnt += curr_cnt
+      else:
+        curr_cnt *= 10 - length + 1
+        total_cnt += curr_cnt
+    return total_cnt
+      
 
 n = 2
 # Output: 91
