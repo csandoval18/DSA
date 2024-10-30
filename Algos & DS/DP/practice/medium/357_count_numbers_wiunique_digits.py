@@ -59,6 +59,7 @@ class Solution:
       total_cnt += helper(length, used)
     return total_cnt
 
+
 class Solution:
   def countNumbersWithUniqueDigits(self, n: int) -> int:
     if n == 0:
@@ -87,21 +88,26 @@ class Solution:
 class SolutionDP:
   def countNumbersWithUniqueDigits(self, n: int) -> int:
     if n == 0:
-      return 1
+      return 1 # Only the number "0" itself is valid when n = 0
     
+    # Initialize dp array where dp[k] stores count of unique-digit numbers of length k
     dp = [0] * (n+1)
-    dp[0] = 1 
-    dp[1] = 9
+    # Base cases:
+    dp[0] = 1 # dp[0] is 1 for the number 0
+    dp[1] = 9 # There are 9 single-digit numbers (1 through 9)
     
     # Fill dp array for lengths 2 to n
-    for length in range(2, n+1):
+    for length in range(2, n+1): 
       # Start with 9 single-digit numbers (1 through 9)
       cnt = 9
       # Multiply choices for each subsequent position
-      for i in range(9, 10 - length, -1):
+      # formula 10 - length + 1 
+      for i in range(9, 10 - length, -1): # Inner loop decreases the number of digits available to pick on each position
         count *= i
       dp[length] = count
       
+    total_cnt = sum(dp)
+    return total_cnt
           
           
 class SolutionSO:
