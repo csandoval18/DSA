@@ -1,0 +1,70 @@
+from typing import List
+
+# Given an integer n, return the count of all numbers with unique digits, x, where 0 <= x < 10^n.
+
+'''
+Approach:
+
+1. Recursive backtracking:
+  * Use a recursive function to explore numbers digit-by-digit, backtracking whenever a digit repeats.
+  * Start with an initial set of unused digits from 0 to 9.
+  * For each recursive call, choose an unused digit, add it to the current number, and continue.
+  * If the currennt number reaches n digits (or less, if counting all numbers with fewer digits is allowed), count it as a valid number.
+2. Base case:
+  * When reaching n digits, stop further recursion.
+3. Backtracking: 
+  * After exploring one possibility with a chosen digit, remove it from the current combination and try the next available digit.
+'''
+
+# helper(pos, used):
+# pos = The number of remaining position to fill.
+# used = a list tracking whic digits are currently in use.
+# When pos == 0, the recursion has generated a valid unique number, so it return 1
+
+# Backtracking:
+# For each digit from start to 9, if digit is unused (not used[digit]) mark it as used and recurse to the next position.
+# After the recursive call, unmark digit to try other digits in its place (backtracking)
+
+# TC: O(10^n) due to recursively exploring each possible digit
+# SC: O(n) we use an array of size 10 for used digits and recursive digit
+
+class Solution:
+  def countNumbersWithUniqueDigits(self, n: int) -> int:
+    # Base case: Only the number "0" is present so return count 1
+    if n == 0:
+      return 1  
+      
+    def helper(pos: int, used: List[bool]) -> int:
+      # If we reach a position beyond n, return 1 as we count this valid number
+      if pos == 0:
+        return 1
+      
+      cnt = 0
+      # For the first digit (pos == n), don't allow "0" as the starting digit
+      start = 1 if pos == n else 0
+      for digit in range(start, 10):
+        if not used[digit]: # Check if the digit is not already used
+          used[digit] = True # Mark this digit as used 
+          cnt += helper(pos - 1, used) # Recurse with reduced position
+          used[digit] = False # Backtrack: unmark this digit
+      return cnt
+    
+    # Sum up the counts for all possible lengths from 1 to n
+    total_cnt = 1
+    for length in range(1, n+1):
+      used = [False] * 10
+      total_cnt += helper(length, used)
+    return total_cnt
+
+n = 2
+# Output: 91
+# Explanation: The answer should be the total numbers in the range of 0 ≤ x < 100, excluding 11,22,33,44,55,66,77,88,99
+
+#        Start
+#     /    |    |    \     ...      \
+#    1     2    3     4              9
+#   / \   / \  / \   / \            / \
+#  0   2 0   1 0   1 0   1   ...   0   8
+#      |     |     |     |          |
+#      3     3     4     4          9
+#     ...   ...   ...   ...        ...

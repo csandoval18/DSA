@@ -87,7 +87,7 @@ class SolutionDP:
         # The number of trees with `i` nodes is the product of left and right subtrees
         left_trees = dp[u-1]
         right_trees = dp[num-u]
-        dp[u] += left_trees * right_trees
+        dp[num] += left_trees * right_trees
     
     # The answer is the number of unique BSTs with `n` nodes
     return dp[n]
