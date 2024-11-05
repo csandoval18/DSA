@@ -71,8 +71,8 @@ class SolutionDP:
           dp[i][0] = max(dp[i][0], dp[j][1] + 1)
     
     # The result is the longest wiggle sequence ending either up or down
-    return max(dp[i][0], dp[i][1] for i in range(n))
-      
+    return max(dp[i][0], *(dp[i][1] for i in range(n)))      
+
 class SolutionDP:
   def wiggleMaxLength(self, nums: List[int]) -> int:
     if not nums:
@@ -102,7 +102,7 @@ nums = [1,7,4,9,2,5]
 # Output: 6
 # Explanaition: The entire sequence is a wiggle sequence with differences (6, -3, 5, -7, 3).
 
-nums = [1,17,5,10,,13,15,10,5,16,8]
+# nums = [1,17,5,10,,13,15,10,5,16,8]
 # Output: 7
 # Explanation: There are several subsequences that ahieve this length.
 # One is [1,17,10,13,10,16,8] with differences (16,-7,3,-3,6,-8)
