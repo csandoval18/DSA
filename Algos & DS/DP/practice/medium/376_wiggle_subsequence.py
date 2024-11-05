@@ -29,26 +29,73 @@ class SolutionRec:
     return 1 + max(dfs(1, True), dfs(1, False))
 
 
-class Solution:
+class SolutionMemo:
   def wiggleMaxLength(self, nums: List[int]) -> int:
-    def dfs(i: int, isUp) -> int:
-      if i == len(nums):
+    def dfs(i: int, isUp: int) -> int:
+      if i == len(nums): # This just means the recursion loop goes in range(1, n)
         return 0
       
-      if memo[i][isUp] != -1: 
+      if memo[i][isUp] != -1:
         return memo[i][isUp]
       
       maxLen = dfs(i+1, isUp)
-      if (isUp and nums[i] > nums[i-1]) or (not isUp and nums[i] < nums[i-1]):
-        maxLen = max(maxLen, 1 + dfs(i+1, not isUp))
+      if (isUp == 1 and nums[i] > nums[i-1]) or (isUp == 0 and nums[i] < nums[i-1]):
+        maxLen = max(maxLen, 1 + dfs(i+1, isUp ^ 1))
+
+      memo[i][isUp] = maxLen
       return maxLen
     
-    memo = [[-1] * 2 for _ in range(len(nums))]
+    if len(nums) < 1:
+      return len(nums)
+
+    n = len(nums)
+    memo = [[-1]*2 for _ in range(n)]
+    return 1 + max(dfs(1, 1), dfs(1, 0))
+  
+  
+class SolutionDP:
+  def wiggleMaxLength(self, nums: List[int]) -> int:
+    if len(nums) < 2:
+      return len(nums)
     
+    n = len(nums)
+    # Initialize the dp table
+    dp = [[1, 1] for _ in range(n)]
+    
+    # Fill the dp table
+    for i in range(1, n):
+      for j in range(i):
+        if nums[i] > nums[j]:  # current wiggle goes up
+          dp[i][1] = max(dp[i][1], dp[j][0] + 1)
+        elif nums[i] < nums[j]:  # current wiggle goes down
+          dp[i][0] = max(dp[i][0], dp[j][1] + 1)
+    
+    # The result is the longest wiggle sequence ending either up or down
+    return max(dp[i][0], dp[i][1] for i in range(n))
       
-        
-        
-        
+class SolutionDP:
+  def wiggleMaxLength(self, nums: List[int]) -> int:
+    if not nums:
+      return 0
+      
+    n = len(nums)
+    # dp = [[0]*2 for _ in range(n+1)]
+    dp = [[1, 1] for _ in range(n)]
+    
+    for i in range(1, n):
+      if nums[i] > nums[i-1]:
+        dp[i][1] = dp[i-1][0] + 1 # Extend the sequence ending in down
+        dp[i][0] = dp[i-1][0] # Carry over the previous "down" sequence
+      elif nums[i] < nums[i-1]:
+        dp[i][0] = dp[i-1][1] + 1 # Extend the sequence ending in up
+        dp[i][1] = dp[i-1][1] # Carry over the previous "up" sequence
+      else:
+        # If nums[i] == nums[i-1], carry over both  states
+        dp[i][0] = dp[i-1][0]
+        dp[i][1] = dp[i-1][1]
+      
+    # The result is the max wiggle length considering both up and down at the last index
+    return max(dp[n-1][0], dp[n-1][1])
     
 
 nums = [1,7,4,9,2,5]
