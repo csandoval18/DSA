@@ -20,8 +20,11 @@ class Solution:
         return 0
         
       # If result for this rem target is already computed, return it
-      if memo[rem] != -1
+      if memo[rem] != -1:
+        return memo[rem]
       
+      # Calculate the total ways to reach 'remaining' by trying each number in nums
+
         
 
 nums = [1,2,3]

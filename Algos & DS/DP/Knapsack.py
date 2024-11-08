@@ -28,14 +28,17 @@ class SolutionRec:
       if weights[n-1] > W:
         return self.knapsack_recursive(weights, values, n-1, W)
       # Choose the maximum value obtained by either including or excluding the item
-      include = values[i-1] + self.knapsack_recursive(n-1, W - weights[n-1])
+      include = values[n-1] + self.knapsack_recursive(n-1, W - weights[n-1])
       exclude = self.knapsack_recursive(n-1, W)
       return max(include, exclude)
     return helper(n, W)
 
+
 class SolutionMemo:
   def knapsack_recursive(self, weights: List[int], values: List[int], W: int) -> int:
     n = len(weights)
+    memo = [[-1 for _ in range(W+1)] for _ in range(n)] 
+    
     def helper(i: int, W: int) -> int:
       if i < 0 or W == 0:
         return 0
@@ -43,12 +46,36 @@ class SolutionMemo:
       # If weight of the ith item is more than the remaining capacity, skip it
       if weights[i] > W:
         return self.knapsack_recursive(i-1, W)
-      
       # Choose the maximum value obtained by either including or excluding the item
       include = values[i] + helper(i-1, W - weights[i])
-      exclude = helper(i-1, )
+      exclude = helper(i-1, W)
+      
+      memo[i][W] = max(include, exclude)
+      return memo[i][W]
+    return helper(n-1, W)
+
+
+class SolutionDP:
+  def knapsack_recursive(self, weights: List[int], values: List[int], W: int) -> int:
+    # Initialize DP table with 0s
+    n = len(weights)
+    dp = [[0 for _ in range(W+1)] for _ in range(n)]
     
+    for w in range(W+1):
+      if weights[0] <= w:
+        dp[0][w] = values[0]
     
+    # Fill dp table
+    for i in range(n):
+      for w in range(W+1):
+        if weights[i] <= w:
+          # Either include the item or exclude it
+          dp[i][w] = max(values[i] + (dp[i-1][w-weights[i]]))
+        else:
+          # Exclude the item
+          dp[i][w] = dp[i-1][w]
+    # The max value for n items and capacity W
+    return dp[n-1][w]
 
 weights = [1,2,3]
 values = [6,10,12]
