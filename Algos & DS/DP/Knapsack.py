@@ -43,7 +43,7 @@ class SolutionRec:
         return 0
       
       if weights[i] > W:
-        return self.helper(i-1, W)
+        return helper(i-1, W)
       else:
         include = values[i] + helper(i-1, W - weights[i])
         exclude = helper(i-1, W)
@@ -100,3 +100,10 @@ values = [6,10,12]
 W = 5
 s = SolutionRec()
 print(s.knapsack_recursive(weights, values, W))
+
+#                       Max Weight (Profit)
+# | val | W | item | 0 | 1 | 2  | 3  | 4  | 5  |
+# | 0   | 0 | 0    | 0 | 0 | 0  | 0  | 0  | 0  |
+# | 6   | 1 | 1    | 0 | 6 | 6  | 6  | 6  | 6  |
+# | 10  | 2 | 2    | 0 | 6 | 10 | 16 | 16 | 16 |
+# | 12  | 3 | 3    | 0 | 6 | 10 | 16 | 18 | 22 |
