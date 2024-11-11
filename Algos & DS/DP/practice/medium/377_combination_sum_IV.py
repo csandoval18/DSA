@@ -13,7 +13,7 @@ class SolutionRec:
     memo = [-1] * (target+1)
     
     def dfs(rem: int) -> int:
-      # Base case: If remaining is zero, there is one way to reach it, pick none
+      # Base case: If remaining is zero, there is one way to reach it
       if rem == 0:
         return 1
       # If remaining becomes negative, there are no ways
@@ -53,7 +53,7 @@ class SolutionRec:
       
       total_ways = 0
       for num in nums:
-        total_ways += dfs(rem - nums)
+        total_ways += dfs(rem - num)
       
       memo[rem] = total_ways
       return total_ways
