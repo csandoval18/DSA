@@ -44,10 +44,35 @@ class Solution:
     
     # Start recursion from F(1) based on F(0)
     return helper(1, F0)
+    
+'''
+PS:
+In this problem, memoization does not fit well because each rotation function
+F(k) depends on F(k-1) in a specific, sequential way, and we need to examine
+all computed values to find the maximum. This is a scenario where a simple loop-
+based approach works better than recursion and memoization.
+'''
       
+class Solution:
+  def maxRotateFunction(self, nums: List[int]) -> int:
+    n = len(nums)
+    total_sum = sum(nums)
     
+    # Initial calculation of F(0)
+    F0 = sum(i * nums[i] for i in range(n))
     
+    # Use F0 as the initial max value
+    max_value = F0
+    F_prev = F0
     
+    # Iterate to compute each F(k) and track the maximum
+    for k in range(1, n):
+      # Calculate F(k) based on F(k-1)
+      F_k = F_prev + total_sum - n * nums[n - k]
+      max_value = max(max_value, F_k)
+      F_prev = F_k  # Update F_prev for the next iteration
+    
+    return max_value
 
 nums = [4,3,2,6]
 n = len(nums)
