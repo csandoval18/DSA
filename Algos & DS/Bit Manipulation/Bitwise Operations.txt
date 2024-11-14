@@ -1,0 +1,4 @@
+Checking if a number is even
+
+Regular: n % 2 == 0 
+Bitwise: (n & 1) == 0
