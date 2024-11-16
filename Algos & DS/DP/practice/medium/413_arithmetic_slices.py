@@ -40,7 +40,7 @@ class SolutionRec:
   class SolutionMemo:
     def numberOfArithmeticSlices(self, nums: List[int]) -> int:
       n = len(nums)
-      memo = [-1]*(n)
+      memo = [-1]*n
       
       def countSlices(i: int):
         if i < 2:
