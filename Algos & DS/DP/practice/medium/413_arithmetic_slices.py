@@ -50,13 +50,21 @@ class SolutionRec:
           return memo[i]
         
         slices = countSlices(i-1)
-        if nums[i] - nums[i-1] == nums:
+        if nums[i] - nums[i-1] == nums[i-1] - nums[i-2]:
           curr_slices = 1 + countSlices(i-1)
           memo[i] = slices + curr_slices
         else:
           memo[i] = slices
         return memo[i]
       return countSlices(n-1)
+      
+# 0: i = 3
+# if 4 - 3 == 3 - 2: True, therefore this is an arithmetic sequence
+#   curr_slices = 1 + helper(2)
+# else:
+#   return slices 
+
+
   
   
   class SolutionDP:
@@ -72,11 +80,12 @@ class SolutionRec:
         if nums[i] - nums[i-1] == nums[i-1] - nums[i-2]:
           dp[i] = dp[i-1] + 1
           total_slices += dp[i]
+          
       return total_slices
     
       
 
-  #               countSlices(3)
+  #               countSlices(3) = [2,3,4]
   #                 /        \
   #        countSlices(2)    countSlices(1)
   #              /      \
