@@ -1,0 +1,53 @@
+1. Constant Window Problems
+
+arr = [-1,2,3,3,4,5,-1]  k = 4
+
+-1 2 3 3       sum = 7
+   2 3 3 4     sum = 12
+
+Remove the first element in the window and add the next element
+
+while (r < n-1):
+  sum = sum - arr[l]
+  l++
+  r++
+  sum = sum + arr[r]
+  maxSum = max(maxSum, sum)
+  
+2. Longest subarray with sum <= k
+ 
+       _______
+arr = [2,5,1,7,10]  k = 14
+       l     r      sum = 15
+
+- Brute Force: Generate all the subarrays and check for the condition
+
+2
+2,5
+2,5,1,
+2,5,1,7
+2,5,1,7,10
+5,
+5,1
+5,1,7
+1
+1,7
+7
+7,10
+10
+
+TC: O(n^2)
+SC: O(1)
+
+for i in range(n-1):
+   for j in range(i, n-1):
+   curr_sum = curr_sum + arr[j]
+   if sum <= k:
+      maxLen = max(maxLen, j-i+1)
+   elif (sum > k):
+      break
+
+- Better Approach: Sliding Window
+
+arr = [2,5,1,7,10]  k = 14
+       l r          sum = 7
