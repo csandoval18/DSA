@@ -11,89 +11,74 @@ Given two integers maxChoosableInteger and desiredTotal, return true if the firs
 to move can force a win, otherwise, return false. Assume both players play optimally.
 '''
 
-# Solution
+# Approach:
+# The problem can be solved using backtracking with memoization. Key considerations:
 
-# 1. Key obeserbations:
-#   * If the total sum of all integers in range(1, maxChoosableInteger) < than desiredTotal, neither player can win.
-#   * The game state can be represented using a bitmask, where each bit indicates whether a number is available for selection.
-# 2. Recursive Function:
-#   * Base Case: If the current player can pick a number to reach or exceed desiredTotal, they win.
-#   * Recursive Case: For each available number, simulate picking it and let the opponent play. If the opponent cannot win in the next step, the current player wins.
-# 3. Memoization
-#   * Store results for already computed states to avoid redundant calculations.
+# 1. Constraints and Observations:
+#   - If the sum of all numbers (from 1 to maxChoosableInteger) is less than desiredTotal, it's impossible for either player to win.
+#   - If maxChoosableInteger ≥ desiredTotal, the first player can simply choose desiredTotal directly and win.
 
-class SolutionRec:
+# 2. State Representation:
+#   - Use a bitmask (usedNumbers) to represent which numbers are already picked.
+#   - Use a recursive function to explore all possible moves.
+
+# 3. Memoization:
+#   - Memoize results based on the current usedNumbers and remainingTotal to avoid redundant calculations.
+
+# 4. Base Case:
+#   - If the remainingTotal ≤ 0, the current player loses.
+
+class Solution:
   def canIWin(self, maxChoosableInteger: int, desiredTotal: int) -> bool:
     if sum(range(1, maxChoosableInteger + 1)) < desiredTotal:
-    # If the sum of all numbers is less than the desired total, it's impossible to win
       return False
-    
-    def helper(rem, used_nums):
-      for i in range(1, maxChoosableInteger + 1): # Try every number from 1 to maxChoosableInteger
-        curr_bit = 1 << i # Bitmask for current number
-        
-        if used_nums & curr_bit == 0:  # If the number is not used
-          if rem - i <= 0 or not helper(rem - i, used_nums | curr_bit): # If picking this number wins the game, or the opponent loses
-            return True
-      
-      # If no winning move is found
-      return False
-    return helper(desiredTotal, 0)
+    if maxChoosableInteger >= desiredTotal:
+      return True
 
-
-class SolutionMemo:
-  def canIWin(self, maxChoosableInteger: int, desiredTotal: int) -> bool:
-    # If the sum of all numbers is less than the desired total, it's impossible to win
-    if sum(range(1, maxChoosableInteger + 1)) < desiredTotal:
-      return False
-    
     memo = {}
-    
-    def helper(rem, used_nums):
-      # Check if we have already computed this state
-      if used_nums in memo:
-        return memo[used_nums]
+
+    def can_win(used_numbers: int, remaining_total: int) -> bool:
+      if remaining_total <= 0:
+        return False
+      if used_numbers in memo:
+        return memo[used_numbers]
       
-      for i in range(1, maxChoosableInteger + 1): # Try every number from 1 to maxChoosableInteger
-        curr_bit = 1 << i # Bitmask for current number
-        
-        if used_nums & curr_bit == 0:  # If the number is not used
-          if rem - i <= 0 or not helper(rem - i, used_nums | curr_bit): # If picking this number wins the game, or the opponent loses
-            memo[used_nums] = True
+      for i in range(maxChoosableInteger):
+        current_mask = 1 << i
+        if not (used_numbers & current_mask):  # If the number i+1 is not used
+          # Choose the number i+1 and toggle its bit
+          if not can_win(used_numbers | current_mask, remaining_total - (i + 1)):
+            memo[used_numbers] = True
             return True
       
-      # If no winning move is found
-      memo[used_nums] = False
+      memo[used_numbers] = False
       return False
-    return helper(desiredTotal, 0)
+
+    return can_win(0, desiredTotal)
 
 
-def canIWin(maxChoosableInteger: int, desiredTotal: int) -> bool:
-  # If the sum of all numbers is less than the desired total, it's impossible to win
-  if sum(range(1, maxChoosableInteger + 1)) < desiredTotal:
-    return False
-
-  # Memoization list to store the results of states
-  memo = [-1] * (1 << maxChoosableInteger)  # Initialize with -1 (uncomputed states)
-
-  def helper(rem: int, used_nums: int) -> bool:
-    # Check if we have already computed this state
-    if memo[used_nums] != -1:
-      return memo[used_nums] == 1
-
-    for i in range(1, maxChoosableInteger + 1): # Try every number from 1 to maxChoosableInteger
-      curr_bit = 1 << i # Bitmask for current number
+class Solution:
+  def canIWin(self, maxChoosableInteger: int, desiredTotal: int) -> bool:
+    if desiredTotal <= 0:
+      return True
+    if maxChoosableInteger * (maxChoosableInteger + 1) // 2 < desiredTotal:
+      return False
       
-      if used_nums & curr_bit == 0:  # If the number is not used
-        if rem - i <= 0 or not helper(rem - i, used_nums | curr_bit): # If picking this number wins the game, or the opponent loses
-          memo[used_nums] = True
-          return True
+    dp = [-1] * (1 << maxChoosableInteger)
     
-    # If no winning move is found
-    memo[used_nums] = False
-    return False
-  return helper(desiredTotal, 0)
-
+    def dfs(state, remaining):
+      if remaining <= 0:
+        return False
+      if dp[state] != -1:
+        return dp[state] == 1
+      for i in range(maxChoosableInteger):
+        if (state & (1 << i)) == 0:
+          if not dfs(state | (1 << i), remaining - (i + 1)):
+            dp[state] = 1
+            return True
+      dp[state] = 0
+      return False
+    return dfs(0, desiredTotal)
 
 maxChoosableInteger = 10
 desiredTotal = 11
