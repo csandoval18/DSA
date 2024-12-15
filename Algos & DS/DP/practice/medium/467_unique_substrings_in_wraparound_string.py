@@ -28,16 +28,61 @@ To solve this problem:
    valid substring ending with char.
 3. The sum of all values in count gives the total number of unique  substrings. 
 '''
-class Solution:
+class SolutionRec:
     def findSubstringInWraproundString(self, s: str) -> int:
-        base = "zabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyza"
+        # Helper function with memoization
+        def dfs(i: int, prev: int, length: int, memo: dict) -> int:
+            if i == len(s):
+                return 0
+            
+            # If already computer for this char and len
+            if (i, prev, length) in memo:
+                return memo[(i, prev, length)]
+            
+            # Include current char if it continues the wraparound sequence
+            if ord(p[i]) - ord(prev) == 1 or (prev == 'z' and p[i] == 'a'):
+                length += 1
+            else:
+                length = 1
+            
+            # Store the max len of substring ending at p[i]
+            max_lens[ord(s[i]) - ord('a')] = max(max_lens[ord(p[i]) - ord('a')], length)
+            
+            # Recursively check the next character
+            res = dfs(i+1, p[i], length, memo)
+            
+            # Store in eemo and return the rsult
+            memo[(i, prev, length)] = res
+            return res
         
-        # Case 1:
-        # len(s) == 1: answer = 1 | Since it is only one char
+        # Array to store the max lens of substrings ending with each character
+        max_lens = [0] * 26
+        memo = {}
         
+        # Start the recursive DFS
+        dfs(0, '', memo)
+        # Sum the max lens for all unique substrings
+        return sum(max_lens)
+
+class SolutionDP:
+    def findSubstringInWraproundString(self, s: str) -> int:
+        # Array to store the max length of substrings ending with each character
+        count = [0] * 26 # Current max len of consecutive substring
+        maxLen = 0 # Current max len of consecutive substring
         
-        
-        
+        for i in range(len(s)):
+            # Check if the current character continues a valid substring
+            if i > 0 and (ord(s[i]) - ord(s[i-1]) == 1 or ord(s[i-1]) - ord(s[i]) == 25):
+                maxLen += 1
+            else:
+                maxLen = 1
+
+            # Update count for p[i]
+            idx = ord(s[i]) - ord('a')
+            count[idx] = max(count[idx], maxLen)
+    
+        # Sum of all counts gives the number of unique substrings
+        return sum(count)
 
 s = "a"
 # Output: 1
