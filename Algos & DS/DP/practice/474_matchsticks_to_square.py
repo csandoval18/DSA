@@ -1,10 +1,12 @@
 from typing import List
 
+# (DP & Bit Manipulation Problem) Skipped for now
+
 '''
 473. Matchsticks to Square (Medium)
 
 You are given an integer array matchsticks where matchsticks[i] is the length of the ith matchstick.
-You want to use all the matchsticks
+You want to use all the matchsticks 
 
 '''
 
