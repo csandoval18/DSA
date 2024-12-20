@@ -15,7 +15,7 @@ while (r < n-1):
   sum = sum + arr[r]
   maxSum = max(maxSum, sum)
   
--------------------------------------------------------
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 2. Longest subarray with sum <= k
  
@@ -104,4 +104,21 @@ return maxLen
 TC: O(N)
 SC: O(1)
 
--------------------------------------------------------
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Pattern 3 
+
+3. Number of subarrays where <condition>
+
+Num of subarrays with sum = K
+- Whenever there is a constant condition it is difficult to know to expand or shrink the window.
+
+* Find the number of subarrays where sum <= k = X
+* Find the number of subarrays where sum <= (k-1) = Y
+solution => (X - Y)
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Pattern 4
+
+4. Shortest/Min window <condition>
