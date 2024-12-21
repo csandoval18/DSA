@@ -33,6 +33,7 @@ class SolutionOP:
       while s[r] in seen:
         seen.remove(s[l])
         l += 1
+        
       seen.add(s[r])
       maxLen = max(maxLen, r-l+1)
     return maxLen
@@ -45,17 +46,13 @@ class SolutionOP:
     
     for r in range(len(s)):
       if s[r] in hm:
-        if hm[s[r]] >= l:
+        if hm[s[r]] >= l: # This range check is necessary. Ex: s = "abba" |  O: 3 | E: 2
           l = hm[s[r]] + 1 # Move l pointer to the stored/previously seen s[r] index + 1 to make window valid
       
       maxLen = max(maxLen, r-l+1)
       hm[s[r]] = r
     return maxLen
           
-    
-        
-      
-      
 
 # s = "abcabcbb"
 # Output: 3
