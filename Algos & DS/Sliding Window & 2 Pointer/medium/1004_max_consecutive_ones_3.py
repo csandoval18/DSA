@@ -21,7 +21,7 @@ class SolutionBF:
           break
     return maxLen
     
-class SolutionOP:
+class SolutionBetter:
   def longestOnes(self, nums: List[int], k: int) -> int:
     l, maxLen = 0, 0
     zeroes = 0
@@ -38,9 +38,15 @@ class SolutionOP:
       if zeroes <= k:
         maxLen = max(maxLen, r-l+1)
     return maxLen
-        
-        
+    
 # Attempt to use a hash map instead of using while loop to track first zero seen to remove from the left when zeroes surpasses k
+  
+class SolutionOP:
+  def longestOnes(self, nums: List[int], k: int) -> int:
+    
+    
+        
+        
 
     
 nums = [1,1,1,0,0,0,1,1,1,1,0]
