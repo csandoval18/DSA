@@ -6,7 +6,7 @@ substring without repeating characters.
 
 
 1. Brute force: generate all substring and find longest with different characters
-2. Better: 
+2. Optimized: Use a hashmap to shift left pointer to valid window 
 '''
 
 class SolutionBF:
@@ -24,7 +24,7 @@ class SolutionBF:
     return maxLen
 
 
-class SolutionOP:
+class SolutionOP2:
   def lengthOfLongestSubstring(self, s: str) -> int:
     seen = set()
     l, maxLen = 0, 0
@@ -38,7 +38,7 @@ class SolutionOP:
       maxLen = max(maxLen, r-l+1)
     return maxLen
         
-class SolutionOP:
+class SolutionOP1:
   def lengthOfLongestSubstring(self, s: str) -> int:
     hm = {}
     l, r = 0, 0
