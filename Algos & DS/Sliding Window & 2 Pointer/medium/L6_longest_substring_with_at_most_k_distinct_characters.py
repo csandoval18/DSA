@@ -36,7 +36,7 @@ class SolutionBetter: # TC: O(2N) | SC: O(256) -> worst case if the string conta
 
 class SolutionOP:
   def longestKSubstr(self, s: str, k: int) -> int:
-    l, maxLen = 0, 0
+    l, maxLen = 0, -1
     hm = {}
     
     for r in range(len(s)):
@@ -48,11 +48,15 @@ class SolutionOP:
           hm.pop(s[l])
         l += 1
       
-      if len(hm) <= k:
+      if len(hm) == k:
         maxLen = max(maxLen, r-l+1)
         
     return maxLen
       
 
-s = "aabacbebebe"
-k = 3
+# s = "aabacbebebe"
+s = "aaaa"
+# s = "aabaaab"
+k = 2
+sol = SolutionOP()
+print(sol.longestKSubstr(s, k))
