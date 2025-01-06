@@ -49,18 +49,18 @@ class SolutionBetter2:
       hm = {}
       
       for r in range(len(s)):
-        hm[s[r]] = hm.get(hm[s[r]], 0) + 1
+        hm[s[r]] = hm.get(s[r], 0) + 1 # Update frequency of chars
         
-        while len(hm) > K:
-          cnt += len(s) - r
+        while len(hm) == K: # When we have all three distinct chars
+          cnt += len(s) - r # Count all substring ending at index 'r'
           
+          hm[s[l]] -= 1 # Shrink the window
           if hm[s[l]] == 0:
-            hm.pop(s[l])
-      return cnt
+            hm.pop(s[l]) # Remove character from map if count reaches 0
+          l += 1 # Move the left pointer
+      return cnt 
       
-      
-        
-          
-          
-
-s = 'bacba'
+s = 'bacba' 
+# Output: 
+sol = SolutionBetter2()
+print(sol.numberOfSubstrings(s))
