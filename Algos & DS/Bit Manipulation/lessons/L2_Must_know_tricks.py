@@ -151,5 +151,75 @@ n = 13, i = 2
 -------
 1 1 0 1 = 13
 
+'''
+
+
+
+# Clear the i'th bit 
+
+'''
+n = 13, i = 2
+
+1 1 0 1
+
+Observation:
+
+So the bit in index 2 has to be set to 0. 
+
+n = 13, i = 2
+
+* If we add ones to every number but the i'th index and use an AND operator the i'th bit is flipped off
+
+1 1 0 1 &
+1 0 1 1 
+-------
+1 0 0 1 => Solution 
+
+Steps:
+- Start with 1, it must be moved to the i'th bit to be switch off
+- Left SHIFT by 1 by i positions to get the i'th bit 'selected'
+- Instead of using an AND operator a NOT operator can be used to switch all 0's => 1's and all 1's to 0's
+
+n AND ¬(1 << i)
+
+1 << i
+0 0 0 1
+0 1 0 0
+
+¬(1 << i)
+0 1 0 0
+1 0 1 1
+
+n & ¬(1 << i)
+1 1 0 1 &
+1 0 1 1
+-------
+1 0 0 1
+'''
+
+
+
+# Toggle the i'th bit
+
+'''
+1. Left shit 1 by i
+2. n XOR (1 << i)
+
+n = 13, i = 1
+
+1 << i
+0 0 0 1
+0 0 1 0
+
+13 ^ (1 << i)
+1 1 0 1 ^
+0 0 1 0 
+-------
+1 1 1 1
+
+
+
+
+
 
 '''
