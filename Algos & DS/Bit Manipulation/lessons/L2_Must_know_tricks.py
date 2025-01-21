@@ -216,10 +216,20 @@ n = 13, i = 1
 0 0 1 0 
 -------
 1 1 1 1
+'''
 
 
 
+# Remove the last set bit (rightmost)
+'''
+n = 12
 
+  |
+  V
+1 1 0 0
+
+1 1 0 0
+1 0 0 0 => res
 
 
 '''
