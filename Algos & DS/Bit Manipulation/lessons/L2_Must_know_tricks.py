@@ -1,4 +1,4 @@
-# Swap 2 Numbers
+# 1. Swap 2 Numbers
 
 a = 5
 b = 6
@@ -23,7 +23,7 @@ Steps:
 
 
 
-# Check if the i'th bit is set on not
+# 2. Check if the i'th bit is set on not
 
 '''
 - 2 Methods using the left and right SHIFT operators. (<<, >>)
@@ -108,7 +108,7 @@ else:
 
 
 
-# Set the i'th bit
+# 3. Set the i'th bit
 
 '''
 Steps:
@@ -155,7 +155,7 @@ n = 13, i = 2
 
 
 
-# Clear the i'th bit 
+# 4. Clear the i'th bit 
 
 '''
 n = 13, i = 2
@@ -199,7 +199,7 @@ n & ¬(1 << i)
 
 
 
-# Toggle the i'th bit
+# 5. Toggle the i'th bit
 
 '''
 1. Left shit 1 by i
@@ -220,9 +220,11 @@ n = 13, i = 1
 
 
 
-# Remove the last set bit (rightmost)
+# 6. Remove the last set bit (rightmost)
 '''
 n = 12
+
+Examples:
 
   |
   V
@@ -231,5 +233,138 @@ n = 12
 1 1 0 0
 1 0 0 0 => res
 
+_________________
 
+n = 13
+
+1 1 0 1
+1 1 0 0
+
+_________________
+
+n = 16
+
+1 0 0 0 0
+0 0 0 0 0
+
+Observation:
+
+n = 16
+1 0 0 0 0 
+
+n = 15
+0 1 1 1 1
+
+_________________
+
+n = 40
+1 0 1 0 0 0
+
+n = 39
+1 0 0 1 1 1
+
+_________________
+
+n = 84
+1 0 1 0 1 0 0
+
+n = 83
+1 0 1 0 0 1 1
+
+Notice how  when we go from (n to n-1), we set the right-most set bit to 0 and every other bit to the right is flipped on
+
+* Formula: n & n-1
+
+Example:
+
+n = 40
+
+1 0 1 0 0 0 &
+1 0 0 1 1 1
+-----------
+1 0 0 0 0 0
+
+n = 84
+
+1 0 1 0 1 0 0 &
+1 0 1 0 0 1 1
+-------------
+1 0 1 0 0 0 0
+
+As shown, the formula N & N-1 flips the right-most set bit
+'''
+
+
+
+# 7. Check if the number is a power of 2
+
+'''
+if n & n-1 == 0:
+  True
+else:
+  False
+
+N & N-1
+1 1 0 1 &
+1 1 0 0 
+-------
+1 1 0 0 != 0 => False
+
+1 0 0 0 0 &
+0 1 1 1 1
+---------
+0 0 0 0 0 = 0 => True
+'''
+
+
+# 8. Count the number of set bits
+
+'''
+n = 16
+1 0 0 0 0 => 1
+
+n = 13
+1 1 0 1 => 3
+
+Sol:
+13 / 2 = 6 rem 1
+ 6 / 2 = 3 rem 0 
+ 3 / 2 = 1 rem 1 
+ 
+ def countSetBits(n: int) -> int:
+  cnt = 0
+  
+  while n > 1:
+    if n % 2 == 1:
+      cnt += 1
+    n //= 2
+    
+  if n == 1:
+    cnt += 1
+  return cnt
+
+* Remember: An odd number's right-most bit will always bet 1
+
+=> First Method:
+
+def countSetBitsOperators(n: int) -> int:
+  cnt = 0
+  
+  while n > 1:
+    cnt += n & 1
+    n = n >> 1
+  
+  if n == 1:
+    cnt += 1
+  return cnt
+
+=> Second Method:
+
+def countSetBitsOperators(n: int) -> int:
+  cnt = 0 
+ 
+  while n != 0:
+    n = n & (n-1)
+    cnt += 1
+  return cnt
 '''
