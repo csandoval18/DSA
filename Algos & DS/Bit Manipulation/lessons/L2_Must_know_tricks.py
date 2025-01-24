@@ -1,9 +1,9 @@
 # 1. Swap 2 Numbers
 
+'''
 a = 5
 b = 6
 
-'''
 Without bit manipulation this is usually done using a third temporary variable:
 tmp = a
 a = b
@@ -180,7 +180,7 @@ Steps:
 - Left SHIFT by 1 by i positions to get the i'th bit 'selected'
 - Instead of using an AND operator a NOT operator can be used to switch all 0's => 1's and all 1's to 0's
 
-n AND ¬(1 << i)
+n & ¬(1 << i)
 
 1 << i
 0 0 0 1
@@ -203,7 +203,7 @@ n & ¬(1 << i)
 
 '''
 1. Left shit 1 by i
-2. n XOR (1 << i)
+2. n ^ (1 << i)
 
 n = 13, i = 1
 
@@ -368,3 +368,24 @@ def countSetBitsOperators(n: int) -> int:
     cnt += 1
   return cnt
 '''
+
+def cntSetBits1(n: int) -> int:
+  cnt = 0
+  
+  while n > 0:
+    cnt += n & 1 # Check if the rightmost bit is set (number is uneven)
+    n = n >> 1 # Divide by 2
+  return cnt
+  
+def cntSetBits2(n: int) -> int:
+  cnt = 0
+  
+  while n != 0:
+    n = n & (n-1)
+    cnt += 1
+  return cnt
+  
+n = 13 
+# Output: 3
+print(cntSetBits1(n))
+print(cntSetBits2(n))

@@ -1,7 +1,7 @@
 class Solution:
   def minBitFlips(self, start: int, goal: int) -> int:
-    
-    return
+    x = start ^ goal
+    return bin(x).count('1')
 
 start = 10
 goal = 7
@@ -19,8 +19,8 @@ g = 7
 X X   X = 3 changes
 '''
 
-start = 3
-goal = 4
+# start = 3
+# goal = 4
 
 '''
 s = 3
