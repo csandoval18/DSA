@@ -27,14 +27,14 @@ class Solution(object): # TC: O(N*log(M) + M) | SC: O(M)   M = (N//2)+1
 
   # Using Bit Manipulation
   
-# XOR returns 1 when the two compared bits are different and 0 when they are the same.
-# XOR -> a ^ a = 0
-def singleNumberOneLoop(self, nums: List[int]):
-  XOR = 0
-  
-  for i in range(len(nums)):
-    XOR = XOR ^ nums[i]
-  return XOR
+  # XOR returns 1 when the two compared bits are different and 0 when they are the same.
+  # XOR -> a ^ a = 0
+  def singleNumberOneLoop(self, nums: List[int]):
+    XOR = 0
+    
+    for num in nums:
+      XOR = XOR ^ num
+    return XOR
   
 nums = [4,1,2,1,2]
 
@@ -43,3 +43,5 @@ nums = [4,1,2,1,2]
 # -------
 # 0 0 0 0
 
+s = Solution()
+print(s.singleNumberOneLoop(nums))
