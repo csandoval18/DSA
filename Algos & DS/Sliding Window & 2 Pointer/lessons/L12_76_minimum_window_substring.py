@@ -67,7 +67,7 @@ class SolutionDefaultDict: # TC: O(2N) | SC: O(256)
     hm = defaultdict(int) # Remember we declare the type of the value not the key when using defaultdict
     
     for c in t:
-        hm[c] += 1
+      hm[c] += 1
     
     for r in range(n):
       if s[r] in hm and hm[s[r]] > 0:
