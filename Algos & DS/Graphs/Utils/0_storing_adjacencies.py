@@ -26,14 +26,29 @@ m = 6
 # 4 0 0 0 0 0 1
 # 5 0 0 0 0 0 0
 
-def adjacencyMatrix(n: int, m: int, adjacencies: List[List[int]]):
+def adjacencyMatrix(n: int, m: int, edges: List[List[int]]):
   adj = [[-1 in range(m)] for _ in range(n)]
   
   # m = vertices count
   for i in range(m):
-    adj[adjacencies[i][0]][adjacencies[i][1]] = 1
+    adj[edges[i][0]][edges[i][1]] = 1
   
   return 0
+  
+# Undirected graph (both edges can be traversed from each node)
+def adjacencyDict(n: int, edges: List[List[int]]):
+  adj = [[] for _ in range(n)]
+  
+  for u, v in edges:
+    adj[u].append(v)
+    adj[v].append(u)
+  
+# Directed graph (can only reach the other node from starting node)
+def adjacencyDict(n: int, edges: List[List[int]]):
+  adj = [[] for _ in range(n)]
+  
+  for u, v in edges:
+    adj[u].append(v)
   
 # Adjacency list
 # 0 [1,2]
