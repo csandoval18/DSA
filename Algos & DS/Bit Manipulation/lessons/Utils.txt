@@ -1,0 +1,15 @@
+1. Check if only 1 bit is set in n (Multiple of 2):
+
+n & (n-1) == 0
+
+n = 8
+1000
+0000 = True
+
+2. Check if all bits are set in a number:
+
+n & (n+1) == 0
+
+n = 7
+0111
+0000 = True
