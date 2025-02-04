@@ -1,17 +1,5 @@
 from typing import Tuple
 
-
-# class Solution:
-#   def AllPrimeFactors(self, N: int) -> Tuple[int, int]:
-#     factors = set() # To stor eunique prime factors
-#     divisor = 2 # Start with the smallest prime numbers
-    
-#     # Handle factors of 2 separately
-#     while N % divisor == 0:
-#       factors.add(divisor)
-#       N //= divisor
-    
-
 '''
 Explanation:
 Numbers less than or equal to 1: These are not prime by definition.
@@ -25,15 +13,6 @@ root of n because if n has a factor greater than its square root, the correspond
 ''' 
 
 class Solution:
-  def AllPrimeFactors(self, N: int) -> Tuple[int, int]:
-    res = []
-    
-    for i in range(2, n+1):
-      if n%1 == 0:
-        if self.isPrime(i):
-          res.append(i)   
-      
-  
   def isPrime(n):
     # Numbers less than or equal to 1 are not prime
     if n <= 1:
@@ -52,15 +31,51 @@ class Solution:
       i += 6
     return True
     
+  def AllPrimeFactors(self, N: int) -> Tuple[int, int]:
+    res = []
+    
+    for i in range(2, n+1):
+      if n%1 == 0:
+        if self.isPrime(i):
+          res.append(i)   
+    
 class Solution:
   def AllPrimeFactors(self, N: int) -> Tuple[int, int]:
+    factors = []
     
+    # Divide by 2
+    while n % 2 == 0:
+      factors.append(2)
+      n //= 2
+      
+    # Check odd numbers from 3 to sqrt(n)
+    i = 3
+    while i * i <= n:
+      while n % i == 0:
+        factors.append(i)
+        n //= i
+      i += 2
+    
+    # If n is still greater than 2, it's a prime number
+    if n > 2:
+      factors.append(n)
+    # Return unique factors in sorted order
+    return sorted(list(set(factors)))
+
+'''
+Explanation:
+- The function first removes all factors of 2 from N.
+- Then it checks for odd factors starting from 3 up to sqrt(N).
+- If N is still greater than 2 after the loop, it means N itself is a prime number and is added to the list.
+- Finally, the function returns the unique prime factors in sorted order.
+
+This approach ensures that the prime factors are found efficiently and in increasing order.
+'''
     
 n = 60
 
 # 1,2,3,4,5,6,10
 # 12,18,20,30,60
-
 
 n = 100
 # Output: 2 5
