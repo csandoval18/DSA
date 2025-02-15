@@ -15,3 +15,45 @@ from typing import List
 
 class Solution:
   def lemonadeChange(self, bills: List[int]) -> bool:
+    fives, tens = 0, 0
+    
+    for bill in bills:
+      if bill == 5:
+        fives += 1
+      elif bill == 10:
+        if fives > 0:
+          fives -= 1
+          tens += 1
+        else:
+          return False
+      else:
+        if fives > 0 and tens > 0:
+          fives -= 1
+          tens -= 1
+        else:
+          return False
+      return True
+      
+      
+# 5 5 5                          bills = 3[5] => three $5
+# 10 =>  10 - (5) = 5            bills = 2[5], 1[10]
+# 20 =>  20 - (10 - 5) = 5       bills = 1[5], 0[10]
+
+bills = [5,5,5,10,20]
+# Output: true
+# Explanation: 
+# From the first 3 customers, we collect three $5 bills in order.
+# From the fourth customer, we collect a $10 bill and give back a $5.
+# From the fifth customer, we give a $10 bill and a $5 bill.
+# Since all customers got correct change, we output true.
+
+bills = [5,5,10,10,20]
+# Output: false
+# Explanation: 
+# From the first two customers in order, we collect two $5 bills.
+# For the next two customers in order, we collect a $10 bill and give back a $5 bill.
+# For the last customer, we can not give the change of $15 back because we only have two $10 bills.
+# Since not every customer received the correct change, the answer is false.
+
+s = Solution()
+print(s.lemonadeChange(bills))
