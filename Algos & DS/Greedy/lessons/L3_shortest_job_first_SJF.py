@@ -37,6 +37,17 @@ class Solution:
     average_waiting_time = total_waiting_time / n
     return int(average_waiting_time)
 
+class Solution:
+  def solve(self, bt: List[int]):
+    bt.sort()
+    t, wtime = 0, 0
+    
+    for i in range(n):
+      wtime += t
+      t += bt[i]
+    return wtime // len(bt)
+      
+
 n = 5
 bt = [4, 3, 7, 1, 2]
 #     p1 p2 p3 p4 p5
