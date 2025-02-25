@@ -27,6 +27,7 @@ Note: Consider all process are available at time 0.
 
 class Solution:
   def solve(self, bt: List[int]):
+    n = len(bt)
     bt_sorted = sorted(bt)
     
     waiting_time, total_waiting_time = 0, 0
@@ -34,19 +35,18 @@ class Solution:
       total_waiting_time += waiting_time
       waiting_time += bt_sorted[i]
       
-    average_waiting_time = total_waiting_time / n
+    average_waiting_time = total_waiting_time // n
     return int(average_waiting_time)
 
 class Solution:
   def solve(self, bt: List[int]):
-    bt.sort()
+    bt_sorted = sorted(bt)
     t, wtime = 0, 0
     
-    for i in range(n):
+    for i in range(len(bt)):
       wtime += t
-      t += bt[i]
+      t += bt_sorted[i]
     return wtime // len(bt)
-      
 
 n = 5
 bt = [4, 3, 7, 1, 2]
