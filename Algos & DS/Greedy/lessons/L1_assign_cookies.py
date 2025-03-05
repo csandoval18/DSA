@@ -15,10 +15,10 @@ class Solution:
     # if s[i] >= g[i]
     g.sort()
     s.sort()
-    x, y = 0, 0
+    i, j = 0, 0
     
-    while x < len(g) and y < len(s):
-      if s[y] >= g[x]:
+    while i < len(g) and j < len(s):
+      if s[j] >= g[i]:
         x += 1
       y += 1
     return x
